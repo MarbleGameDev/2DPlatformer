@@ -15,28 +15,28 @@ public class PlayerMovement : MonoBehaviour {
 	void Update () 
 	{
 		//test = test + 0.1;
-		float inputUp = Input.GetAxis("Vertical");
+		Rigidbody2D rb = GetComponent<Rigidbody2D> ();
+		bool inputUp = Input.GetButton("Jump");
 		float inputSide = Input.GetAxis ("Horizontal");
-		
+		//Needs a movement function for accurate movement, Josh pls do this
 		if (inputSide > 0){
-			transform.Translate(Vector2.right * movementModifier);
+			transform.Translate(transform.right * movementModifier);
 		}
 		if (inputSide < 0){
-			transform.Translate(Vector2.left * movementModifier);
+			transform.Translate(transform.right * movementModifier * -1);
 		}
-		if (inputUp > 0 && canJump == true){
-			transform.Translate(Vector2.up * verticalModifier);
+		if (inputUp && canJump){
+			rb.AddForce(transform.up * verticalModifier * 100, ForceMode2D.Impulse);
 		}
 		canJump = false;
-		//print (Mathf.Exp (test));
 	}
 	void OnCollisionStay2D (Collision2D col)
 	{
-
-		if (col.gameObject.tag == "Terrain") {
+		ContactPoint2D contact = col.contacts[0];
+		if(Vector3.Dot(contact.normal, Vector3.up) > 0.5)
+		{
 			canJump = true;
-
 		}
-
+		
 	}
 }
