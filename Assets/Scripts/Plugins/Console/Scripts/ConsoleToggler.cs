@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 public class ConsoleToggler : MonoBehaviour {
-    private bool consoleEnabled = false;
+    public bool consoleEnabled = false;
     public ConsoleAction ConsoleOpenAction;
     public ConsoleAction ConsoleCloseAction;
 
@@ -18,6 +18,8 @@ public class ConsoleToggler : MonoBehaviour {
             ConsoleOpenAction.Activate();
         } else {
             ConsoleCloseAction.Activate();
+			consoleEnabled = false;
+			Debug.Log("off");
         }
     }
 }
