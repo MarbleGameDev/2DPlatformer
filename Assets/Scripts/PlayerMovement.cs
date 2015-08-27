@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour {
 		bool inputUp = Input.GetButton("Jump");
 		float inputSide = Input.GetAxis ("Horizontal");
 		//Needs a movement function for accurate movement, Josh pls do this
+		//Check for side collision
 		if (inputSide > 0){
 			transform.Translate(transform.right * movementModifier);
 		}
@@ -37,6 +38,7 @@ public class PlayerMovement : MonoBehaviour {
 		{
 			canJump = true;
 		}
+		//Code maybe to detect side collision for movement?
 		
 	}
 }
