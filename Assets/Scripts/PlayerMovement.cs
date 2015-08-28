@@ -5,6 +5,7 @@ public class PlayerMovement : MonoBehaviour {
 	public float movementModifier;
 	public float verticalModifier;
 	public bool canJump, moveLeft, moveRight;
+	public float inputSide;
 	Rigidbody2D rb;
 	DevOptions dev;
 	PolygonCollider2D col;
@@ -30,22 +31,24 @@ public class PlayerMovement : MonoBehaviour {
 		if (fly == true) {
 			rb.gravityScale = 0;
 		} else if (fly == false && noclip == false){
-			rb.gravityScale = 1;
+			rb.gravityScale = 4;
 			col.enabled = true;
 		}
 		//test = test + 0.1;
 		bool inputUp = Input.GetButton("Jump");
 		bool inputDown = Input.GetButton("Croutch");
-		float inputSide = Input.GetAxis ("Horizontal");
+		inputSide = Input.GetAxis ("Horizontal");
 		//Needs a movement function for accurate movement, Josh pls do this
 		//Check for side collision
 		if (inputSide > 0 && moveRight){
 			transform.Translate(transform.right * movementModifier);
 			moveLeft = true;
+			moveRight = true;
 		}
 		if (inputSide < 0 && moveLeft){
 			transform.Translate(transform.right * movementModifier * -1);
 			moveRight = true;
+			moveLeft = true;
 		}
 		if (inputUp & canJump & noclip == false && fly == false){
 			rb.AddForce(transform.up * verticalModifier * 100, ForceMode2D.Impulse);
@@ -62,6 +65,7 @@ public class PlayerMovement : MonoBehaviour {
 			moveRight = true;
 			moveLeft = true;
 		}
+		print (canJump);
 			canJump = false;
 	}
 	void OnCollisionStay2D (Collision2D col){
@@ -74,7 +78,7 @@ public class PlayerMovement : MonoBehaviour {
 			moveLeft = false;
 		}
 		if (Vector3.Dot (contact.normal, Vector2.right) < 0) {
-			moveRight = false;
+			//moveRight = false;
 		}
 		//Code maybe to detect side collision for movement?
 		
