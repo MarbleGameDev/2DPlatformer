@@ -6,6 +6,9 @@ public class PlayerMovement : MonoBehaviour {
 	public float verticalModifier;
 	public bool canJump, moveLeft, moveRight;
 	public float inputSide;
+	public float BetweenJumps;
+	public int Jumpsleft = 2;
+
 	Rigidbody2D rb;
 	DevOptions dev;
 	PolygonCollider2D col;
@@ -34,11 +37,19 @@ public class PlayerMovement : MonoBehaviour {
 			rb.gravityScale = 4;
 			col.enabled = true;
 		}
+		bool spaceHeldDown = Input.GetKeyDown (KeyCode.Space);
 		//test = test + 0.1;
 		bool inputUp = Input.GetButton("Jump");
 		bool inputDown = Input.GetButton("Croutch");
 		inputSide = Input.GetAxis ("Horizontal");
-		//Needs a movement function for accurate movement, Josh pls do this
+		float velocityUp;
+		if (inputUp == true) {
+			velocityUp = 20;
+		} else {
+			velocityUp = -20;
+		}
+		BetweenJumps--;
+			//Needs a movement function for accurate movement, Josh pls do this
 		//Check for side collision
 		if (inputSide > 0 && moveRight){
 			transform.Translate(transform.right * movementModifier);
@@ -50,10 +61,18 @@ public class PlayerMovement : MonoBehaviour {
 			moveRight = true;
 			moveLeft = true;
 		}
-		if (inputUp & canJump & noclip == false && fly == false){
+		if (inputUp && canJump && noclip == false && fly == false){
 			rb.AddForce(transform.up * verticalModifier * 100, ForceMode2D.Impulse);
 			moveRight = true;
 			moveLeft = true;
+			Jumpsleft--;
+			BetweenJumps = 5;
+		}
+		if (BetweenJumps <= 0 && Jumpsleft > 0 && spaceHeldDown == true && canJump == false) {
+			//rb.AddForce (new Vector2 (inputSide * 900, velocityUp * 100), ForceMode2D.Impulse);
+			rb.AddForce(transform.up * verticalModifier * 200, ForceMode2D.Impulse);
+			BetweenJumps = 5;
+			Jumpsleft--;
 		}
 		if (inputUp & (noclip || fly)) {
 			transform.Translate(transform.up * .5f);
@@ -66,19 +85,20 @@ public class PlayerMovement : MonoBehaviour {
 			moveLeft = true;
 		}
 		print (canJump);
-			canJump = false;
+		canJump = false;
 	}
 	void OnCollisionStay2D (Collision2D col){
 		ContactPoint2D contact = col.contacts[0];
-		if(Vector3.Dot(contact.normal, Vector3.up) > 0.1)
+		if(Vector2.Dot(contact.normal, Vector3.up) > 0.1)
 		{
 			canJump = true;
+			Jumpsleft = 2;
 		}
-		if (Vector3.Dot (contact.normal, Vector2.right) > 0.1) {
+		if (Vector2.Dot (contact.normal, Vector2.right) > 0.1) {
 			moveLeft = false;
 		}
 		if (Vector3.Dot (contact.normal, Vector2.right) < 0) {
-			//moveRight = false;
+			moveRight = false;
 		}
 		//Code maybe to detect side collision for movement?
 		
