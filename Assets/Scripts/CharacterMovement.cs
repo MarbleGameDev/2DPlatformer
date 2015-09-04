@@ -2,13 +2,15 @@
 using System.Collections;
 
 public class CharacterMovement : MonoBehaviour {
+	public AudioClip deathSound;
 	public float verticalModifier;
 	Vector2 movementDirection = new Vector2(0,0);
 	Rigidbody2D rb;
 	DevOptions dev;
 	PolygonCollider2D col;
-	bool isGrounded;
-	bool isCollided;
+	public bool isGrounded;
+	public bool collisionLeft;
+	public bool collisionRight;
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody2D> ();
@@ -25,10 +27,10 @@ public class CharacterMovement : MonoBehaviour {
 		} else {
 			movementDirection.y = -.05f;
 		}
-		if (Input.GetButton ("Left")) {
+		if (Input.GetButton ("Left") && !collisionLeft) {
 			movementDirection.x = -.5f;
 		}
-		if (Input.GetButton ("Right")) {
+		if (Input.GetButton ("Right") && !collisionRight) {
 			movementDirection.x = .5f;
 		}
 		if ((Mathf.Abs (rb.velocity.x) < 30)) {
@@ -39,18 +41,21 @@ public class CharacterMovement : MonoBehaviour {
 		if (debug) {
 			Debug.Log (rb.velocity);
 		}
+
+		positionChecking ();
+
+		//Changing Stuff
 		movementDirection.x = 0;
 		movementDirection.y = 0;
 		isGrounded = false;
-		isCollided = false;
+		collisionLeft = false;
+		collisionRight = false;
 	}
 
-	void OnCollisionStay2D (Collision2D col){
-		ContactPoint2D contact = col.contacts [0]; 
-		if (Vector2.Dot (contact.normal, Vector2.up) > 0.2) {
-			isGrounded = true;
-		} else {
-			isCollided = true;
+	void positionChecking (){
+		if (transform.position.y < -40) {
+			transform.position = new Vector2 (-33, -2);
+			AudioSource.PlayClipAtPoint(deathSound,transform.position);
 		}
 	}
 }

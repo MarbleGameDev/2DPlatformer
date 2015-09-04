@@ -14,11 +14,4 @@ public class DevOptions : MonoBehaviour {
 	void Update () {
 	
 	}
-
-	public bool getFly(){
-		return fly;
-	}
-	public bool getNoClip(){
-		return noclip;
-	}
 }

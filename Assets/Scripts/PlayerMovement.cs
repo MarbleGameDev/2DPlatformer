@@ -63,12 +63,6 @@ public class PlayerMovement : MonoBehaviour {
 			moveLeft = true;
 			moveRight = true;
 		}
-		if (transform.position.y < -40) {
-			transform.position = new Vector2 (-33, -2);
-			AudioSource.PlayClipAtPoint(deathSound,transform.position);
-		}
-
-
 
 		//code that checks for left movement
 		if (inputSide < 0 && moveLeft){
