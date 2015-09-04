@@ -33,6 +33,7 @@ public class PlayerMovement : MonoBehaviour {
 	{
 		bool noclip = dev.noclip;
 		bool fly = dev.fly;
+		bool debug = dev.debug;
 		if (noclip == true) {
 			col.enabled = false;
 			rb.gravityScale = 0;

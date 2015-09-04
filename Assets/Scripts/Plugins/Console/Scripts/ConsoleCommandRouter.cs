@@ -10,6 +10,7 @@ public class ConsoleCommandRouter : MonoBehaviour {
 		console = GameObject.Find ("character");
 		dev = console.GetComponent<DevOptions>();
 		var repo = ConsoleCommandsRepository.Instance;
+		repo.RegisterCommand ("debug", DebugOn);
 		repo.RegisterCommand ("exit", Exit);
 		repo.RegisterCommand ("fly", Fly);
 		repo.RegisterCommand("help", Help);
@@ -74,5 +75,21 @@ public class ConsoleCommandRouter : MonoBehaviour {
 			dev.fly = false;
 		}
 		return "Fly Set to: " + fileName;
+	}
+
+	public string DebugOn (params string[] args){
+		String fileName;
+		try{
+			fileName = args[0];
+		} catch (Exception e){
+			return "Missing <true/false>";
+		}
+		if (fileName.Equals ("true")) {
+			dev.debug = true;
+		}
+		if (fileName.Equals ("false")) {
+			dev.debug = false;
+		}
+		return "Debug Set to: " + fileName;
 	}
 }
