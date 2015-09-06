@@ -4,7 +4,7 @@ using System.Collections;
 public class CharacterMovement : MonoBehaviour {
 	public AudioClip deathSound;
 	public float verticalModifier;
-	Vector2 movementDirection = new Vector2(0,0);
+	public Vector2 movementDirection = new Vector2(0,0);
 	Rigidbody2D rb;
 	DevOptions dev;
 	PolygonCollider2D col;
@@ -28,10 +28,20 @@ public class CharacterMovement : MonoBehaviour {
 			movementDirection.y = -.05f;
 		}
 		if (Input.GetButton ("Left") && !collisionLeft) {
+			if (isGrounded = true){
 			movementDirection.x = -.5f;
+			}
+			//if (isGrounded = false){
+			//	movementDirection.x = -.005f;	
+			//}
 		}
 		if (Input.GetButton ("Right") && !collisionRight) {
-			movementDirection.x = .5f;
+			if (isGrounded = true){
+				movementDirection.x = .5f;
+			}
+			//if (isGrounded = false){
+			//	movementDirection.x = .005f;
+			//}
 		}
 		if ((Mathf.Abs (rb.velocity.x) < 30)) {
 			rb.AddForce (movementDirection * verticalModifier, ForceMode2D.Impulse);
