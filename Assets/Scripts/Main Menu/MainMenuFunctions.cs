@@ -16,4 +16,8 @@ public class MainMenuFunctions : MonoBehaviour {
 	public void clickEvent(){
 		Application.LoadLevel (1);
 	}
+
+	public void optionsClick(){
+		Application.LoadLevel ("Options Menu");
+	}
 }
