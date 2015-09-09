@@ -4,6 +4,7 @@ using System.Collections;
 public class CharacterMovement : MonoBehaviour {
 	public AudioClip deathSound;
 	public float verticalModifier;
+	public float horizontalModifier;
 	public Vector2 movementDirection = new Vector2(0,0);
 	Rigidbody2D rb;
 	DevOptions dev;
@@ -22,31 +23,28 @@ public class CharacterMovement : MonoBehaviour {
 		bool noclip = dev.noclip;
 		bool fly = dev.fly;
 		bool debug = dev.debug;
-		if (Input.GetButton ("Jump") && isGrounded) {
+		if (Input.GetButton ("Jump") && (isGrounded || (collisionLeft && rb.velocity.y == 0) || (collisionRight && rb.velocity.y == 0))) {
 			movementDirection.y = 3;
 		} else {
 			movementDirection.y = -.05f;
 		}
 		if (Input.GetButton ("Left") && !collisionLeft) {
-			if (isGrounded = true){
-			movementDirection.x = -.5f;
-			}
-			//if (isGrounded = false){
-			//	movementDirection.x = -.005f;	
-			//}
+				movementDirection.x = -.5f;
 		}
 		if (Input.GetButton ("Right") && !collisionRight) {
-			if (isGrounded = true){
 				movementDirection.x = .5f;
-			}
-			//if (isGrounded = false){
-			//	movementDirection.x = .005f;
-			//}
 		}
-		if ((Mathf.Abs (rb.velocity.x) < 30)) {
-			rb.AddForce (movementDirection * verticalModifier, ForceMode2D.Impulse);
-		} else if (movementDirection.y > 0 || fly || noclip) {
+
+
+		if ((movementDirection.y > 0 || fly || noclip) && movementDirection.x == 0) {
 			rb.AddForce (new Vector2 (0, movementDirection.y) * verticalModifier, ForceMode2D.Impulse);
+		}
+		if ((Mathf.Abs (rb.velocity.x) < 30) && rb.velocity.y >= 0) {
+			rb.AddForce (movementDirection * horizontalModifier, ForceMode2D.Impulse);
+		} else if ((Mathf.Abs (rb.velocity.x) < 30) && rb.velocity.y < 0) {
+			rb.AddForce (new Vector2 (movementDirection.x, 0) * horizontalModifier * .5f, ForceMode2D.Impulse);
+		} else if ((Mathf.Abs (rb.velocity.x) >= 30) && rb.velocity.y >= 0) {
+			rb.AddForce (new Vector2 (movementDirection.x * .1f, movementDirection.y * 3) * verticalModifier, ForceMode2D.Impulse);
 		}
 		if (debug) {
 			Debug.Log (rb.velocity);
