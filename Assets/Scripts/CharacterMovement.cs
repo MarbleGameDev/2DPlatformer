@@ -35,7 +35,6 @@ public class CharacterMovement : MonoBehaviour {
 				movementDirection.x = .5f;
 		}
 
-
 		if ((movementDirection.y > 0 || fly || noclip) && movementDirection.x == 0) {
 			rb.AddForce (new Vector2 (0, movementDirection.y) * verticalModifier, ForceMode2D.Impulse);
 		}

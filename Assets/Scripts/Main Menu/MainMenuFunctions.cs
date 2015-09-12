@@ -20,4 +20,8 @@ public class MainMenuFunctions : MonoBehaviour {
 	public void optionsClick(){
 		Application.LoadLevel ("Options Menu");
 	}
+
+	public void continueClick(){
+		Application.LoadLevel ("Level1TestScene");
+	}
 }
