@@ -12,12 +12,13 @@ public class CharacterMovement : MonoBehaviour {
 	public bool isGrounded;
 	public bool collisionLeft;
 	public bool collisionRight;
+	public int jumpsLeft = 1;
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody2D> ();
 		dev = GetComponent<DevOptions> ();
 		col = GetComponent<PolygonCollider2D>();
-	}
+	} 
 	// Update is called once per frame
 	void Update () {
 		bool noclip = dev.noclip;
@@ -25,6 +26,7 @@ public class CharacterMovement : MonoBehaviour {
 		bool debug = dev.debug;
 		if (Input.GetButton ("Jump") && (isGrounded || (collisionLeft && rb.velocity.y == 0) || (collisionRight && rb.velocity.y == 0))) {
 			movementDirection.y = 3;
+			print ("jump");
 		} else {
 			movementDirection.y = -.05f;
 		}
@@ -34,16 +36,24 @@ public class CharacterMovement : MonoBehaviour {
 		if (Input.GetButton ("Right") && !collisionRight) {
 				movementDirection.x = .5f;
 		}
-
-		if ((movementDirection.y > 0 || fly || noclip) && movementDirection.x == 0) {
-			rb.AddForce (new Vector2 (0, movementDirection.y) * verticalModifier, ForceMode2D.Impulse);
+		if (isGrounded) {
+			jumpsLeft = 1;
 		}
-		if ((Mathf.Abs (rb.velocity.x) < 30) && rb.velocity.y >= 0) {
-			rb.AddForce (movementDirection * horizontalModifier, ForceMode2D.Impulse);
+		//jumping
+		if ((movementDirection.y > 0 || fly || noclip)&& jumpsLeft > 0 && movementDirection.x == 0) {
+			rb.AddForce (new Vector2 (0, movementDirection.y) * verticalModifier, ForceMode2D.Impulse);
+			print ("Enter 0");
+		}
+		else if ((Mathf.Abs (rb.velocity.x) < 30)&& jumpsLeft > 0 && rb.velocity.y >= 0) {
+			rb.AddForce (new Vector2 (movementDirection.x,0) * horizontalModifier, ForceMode2D.Impulse);
+			rb.AddForce (new Vector2 (0,movementDirection.y) * verticalModifier, ForceMode2D.Impulse);
+			print ("Enter 1");
 		} else if ((Mathf.Abs (rb.velocity.x) < 30) && rb.velocity.y < 0) {
 			rb.AddForce (new Vector2 (movementDirection.x, 0) * horizontalModifier * .5f, ForceMode2D.Impulse);
+			print ("Enter 2");
 		} else if ((Mathf.Abs (rb.velocity.x) >= 30) && rb.velocity.y >= 0) {
-			rb.AddForce (new Vector2 (movementDirection.x * .1f, movementDirection.y * 3) * verticalModifier, ForceMode2D.Impulse);
+			rb.AddForce (new Vector2 (movementDirection.x * .1f, movementDirection.y * 0), ForceMode2D.Impulse);
+			print ("Enter 3");
 		}
 		if (debug) {
 			Debug.Log (rb.velocity);
