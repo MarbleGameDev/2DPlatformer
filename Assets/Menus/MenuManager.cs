@@ -5,8 +5,11 @@ public class MenuManager : MonoBehaviour {
 	public Transform window;
 	static Transform newWindow;
 	static string currentWindowName;
+
 	public Transform mainMenu;
 	public Transform optionsMenu;
+	public Transform newGame;
+
 	public static bool windowOpen = false;
 	// Use this for initialization
 	void Start () {
@@ -21,18 +24,24 @@ public class MenuManager : MonoBehaviour {
 		windowOpen = true;
 		currentWindowName = name;
 		switch (name) {
-		case "mainMenu":
+		case "MainMenu":
 			newWindow = Instantiate(mainMenu);
 			newWindow.SetParent(window, false);
 			break;
-		case "optionsMenu":
+		case "OptionsMenu":
 			newWindow = Instantiate(optionsMenu);
+			newWindow.SetParent(window, false);
+			break;
+		case "newGame":
+			newWindow = Instantiate(newGame);
 			newWindow.SetParent(window, false);
 			break;
 		}
 	}
 	public void CloseWindow(){
 		windowOpen = false;
-		Destroy(GameObject.Find (currentWindowName + "(Clone)"));
+		if (currentWindowName != null) {
+			Destroy (GameObject.Find (currentWindowName + "(Clone)"));
+		}
 	}
 }

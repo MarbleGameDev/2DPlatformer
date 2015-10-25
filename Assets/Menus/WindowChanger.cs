@@ -7,7 +7,7 @@ public class WindowChanger : MonoBehaviour {
 	MenuManager menu;
 	// Use this for initialization
 	void Start () {
-		gameObject.GetComponent<Button>().onClick.AddListener(() => { click(); });
+		GetComponent<Button>().onClick.AddListener(() => { click(); });
 		menu = GameObject.Find ("Main Canvas").GetComponent<MenuManager> ();
 	}
 	
