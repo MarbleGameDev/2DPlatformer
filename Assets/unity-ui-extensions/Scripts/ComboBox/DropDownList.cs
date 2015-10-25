@@ -30,7 +30,7 @@ namespace UnityEngine.UI.Extensions
 		
 		private RectTransform _overlayRT;
 		private RectTransform _scrollPanelRT;
-		private RectTransform _scrollBarRT;
+		//private RectTransform _scrollBarRT;
 		private RectTransform _slidingAreaRT;
 		//   private RectTransform scrollHandleRT;
 		private RectTransform _itemsPanelRT;
@@ -91,8 +91,8 @@ namespace UnityEngine.UI.Extensions
 				
 				
 				_scrollPanelRT = _overlayRT.FindChild("ScrollPanel").GetComponent<RectTransform>();
-				_scrollBarRT = _scrollPanelRT.FindChild("Scrollbar").GetComponent<RectTransform>();
-				_slidingAreaRT = _scrollBarRT.FindChild("SlidingArea").GetComponent<RectTransform>();
+				//_scrollBarRT = _scrollPanelRT.FindChild("Scrollbar").GetComponent<RectTransform>();
+				//_slidingAreaRT = _scrollBarRT.FindChild("SlidingArea").GetComponent<RectTransform>();
 				//  scrollHandleRT = slidingAreaRT.FindChild("Handle").GetComponent<RectTransform>();
 				_itemsPanelRT = _scrollPanelRT.FindChild("Items").GetComponent<RectTransform>();
 				//itemPanelLayout = itemsPanelRT.gameObject.GetComponent<LayoutGroup>();
@@ -241,7 +241,7 @@ namespace UnityEngine.UI.Extensions
 		
 		private void RedrawPanel()
 		{
-			float scrollbarWidth = Items.Count > ItemsToDisplay ? _scrollBarWidth : 0f;//hide the scrollbar if there's not enough items
+			//float scrollbarWidth = Items.Count > ItemsToDisplay ? _scrollBarWidth : 0f;//hide the scrollbar if there's not enough items
 			
 			if (!_hasDrawnOnce || _rectTransform.sizeDelta != _mainButton.rectTransform.sizeDelta)
 			{
@@ -269,14 +269,14 @@ namespace UnityEngine.UI.Extensions
 			_scrollPanelRT.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, dropdownHeight);
 			_scrollPanelRT.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, _rectTransform.sizeDelta.x);
 			
-			_itemsPanelRT.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, _scrollPanelRT.sizeDelta.x - scrollbarWidth - 5);
+			//_itemsPanelRT.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, _scrollPanelRT.sizeDelta.x - scrollbarWidth - 5);
 			_itemsPanelRT.anchoredPosition = new Vector2(5, 0);
 			
-			_scrollBarRT.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, scrollbarWidth);
-			_scrollBarRT.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, dropdownHeight);
+			//_scrollBarRT.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, scrollbarWidth);
+			//_scrollBarRT.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, dropdownHeight);
 			
-			_slidingAreaRT.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 0);
-			_slidingAreaRT.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, dropdownHeight - _scrollBarRT.sizeDelta.x);
+			//_slidingAreaRT.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 0);
+			//_slidingAreaRT.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, dropdownHeight - _scrollBarRT.sizeDelta.x);
 		}
 		
 		/// <summary>
@@ -286,7 +286,7 @@ namespace UnityEngine.UI.Extensions
 		public void ToggleDropdownPanel(bool directClick)
 		{
 			_overlayRT.transform.localScale = new Vector3(1, 1, 1);
-			_scrollBarRT.transform.localScale = new Vector3(1, 1, 1);
+			//_scrollBarRT.transform.localScale = new Vector3(1, 1, 1);
 			_isPanelActive = !_isPanelActive;
 			_overlayRT.gameObject.SetActive(_isPanelActive);
 			if (_isPanelActive)
