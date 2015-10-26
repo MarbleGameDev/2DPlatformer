@@ -4,7 +4,9 @@ using System;
 
 public class TopViewCharactermovement : MonoBehaviour {
 	public AudioClip deathSound;
-	private float horizontalMax = 1.2f;
+	public Sprite leftSprite;
+	public Sprite rightSprite;
+	private float horizontalMax = 10f;
 	private float jumpVelocity = 30;
 	Rigidbody2D rb;
 	DevOptions dev;
@@ -15,6 +17,7 @@ public class TopViewCharactermovement : MonoBehaviour {
 	public bool collisionUp;
 	public bool collisionDown;
 	private float gravityScale;
+	SpriteRenderer sprite;
 
 	// Use this for initialization
 	void Start () {
@@ -22,6 +25,7 @@ public class TopViewCharactermovement : MonoBehaviour {
 		dev = GetComponent<DevOptions> ();
 		col = GetComponent<PolygonCollider2D>();
 		gravityScale = rb.gravityScale;
+		sprite = GetComponent<SpriteRenderer> ();
 	}
 	
 	// Update is called once per frame
@@ -32,12 +36,14 @@ public class TopViewCharactermovement : MonoBehaviour {
 		if (Input.GetButton ("Left") || Input.GetButton ("Right") || Input.GetButton ("Up") || Input.GetButton ("Down")) {
 			if (Input.GetButton ("Left") && !collisionLeft) {
 				if (rb.velocity.x > -horizontalMax) {
-					rb.velocity = new Vector2 (rb.velocity.x - .2f, rb.velocity.y);
+					rb.velocity = new Vector2 (rb.velocity.x - 2f, rb.velocity.y);
 				}
+				sprite.sprite = leftSprite;
 			} else if (Input.GetButton ("Right") && !collisionRight) {
 				if (rb.velocity.x < horizontalMax) {
-					rb.velocity = new Vector2 (rb.velocity.x + .2f, rb.velocity.y);
+					rb.velocity = new Vector2 (rb.velocity.x + 2f, rb.velocity.y);
 				}
+				sprite.sprite = rightSprite;
 			} else {
 				if (Math.Floor (rb.velocity.x) != 0) {
 					rb.velocity = new Vector2 (rb.velocity.x / 2, rb.velocity.y);
@@ -45,11 +51,11 @@ public class TopViewCharactermovement : MonoBehaviour {
 			}
 			if (Input.GetButton ("Up") && !collisionUp) {
 				if (rb.velocity.y < horizontalMax) {
-					rb.velocity = new Vector2 (rb.velocity.x, rb.velocity.y + .2f);
+					rb.velocity = new Vector2 (rb.velocity.x, rb.velocity.y + 2f);
 				}
 			} else if (Input.GetButton ("Down") && !collisionDown) {
 				if (rb.velocity.y > -horizontalMax) {
-					rb.velocity = new Vector2 (rb.velocity.x, rb.velocity.y - .2f);
+					rb.velocity = new Vector2 (rb.velocity.x, rb.velocity.y - 2f);
 				}
 			} else {
 				if (Math.Floor (rb.velocity.y) != 0) {
