@@ -7,7 +7,7 @@ public class StretchPanel : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		items = this.transform.Find("Items");
-		GetComponent<RectTransform>().sizeDelta = new Vector2(width,(transform.childCount * 30) + 5);
+		GetComponent<RectTransform>().sizeDelta = new Vector2(width,(items.transform.childCount * 30));
 	}
 	
 	// Update is called once per frame
