@@ -17,7 +17,7 @@ namespace UnityEngine.UI.Extensions
 		//
 		// Methods
 		//
-		public override void ModifyVertices (List<UIVertex> verts)
+		public void ModifyVertices (List<UIVertex> verts)
 		{
 			if (!this.IsActive ())
 			{

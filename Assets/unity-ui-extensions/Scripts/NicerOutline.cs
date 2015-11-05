@@ -6,8 +6,9 @@ namespace UnityEngine.UI.Extensions
 {
 	//An outline that looks a bit nicer than the default one. It has less "holes" in the outline by drawing more copies of the effect
 	[AddComponentMenu("UI/Effects/Extensions/Nicer Outline")]
-	public class NicerOutline : BaseVertexEffect
+	public class NicerOutline : BaseMeshEffect
 	{
+		public override void ModifyMesh(VertexHelper vh){}
 		[SerializeField]
 		private Color m_EffectColor = new Color (0f, 0f, 0f, 0.5f);
 		
@@ -120,7 +121,7 @@ namespace UnityEngine.UI.Extensions
 			}
 		}
 		
-		public override void ModifyVertices (List<UIVertex> verts)
+		public void ModifyVertices (List<UIVertex> verts)
 		{
 			if (!this.IsActive ())
 			{

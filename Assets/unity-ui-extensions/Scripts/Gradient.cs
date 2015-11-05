@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace UnityEngine.UI.Extensions
 {
     [AddComponentMenu("UI/Effects/Extensions/Gradient")]
-    public class Gradient : BaseVertexEffect
+    public class Gradient : BaseMeshEffect
     {
         public GradientMode gradientMode = GradientMode.Global;
         public GradientDir gradientDir = GradientDir.Vertical;
@@ -15,12 +15,16 @@ namespace UnityEngine.UI.Extensions
         public Color vertex2 = Color.black;
         private Graphic targetGraphic;
 
+		public override void ModifyMesh(VertexHelper vh){
+			
+		}
+
         protected override void Start()
         {
             targetGraphic = GetComponent<Graphic>();
         }
 
-        public override void ModifyVertices(List<UIVertex> vertexList)
+        public void ModifyVertices(List<UIVertex> vertexList)
         {
             if (!IsActive() || vertexList.Count == 0)
             {

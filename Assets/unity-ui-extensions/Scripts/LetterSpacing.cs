@@ -46,11 +46,13 @@ using System.Collections.Generic;
 namespace UnityEngine.UI.Extensions
 {
 	[AddComponentMenu("UI/Effects/Extensions/Letter Spacing")]
-	public class LetterSpacing : BaseVertexEffect
+	public class LetterSpacing : BaseMeshEffect
 	{
 		[SerializeField]
 		private float m_spacing = 0f;
-		
+
+		public override void ModifyMesh(VertexHelper vh){}
+
 		protected LetterSpacing() { }
 		
 		#if UNITY_EDITOR
@@ -72,7 +74,7 @@ namespace UnityEngine.UI.Extensions
 			}
 		}
 		
-		public override void ModifyVertices(List<UIVertex> verts)
+		public void ModifyVertices(List<UIVertex> verts)
 		{
 			if (! IsActive()) return;
 			

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
-
+#pragma warning disable 0168
 public class ConsoleCommandRouter : MonoBehaviour {
 	DevOptions dev;
 	GameObject console;
