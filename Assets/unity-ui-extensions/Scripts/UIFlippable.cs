@@ -7,8 +7,10 @@ namespace UnityEngine.UI.Extensions
 {
     [RequireComponent(typeof(RectTransform), typeof(Graphic)), DisallowMultipleComponent]
     [AddComponentMenu("UI/Effects/Extensions/Flippable")]
-    public class UIFlippable : MonoBehaviour, IVertexModifier
-    {     
+    public class UIFlippable : MonoBehaviour, IMeshModifier
+    {
+		public void ModifyMesh(VertexHelper vh){}
+		public void ModifyMesh(Mesh msh){}
         [SerializeField] private bool m_Horizontal = false;
         [SerializeField] private bool m_Veritical = false;
      

@@ -2,8 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class WindowChanger : MonoBehaviour {
-	public string menuName;
+public class OptionsBack : MonoBehaviour {
 	MenuManager menu;
 	// Use this for initialization
 	void Start () {
@@ -13,10 +12,14 @@ public class WindowChanger : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+		
 	}
 	void click (){
 		menu.CloseWindow ();
-		menu.OpenWindow (menuName);
+		if (Application.loadedLevelName.Equals ("MainMenu")) {
+			menu.OpenWindow ("MainMenu");
+		} else {
+			menu.OpenWindow ("PauseMenu");
+		}
 	}
 }
