@@ -6,6 +6,8 @@ public class TopViewCharactermovement : MonoBehaviour {
 	public AudioClip deathSound;
 	public Sprite leftSprite;
 	public Sprite rightSprite;
+	public Sprite frontSprite;
+	public Sprite backSprite;
 	private float horizontalMax = 10f;
 	private float jumpVelocity = 30;
 	Rigidbody2D rb;
@@ -53,10 +55,12 @@ public class TopViewCharactermovement : MonoBehaviour {
 				if (rb.velocity.y < horizontalMax) {
 					rb.velocity = new Vector2 (rb.velocity.x, rb.velocity.y + 2f);
 				}
+				sprite.sprite = backSprite;
 			} else if (Input.GetButton ("Down") && !collisionDown) {
 				if (rb.velocity.y > -horizontalMax) {
 					rb.velocity = new Vector2 (rb.velocity.x, rb.velocity.y - 2f);
 				}
+				sprite.sprite = frontSprite;
 			} else {
 				if (Math.Floor (rb.velocity.y) != 0) {
 					rb.velocity = new Vector2 (rb.velocity.x, rb.velocity.y / 2);
