@@ -49,6 +49,8 @@ public class TopViewCharactermovement : MonoBehaviour {
 			} else {
 				if (Math.Floor (rb.velocity.x) != 0) {
 					rb.velocity = new Vector2 (rb.velocity.x / 2, rb.velocity.y);
+				}else{
+					rb.velocity = new Vector2 (0,rb.velocity.y);
 				}
 			}
 			if (Input.GetButton ("Up") && !collisionUp) {
@@ -64,6 +66,8 @@ public class TopViewCharactermovement : MonoBehaviour {
 			} else {
 				if (Math.Floor (rb.velocity.y) != 0) {
 					rb.velocity = new Vector2 (rb.velocity.x, rb.velocity.y / 2);
+				}else{
+					rb.velocity = new Vector2 (rb.velocity.x,0);
 				}
 			}
 		}else{
