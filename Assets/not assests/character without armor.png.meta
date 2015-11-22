@@ -1,13 +1,21 @@
 fileFormatVersion: 2
 guid: 7bba59a897d2ce84eb0ca0d84f9ff4c5
-timeCreated: 1447007686
+timeCreated: 1448056961
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: character without armor-Front
-    21300002: character without armor-Back
-    21300004: character without armor-Left
-    21300006: character without armor-Right
+    21300000: character without armor-Right1
+    21300002: character without armor-Right2
+    21300004: character without armor-Left1
+    21300006: character without armor-Left2
+    21300008: character without armor-Left3
+    21300010: character without armor-Right3
+    21300012: character without armor-Back1
+    21300014: character without armor-Back2
+    21300016: character without armor-Back3
+    21300018: character without armor-Front1
+    21300020: character without armor-Front2
+    21300022: character without armor-Front3
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -54,43 +62,123 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: character without armor-Front
+    - name: character without armor-Right1
       rect:
         serializedVersion: 2
         x: 0
         y: 32
         width: 32
-        height: 32
+        height: 31
       alignment: 0
       pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: character without armor-Back
+      border: {x: 0, y: 0, z: 0, w: 1}
+    - name: character without armor-Right2
       rect:
         serializedVersion: 2
         x: 32
         y: 32
         width: 32
-        height: 32
+        height: 31
       alignment: 0
       pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: character without armor-Left
+      border: {x: 0, y: 0, z: 0, w: 1}
+    - name: character without armor-Left1
       rect:
         serializedVersion: 2
         x: 0
         y: 0
+        width: 32
+        height: 31
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 1}
+    - name: character without armor-Left2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 31
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 1}
+    - name: character without armor-Left3
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 31
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 1}
+    - name: character without armor-Right3
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 31
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 1}
+    - name: character without armor-Back1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 32
+        height: 31
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 1}
+    - name: character without armor-Back2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 32
+        height: 31
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 1}
+    - name: character without armor-Back3
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 32
+        height: 31
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 1}
+    - name: character without armor-Front1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
         width: 32
         height: 32
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 1}
-    - name: character without armor-Right
+    - name: character without armor-Front2
       rect:
         serializedVersion: 2
         x: 32
-        y: 0
+        y: 96
         width: 32
-        height: 32
+        height: 31
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 1}
+    - name: character without armor-Front3
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 96
+        width: 32
+        height: 31
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 1}
