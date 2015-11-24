@@ -11,7 +11,7 @@ public class QuestRepository : MonoBehaviour{
 	}
 
 	public void AddQuest(string name){
-		quests.Add (name, 0);;
+		quests.Add (name, 0);
 		if (Settings.debug)
 		Debug.Log ("Quest added: " + name);
 	}

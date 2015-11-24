@@ -10,6 +10,7 @@ public class MenuManager : MonoBehaviour {
 	public Transform optionsMenu;
 	public Transform newGame;
 	public Transform pauseMenu;
+	public Transform inventory;
 
 	public static bool windowOpen = false;
 	// Use this for initialization
@@ -39,6 +40,10 @@ public class MenuManager : MonoBehaviour {
 			break;
 		case "PauseMenu":
 			newWindow = Instantiate(pauseMenu);
+			newWindow.SetParent(window, false);
+			break;
+		case "Inventory":
+			newWindow = Instantiate (inventory);
 			newWindow.SetParent(window, false);
 			break;
 		}

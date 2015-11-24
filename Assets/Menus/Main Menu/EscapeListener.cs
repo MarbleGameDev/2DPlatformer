@@ -3,6 +3,7 @@ using System.Collections;
 
 public class EscapeListener : MonoBehaviour {
 	public string menuName;
+	public string inventoryName = "Inventory";
 	MenuManager menu;
 	// Use this for initialization
 	void Start () {
@@ -29,6 +30,6 @@ public class EscapeListener : MonoBehaviour {
 	}
 
 	void inventory (){
-		//Not Setup Yet, might actually need an inventory first
+		menu.OpenWindow (inventoryName);
 	}
 }
