@@ -17,11 +17,11 @@ public class UpdateSliderValue : MonoBehaviour {
 		switch (this.gameObject.name) {
 		case "OverallVolumeSlider":
 			Settings.overallVolume = GetComponent<Slider>().value;
-			Debug.Log(Settings.overallVolume);
+			//Debug.Log(Settings.overallVolume);
 			break;
 		case "MusicVolumeSlider":
 			Settings.musicVolume = GetComponent<Slider>().value;
-			Debug.Log(Settings.musicVolume);
+			//Debug.Log(Settings.musicVolume);
 			break;
 		}
 	}

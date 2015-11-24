@@ -14,14 +14,21 @@ public class EscapeListener : MonoBehaviour {
 		if (Input.GetButtonDown ("Escape")) {
 			click();
 		}
+		if (Input.GetButtonDown ("Inventory")) {
+			inventory();
+		}
 	}
 
 	void click (){
-		menu.CloseWindow ();
-		if (menuName != menu.GetCurrentWindow ()) {
+		Debug.Log ("Escape");
+		if (menu.IsWindowOpen ()) {
+			menu.CloseWindow ();
+		}else {
 			menu.OpenWindow (menuName);
-		} else {
-			menu.OpenWindow ("");
 		}
+	}
+
+	void inventory (){
+		//Not Setup Yet, might actually need an inventory first
 	}
 }

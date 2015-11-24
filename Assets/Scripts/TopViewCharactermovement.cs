@@ -4,11 +4,9 @@ using System;
 
 public class TopViewCharactermovement : MonoBehaviour {
 	private float horizontalMax = 10f;
-	private float jumpVelocity = 30;
 
 
 	Rigidbody2D rb;
-	DevOptions dev;
 	PolygonCollider2D col;
 
 
@@ -16,7 +14,6 @@ public class TopViewCharactermovement : MonoBehaviour {
 	public bool collisionRight;
 	public bool collisionUp;
 	public bool collisionDown;
-	private float gravityScale;
 
 	int direction;
 
@@ -33,22 +30,27 @@ public class TopViewCharactermovement : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody2D> ();
-		dev = GetComponent<DevOptions> ();
 		col = GetComponent<PolygonCollider2D>();
-		gravityScale = rb.gravityScale;
 		anim = GetComponent<Animator> ();
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		if (!up && !down)
-		left = Input.GetButton ("Left");
-		if (!up && !down)
-		right = Input.GetButton ("Right");
-		if (!left && !right)
-		up = Input.GetButton ("Up");
-		if (!left && !right)
-		down = Input.GetButton ("Down");
+		if (!MenuManager.windowOpen) {
+			if (!up && !down)
+				left = Input.GetButton ("Left");
+			if (!up && !down)
+				right = Input.GetButton ("Right");
+			if (!left && !right)
+				up = Input.GetButton ("Up");
+			if (!left && !right)
+				down = Input.GetButton ("Down");
+		} else {
+			up = false;
+			down = false;
+			left = false;
+			right = false;
+		}
 
 		if (left && !collisionLeft) {
 			direction = 1;
@@ -61,27 +63,26 @@ public class TopViewCharactermovement : MonoBehaviour {
 			if (rb.velocity.x < horizontalMax) {
 				rb.velocity = new Vector2 (rb.velocity.x + 2f, 0);
 			}
-			anim.Play("Walking Right");
-		}else if (up && !collisionUp) {
+			anim.Play ("Walking Right");
+		} else if (up && !collisionUp) {
 			direction = 3;
 			if (rb.velocity.y < horizontalMax) {
 				rb.velocity = new Vector2 (0, rb.velocity.y + 2f);
 			}
-			anim.Play("Walking Up");
+			anim.Play ("Walking Up");
 		} else if (down && !collisionDown) {
 			direction = 4;
 			if (rb.velocity.y > -horizontalMax) {
 				rb.velocity = new Vector2 (0, rb.velocity.y - 2f);
 			}
-			anim.Play("Walking Down");
+			anim.Play ("Walking Down");
 		} else {
 			if (Math.Floor (rb.velocity.y) != 0) {
 				rb.velocity = new Vector2 (rb.velocity.x / 2, rb.velocity.y / 2);
 			} else {
 				rb.velocity = new Vector2 (0, 0);
 			}
-			Debug.Log (direction);
-			switch (direction){
+			switch (direction) {
 			case 1:
 				anim.Play ("StandLeft");
 				break;

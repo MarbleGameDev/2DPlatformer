@@ -43,6 +43,12 @@ public class MenuManager : MonoBehaviour {
 			break;
 		}
 	}
+	public void OpenCustomWindow(Transform tempWindow){
+		windowOpen = true;
+		currentWindowName = tempWindow.name;
+		newWindow = Instantiate(tempWindow);
+		newWindow.SetParent(window, false);
+	}
 	public void CloseWindow(){
 		windowOpen = false;
 		if (currentWindowName != null) {
@@ -51,5 +57,9 @@ public class MenuManager : MonoBehaviour {
 	}
 	public string GetCurrentWindow(){
 		return currentWindowName;
+	}
+
+	public bool IsWindowOpen(){
+		return windowOpen;
 	}
 }
