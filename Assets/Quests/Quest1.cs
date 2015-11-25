@@ -15,7 +15,11 @@ public class Quest1 : QuestRepository{
 	
 	}
 
-	void OnTriggerEnter2D(Collider2D other){
-		menu.OpenCustomWindow (QuestWindow);
+	public void OpenWindow (){
+		if (!menu.IsWindowOpen()) {
+			menu.OpenCustomWindow (QuestWindow);
+		} else {
+			menu.CloseWindow();
+		}
 	}
 }

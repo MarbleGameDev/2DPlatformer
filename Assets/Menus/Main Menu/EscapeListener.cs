@@ -21,7 +21,6 @@ public class EscapeListener : MonoBehaviour {
 	}
 
 	void click (){
-		Debug.Log ("Escape");
 		if (menu.IsWindowOpen ()) {
 			menu.CloseWindow ();
 		}else {
@@ -30,6 +29,10 @@ public class EscapeListener : MonoBehaviour {
 	}
 
 	void inventory (){
-		menu.OpenWindow (inventoryName);
+		if (menu.IsWindowOpen ()) {
+			menu.CloseWindow ();
+		}else {
+			menu.OpenWindow (inventoryName);
+		}
 	}
 }

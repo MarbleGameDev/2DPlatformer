@@ -7,6 +7,11 @@ public class InventoryData : MonoBehaviour {
 	public static Dictionary<string, int> inventory;
 	// Use this for initialization
 	void Start () {
+
+	}
+	void Awake (){
+		inventory = new Dictionary<string, int> ();
+
 		inventory.Add ("Key", 1);
 		inventory.Add ("Swag", 1);
 		inventory.Add ("Potion", 4);
@@ -20,20 +25,28 @@ public class InventoryData : MonoBehaviour {
 		inventory.Add ("Key8", 1);
 		inventory.Add ("Key9", 1);
 		inventory.Add ("Key99", 1);
-		inventory.Add ("Key0", 1);
-		inventory.Add ("Key11", 1);
-		inventory.Add ("Key12", 1);
-		inventory.Add ("Key13", 1);
-		inventory.Add ("Key14", 1);
-		inventory.Add ("Key15", 1);
-		inventory.Add ("Key16", 1);
-	}
-	void Awake (){
-		inventory = new Dictionary<string, int> ();
+		inventory.Add ("Key69", 1);
+		inventory.Add ("Key79", 1);
+		inventory.Add ("Key89", 1);
+		inventory.Add ("Key95", 1);
+		inventory.Add ("Key93", 1);
+		inventory.Add ("Key61", 1);
+		inventory.Add ("Key71", 1);
+		inventory.Add ("Key81", 1);
+		inventory.Add ("Key91", 1);
+		inventory.Add ("Key90", 1);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	
+	}
+
+	public bool HasItem(string item){
+		return inventory.ContainsKey (item);
+	}
+
+	public void AddItem (string name, int number){
+		inventory.Add (name, number);
 	}
 }
