@@ -19,7 +19,7 @@ public class InteractWith : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetButtonDown(keyListener) && inArea) {
-			Debug.Log ("Interacts!");
+			//Debug.Log ("Interacts!");
 			onInteract.Invoke ();
 		}
 		inArea = false;

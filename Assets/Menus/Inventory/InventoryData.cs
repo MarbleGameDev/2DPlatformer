@@ -5,6 +5,8 @@ using System.Collections.Generic;
 public class InventoryData : MonoBehaviour {
 
 	public static Dictionary<string, int> inventory;
+
+	public static bool inventoryChanged;
 	// Use this for initialization
 	void Start () {
 
@@ -38,8 +40,8 @@ public class InventoryData : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
+	void FixedUpdate () {
+		inventoryChanged = false;
 	}
 
 	public bool HasItem(string item){
@@ -47,6 +49,22 @@ public class InventoryData : MonoBehaviour {
 	}
 
 	public void AddItem (string name, int number){
-		inventory.Add (name, number);
+		if (!HasItem (name)) {
+			inventory.Add (name, number);
+		} else {
+			inventory[name] += number;
+		}
+		inventoryChanged = true;
 	}
+
+	public bool RemoveItem (string name, int number){
+		if (HasItem (name) && inventory [name] - number >= 0) {
+			inventory [name] -= number;
+			return true;
+		} else {
+			return false;
+		}
+		inventoryChanged = true;
+	}
+
 }

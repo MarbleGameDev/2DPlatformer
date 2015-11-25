@@ -8,5 +8,6 @@ public class Settings : MonoBehaviour {
 	public static float musicVolume;
 
 	public static bool debug = true;
+	public static bool noclip = false;
 
 }

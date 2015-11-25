@@ -11,8 +11,10 @@ public class Quest1 : QuestRepository{
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
+	void FixedUpdate () {
+		if (InventoryData.inventoryChanged) {
+			Debug.Log ("Inv Shanged");
+		}
 	}
 
 	public void OpenWindow (){

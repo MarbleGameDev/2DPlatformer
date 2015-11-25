@@ -3,16 +3,12 @@ using System.Collections;
 using System;
 #pragma warning disable 0168
 public class ConsoleCommandRouter : MonoBehaviour {
-	DevOptions dev;
 	GameObject console;
 	// Use this for initialization
 	void Start () {
-		console = GameObject.Find ("character");
-		dev = console.GetComponent<DevOptions>();
 		var repo = ConsoleCommandsRepository.Instance;
 		repo.RegisterCommand ("debug", DebugOn);
 		repo.RegisterCommand ("exit", Exit);
-		repo.RegisterCommand ("fly", Fly);
 		repo.RegisterCommand("help", Help);
 		repo.RegisterCommand("load", Load);
 		repo.RegisterCommand ("noclip", noClip);
@@ -53,29 +49,14 @@ public class ConsoleCommandRouter : MonoBehaviour {
 			return "Missing <true/false>";
 		}
 		if (fileName.Equals ("true")) {
-			dev.noclip = true;
+			Settings.noclip = true;
 		}
 		if (fileName.Equals ("false")) {
-			dev.noclip = false;
+			Settings.noclip = false;
 		}
 		return "Noclip Set to: " + fileName;
 	}
-
-	public string Fly(params string[] args){
-		String fileName;
-		try{
-			fileName = args[0];
-		} catch (Exception e){
-			return "Missing <true/false>";
-		}
-		if (fileName.Equals ("true")) {
-			dev.fly = true;
-		}
-		if (fileName.Equals ("false")) {
-			dev.fly = false;
-		}
-		return "Fly Set to: " + fileName;
-	}
+	
 
 	public string DebugOn (params string[] args){
 		String fileName;
@@ -85,10 +66,10 @@ public class ConsoleCommandRouter : MonoBehaviour {
 			return "Missing <true/false>";
 		}
 		if (fileName.Equals ("true")) {
-			dev.debug = true;
+			Settings.debug = true;
 		}
 		if (fileName.Equals ("false")) {
-			dev.debug = false;
+			Settings.debug = false;
 		}
 		return "Debug Set to: " + fileName;
 	}
