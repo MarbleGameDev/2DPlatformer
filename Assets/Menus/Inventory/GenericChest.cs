@@ -46,6 +46,7 @@ public class GenericChest : MonoBehaviour {
 			menu.CloseWindow ();
 		} else if (menu.IsWindowOpen() && !empty){
 			foreach (var entry in inventory) {
+				Debug.Log(entry.Key);
 				data.AddItem (entry.Key, entry.Value);
 				RemoveItem(entry.Key);
 			}

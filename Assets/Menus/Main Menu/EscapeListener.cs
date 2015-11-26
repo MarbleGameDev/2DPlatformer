@@ -12,11 +12,13 @@ public class EscapeListener : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetButtonDown ("Escape")) {
-			click();
-		}
 		if (Input.GetButtonDown ("Inventory")) {
+			Debug.Log ("Inventory");
 			inventory();
+		}
+		if (Input.GetButtonDown ("Escape")) {
+			Debug.Log ("Escape");
+			click();
 		}
 	}
 
@@ -35,4 +37,5 @@ public class EscapeListener : MonoBehaviour {
 			menu.OpenWindow (inventoryName);
 		}
 	}
+
 }
