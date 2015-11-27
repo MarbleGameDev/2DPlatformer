@@ -11,8 +11,6 @@ public class Quest1 : QuestRepository{
 		inv = GetComponent<InventoryData> ();
 		InventoryData.OnChange += InvChanged;
 		base.AddQuest ("Quest1");
-		base.SetCurrentQuest ("Quest1");
-		base.SetCurrentGameObject (gameObject);
 	}
 	
 	// Update is called once per frame
@@ -30,6 +28,8 @@ public class Quest1 : QuestRepository{
 	public void OpenWindow (){
 		if (!menu.IsWindowOpen()) {
 			menu.OpenCustomWindow (QuestWindow);
+			base.SetCurrentQuest ("Quest1");
+			base.SetCurrentGameObject (gameObject);
 		} else {
 			menu.CloseWindow();
 		}

@@ -30,7 +30,7 @@ public class InventoryManager : MonoBehaviour {
 			newNum.text = entry.Value.ToString();
 			newNum.name = entry.Key + "2";
 		}
-
+		if (QuestRepository.questObject != null)
 		QuestRepository.questObject.SendMessage (QuestRepository.currentQuest + "s");
 		questStatus.text = QuestRepository.currentQuest + "\n" + QuestRepository.currentQuestStatus;
 	}
