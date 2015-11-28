@@ -7,7 +7,7 @@ public class ConsoleToggler : MonoBehaviour {
     public ConsoleAction ConsoleCloseAction;
 
     void Update () {
-        if (Input.GetKeyDown(KeyCode.BackQuote)) {
+        if (Input.GetButtonDown("Console")) {
             ToggleConsole();
         }
     }

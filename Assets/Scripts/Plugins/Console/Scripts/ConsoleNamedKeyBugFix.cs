@@ -8,6 +8,6 @@ public class ConsoleNamedKeyBugFix : MonoBehaviour {
         string controlName = gameObject.GetHashCode().ToString();
         GUI.SetNextControlName(controlName);
         Rect bounds = new Rect(0,0,0,0);
-        GUI.TextField(bounds, "", 0);
+        //GUI.TextField(bounds, "", 0);
     }
 }

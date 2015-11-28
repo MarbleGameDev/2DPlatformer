@@ -4,14 +4,18 @@ using System;
 #pragma warning disable 0168
 public class ConsoleCommandRouter : MonoBehaviour {
 	GameObject console;
+	NotificationManager noteman;
 	// Use this for initialization
 	void Start () {
 		var repo = ConsoleCommandsRepository.Instance;
+		noteman = GameObject.Find ("Notification Canvas").GetComponent<NotificationManager> ();
+
 		repo.RegisterCommand ("debug", DebugOn);
 		repo.RegisterCommand ("exit", Exit);
 		repo.RegisterCommand("help", Help);
 		repo.RegisterCommand("load", Load);
 		repo.RegisterCommand ("noclip", noClip);
+		repo.RegisterCommand ("notification", notification);
 	}
 	
 	// Update is called once per frame
@@ -72,5 +76,21 @@ public class ConsoleCommandRouter : MonoBehaviour {
 			Settings.debug = false;
 		}
 		return "Debug Set to: " + fileName;
+	}
+
+	public string notification (params string[] args){
+		String title, content;
+		try{
+			title = args[0];
+		} catch (Exception e){
+			return "Missing title";
+		}
+		try{
+			content = args[1];
+		} catch (Exception e){
+			return "Missing content";
+		}
+		noteman.AddNofication (title, content);
+		return "notification created";
 	}
 }
