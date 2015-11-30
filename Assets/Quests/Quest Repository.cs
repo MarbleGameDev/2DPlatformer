@@ -21,7 +21,7 @@ public class QuestRepository : MonoBehaviour{
 
 	public string GetQuestData(string name){
 		string temp;
-		bool tayest = quests.TryGetValue(name, out temp);
+		quests.TryGetValue(name, out temp);
 		return temp;
 	}
 

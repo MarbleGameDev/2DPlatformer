@@ -4,11 +4,9 @@ using System.Collections;
 public class Quest1 : QuestRepository{
 	MenuManager menu;
 	public Transform QuestWindow;
-	InventoryData inv;
 	// Use this for initialization
 	void Start () {
 		menu = GameObject.Find ("Main Canvas").GetComponent<MenuManager> ();
-		inv = GetComponent<InventoryData> ();
 		InventoryData.OnChange += InvChanged;
 		base.AddQuest ("Quest1");
 	}
@@ -36,7 +34,7 @@ public class Quest1 : QuestRepository{
 	}
 
 	public void InvChanged(){
-		if (inv.HasItem ("Book")) {
+		if (InventoryData.HasItem ("Book")) {
 			base.SetQuestData("quest1", "book");
 		}
 	}

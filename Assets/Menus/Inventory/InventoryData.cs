@@ -21,11 +21,11 @@ public class InventoryData : MonoBehaviour {
 	void FixedUpdate () {
 	}
 
-	public bool HasItem(string item){
+	public static bool HasItem(string item){
 		return inventory.ContainsKey (item);
 	}
 
-	public void AddItem (string name, int number){
+	public static void AddItem (string name, int number){
 		if (!HasItem (name)) {
 			inventory.Add (name, number);
 		} else {
@@ -35,9 +35,12 @@ public class InventoryData : MonoBehaviour {
 			OnChange ();
 	}
 
-	public bool RemoveItem (string name, int number){
-		if (HasItem (name) && inventory [name] - number >= 0) {
+	public static bool RemoveItem (string name, int number){
+		if (HasItem (name) && (inventory [name] - number >= 0)) {
 			inventory [name] -= number;
+			if (inventory[name] == 0){
+				inventory.Remove(name);
+			}
 			if (OnChange != null)
 				OnChange ();
 			return true;

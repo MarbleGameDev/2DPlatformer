@@ -7,19 +7,18 @@ public class GenericChest : MonoBehaviour {
 	MenuManager menu;
 	public Transform ChestWindow;
 	public Text item;
+	public Text num;
 	Transform names, numbers;
-	InventoryData data;
 
 	public string[] itemsNames; 	//Must be of the same Length
 	public int[] itemQuantities;
 
-	bool empty = false;
+	public bool empty = false;
 
 	public static Dictionary<string, int> inventory;
 
 	// Use this for initialization
 	void Awake (){
-		data = GetComponent<InventoryData> ();
 		inventory = new Dictionary<string, int> ();
 	}
 
@@ -29,6 +28,9 @@ public class GenericChest : MonoBehaviour {
 			if (itemQuantities[i] > 0){
 				inventory.Add (itemsNames[i], itemQuantities[i]);
 			}
+		}
+		if (itemsNames.Length == 0 || itemQuantities.Length == 0) {
+			empty = true;
 		}
 
 	}
@@ -46,8 +48,7 @@ public class GenericChest : MonoBehaviour {
 			menu.CloseWindow ();
 		} else if (menu.IsWindowOpen() && !empty){
 			foreach (var entry in inventory) {
-				Debug.Log(entry.Key);
-				data.AddItem (entry.Key, entry.Value);
+				InventoryData.AddItem (entry.Key, entry.Value);
 				RemoveItem(entry.Key);
 			}
 			inventory.Clear();
@@ -62,12 +63,12 @@ public class GenericChest : MonoBehaviour {
 		foreach (var entry in inventory) {
 			Text newItem = Instantiate(item);
 			newItem.transform.SetParent(names, false);
-			newItem.text = entry.Key;
+			newItem.text = "  " + entry.Key;
 			newItem.name = entry.Key + "1";
 			
-			Text newNum = Instantiate(item);
+			Text newNum = Instantiate(num);
 			newNum.transform.SetParent(numbers, false);
-			newNum.text = entry.Value.ToString();
+			newNum.text = entry.Value.ToString() + "  ";
 			newNum.name = entry.Key + "2";
 		}
 	}

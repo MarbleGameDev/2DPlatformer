@@ -7,7 +7,6 @@ public class TopViewCharactermovement : MonoBehaviour {
 
 
 	Rigidbody2D rb;
-	PolygonCollider2D col;
 
 
 	public bool collisionLeft;
@@ -30,7 +29,6 @@ public class TopViewCharactermovement : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody2D> ();
-		col = GetComponent<PolygonCollider2D>();
 		anim = GetComponent<Animator> ();
 	}
 	

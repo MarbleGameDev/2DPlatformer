@@ -13,11 +13,9 @@ public class EscapeListener : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetButtonDown ("Inventory")) {
-			Debug.Log ("Inventory");
 			inventory();
 		}
 		if (Input.GetButtonDown ("Escape")) {
-			Debug.Log ("Escape");
 			click();
 		}
 	}
