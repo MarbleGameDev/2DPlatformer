@@ -9,9 +9,10 @@ public class InventoryData : MonoBehaviour {
 
 	public delegate void InvChanged();
 	public static event InvChanged OnChange;
+	static NotificationManager noteman;
 	// Use this for initialization
 	void Start () {
-
+		noteman = GameObject.Find ("Notification Canvas").GetComponent<NotificationManager> ();
 	}
 	void Awake (){
 
@@ -26,13 +27,17 @@ public class InventoryData : MonoBehaviour {
 	}
 
 	public static void AddItem (string name, int number){
-		if (!HasItem (name)) {
-			inventory.Add (name, number);
-		} else {
-			inventory[name] += number;
+		if (ItemDictionary.itemList.ContainsKey (name)) {
+			if (!HasItem (name)) {
+				inventory.Add (name, number);
+				noteman.AddNofication ("New Item", number + "x " + name);
+			} else {
+				inventory [name] += number;
+				noteman.AddNofication ("New Item", "+" + number + "x " + name);
+			}
+			if (OnChange != null)
+				OnChange ();
 		}
-		if (OnChange != null)
-			OnChange ();
 	}
 
 	public static bool RemoveItem (string name, int number){

@@ -9,28 +9,32 @@ public class InventoryManager : MonoBehaviour {
 	Transform content;
 	public Text item;
 	public Text num;
-	public Transform names;
-	public Transform numbers;
+	GameObject names;
+	GameObject numbers;
 	public Text questStatus;
 
 	// Use this for initialization
 	void Start () {
 		questStatus = GameObject.Find ("QuestStatus").GetComponent<Text>();
+		names = GameObject.Find("InvNames");
+		numbers = GameObject.Find("InvNumbers");
 		DrawInv ();
 		InventoryData.OnChange += UpdateInv;
 	}
 
 	void UpdateInv () {
-		if (MenuManager.currentWindowName.Equals("Inventory")) {
-			if (names.childCount > 0) {
+		if (MenuManager.currentWindowName.Equals("Inventory") && MenuManager.windowOpen) {
+			names = GameObject.Find("InvNames");
+			numbers = GameObject.Find("InvNumbers");
+			if (names.gameObject != null || names.transform.childCount > 0) {
 				var children = new List<GameObject> ();
-				foreach (Transform child in names)
+				foreach (Transform child in names.transform)
 					children.Add (child.gameObject);
 				children.ForEach (child => Destroy (child));
 			}
-			if (numbers.childCount > 0) {
+			if (numbers.gameObject != null || numbers.transform.childCount > 0) {
 				var children2 = new List<GameObject> ();
-				foreach (Transform child2 in numbers)
+				foreach (Transform child2 in numbers.transform)
 					children2.Add (child2.gameObject);
 				children2.ForEach (child2 => Destroy (child2));
 			}
@@ -46,12 +50,12 @@ public class InventoryManager : MonoBehaviour {
 	public void DrawInv(){
 		foreach (var entry in InventoryData.inventory) {
 			Text newItem = Instantiate (item);
-			newItem.transform.SetParent (names, false);
+			newItem.transform.SetParent (names.transform, false);
 			newItem.text = "  " + entry.Key;
 			newItem.name = entry.Key + "1";
 		
 			Text newNum = Instantiate (num);
-			newNum.transform.SetParent (numbers, false);
+			newNum.transform.SetParent (numbers.transform, false);
 			newNum.text = entry.Value.ToString () + "  ";
 			newNum.name = entry.Key + "2";
 		}

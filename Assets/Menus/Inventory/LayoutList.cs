@@ -11,8 +11,8 @@ public class LayoutList : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (rect.sizeDelta.y != transform.FindChild("Names").childCount * 40) { 	//May not want to use FindChild every time...
-			rect.sizeDelta = new Vector2 (rect.sizeDelta.x, transform.FindChild ("Names").childCount * 40 + 5);
+		if (rect.sizeDelta.y != transform.FindChild("InvNames").childCount * 40) { 	//May not want to use FindChild every time...
+			rect.sizeDelta = new Vector2 (rect.sizeDelta.x, transform.FindChild ("InvNames").childCount * 40 + 5);
 		}
 	}
 }
