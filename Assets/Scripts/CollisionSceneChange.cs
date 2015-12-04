@@ -14,6 +14,6 @@ public class CollisionSceneChange : MonoBehaviour {
 	}
 	void OnCollisionEnter2D(Collision2D col){
 		//Debug.Log ("Duh");
-		Application.LoadLevel (levelName);
+		Application.LoadLevelAsync (levelName);
 	}
 }

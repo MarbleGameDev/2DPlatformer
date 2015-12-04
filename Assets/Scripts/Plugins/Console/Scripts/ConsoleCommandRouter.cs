@@ -8,7 +8,11 @@ public class ConsoleCommandRouter : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		var repo = ConsoleCommandsRepository.Instance;
-		noteman = GameObject.Find ("Notification Canvas").GetComponent<NotificationManager> ();
+		try{
+			noteman = GameObject.Find ("Notification Canvas").GetComponent<NotificationManager> ();
+		}catch (Exception e){
+			
+		}
 
 		repo.RegisterCommand ("additem", additem);
 		repo.RegisterCommand ("debug", DebugOn);

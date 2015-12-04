@@ -1,15 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class AsyncLoadScene : MonoBehaviour {
-	public string SceneName;
+public class SaveData : MonoBehaviour {
+	public static int gameHours = 6, gameDays = 0;
+	public static double gameMinutes = 0;
 	// Use this for initialization
 	void Start () {
-		Application.LoadLevelAsync (SceneName);
+		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+		
 	}
 }
