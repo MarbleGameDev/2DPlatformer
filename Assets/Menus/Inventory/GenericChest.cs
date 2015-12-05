@@ -57,8 +57,8 @@ public class GenericChest : MonoBehaviour {
 
 	private void SetupItems(){
 
-		names = GameObject.Find ("Names").transform;
-		numbers = GameObject.Find ("Numbers0").transform;
+		names = GameObject.Find ("InvNames").transform;
+		numbers = GameObject.Find ("InvNumbers0").transform;
 
 		foreach (var entry in inventory) {
 			Text newItem = Instantiate(item);

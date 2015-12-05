@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class InventoryData : MonoBehaviour {
 
 	public static Dictionary<string, int> inventory = new Dictionary<string, int> ();
+	public static string EquippedItem = SaveData.EquippedItem;
 
 	public delegate void InvChanged();
 	public static event InvChanged OnChange;
@@ -20,6 +21,10 @@ public class InventoryData : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+	}
+
+	public static float Attack(){
+		return ItemDictionary.AttackItem(EquippedItem);
 	}
 
 	public static bool HasItem(string item){

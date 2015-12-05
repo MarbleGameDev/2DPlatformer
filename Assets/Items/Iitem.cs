@@ -4,5 +4,6 @@ using System.Collections;
 public interface Iitem{
 	void Use();
 	void Drop();
-	void Equip();
+	void Equip ();
+	float Attack ();
 }

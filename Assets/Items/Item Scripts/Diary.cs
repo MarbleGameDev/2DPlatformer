@@ -10,4 +10,7 @@ public class Diary : Iitem {
 		InventoryData.RemoveItem ("Diary", 1);
 	}
 	public void Equip(){}
+	public float Attack(){
+		return 0;
+	}
 }

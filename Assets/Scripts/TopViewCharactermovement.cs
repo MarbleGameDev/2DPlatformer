@@ -4,16 +4,8 @@ using System;
 
 public class TopViewCharactermovement : MonoBehaviour {
 	private float horizontalMax = 10f;
-
-
 	Rigidbody2D rb;
-
-
-	public bool collisionLeft;
-	public bool collisionRight;
-	public bool collisionUp;
-	public bool collisionDown;
-
+	Health hel;
 	int direction;
 
 	private bool left;
@@ -50,25 +42,50 @@ public class TopViewCharactermovement : MonoBehaviour {
 			right = false;
 		}
 
-		if (left && !collisionLeft) {
+		if (Input.GetButtonDown ("Attack")) {
+			Vector2 dir = new Vector2(0,0);
+			switch (direction){
+			case 1:
+				dir = new Vector2(-1, 0);
+				break;
+			case 2:
+				dir = new Vector2(1, 0);
+				break;
+			case 3:
+				dir = new Vector2(0, 1);
+				break;
+			case 4:
+				dir = new Vector2(0, -1);
+				break;
+			}
+			RaycastHit2D hit = Physics2D.CircleCast(transform.position, 1f, dir, 2f, LayerMask.GetMask("Background")); 	//Change layer to enemy layer later
+			if (hit.transform != null){
+				Debug.Log (hit.transform);
+				if ((hel = hit.transform.GetComponent<Health>()) != null){
+					hel.Damage(InventoryData.Attack());
+				}
+			}
+		}
+
+		if (left) {
 			direction = 1;
 			if (rb.velocity.x > -horizontalMax) {
 				rb.velocity = new Vector2 (rb.velocity.x - 2f, 0);
 			}
 			anim.Play ("Walking Left");
-		} else if (right && !collisionRight) {
+		} else if (right) {
 			direction = 2;
 			if (rb.velocity.x < horizontalMax) {
 				rb.velocity = new Vector2 (rb.velocity.x + 2f, 0);
 			}
 			anim.Play ("Walking Right");
-		} else if (up && !collisionUp) {
+		} else if (up) {
 			direction = 3;
 			if (rb.velocity.y < horizontalMax) {
 				rb.velocity = new Vector2 (0, rb.velocity.y + 2f);
 			}
 			anim.Play ("Walking Up");
-		} else if (down && !collisionDown) {
+		} else if (down) {
 			direction = 4;
 			if (rb.velocity.y > -horizontalMax) {
 				rb.velocity = new Vector2 (0, rb.velocity.y - 2f);
@@ -96,12 +113,6 @@ public class TopViewCharactermovement : MonoBehaviour {
 			}
 
 		}
-		
-		//Changing Stuff
-		collisionLeft = false;
-		collisionRight = false;
-		collisionUp = false;
-		collisionDown = false;
 	}
 
 }
