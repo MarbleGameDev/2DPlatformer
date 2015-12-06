@@ -10,6 +10,7 @@ public class Hands : Iitem {
 	}
 	public void Equip(){
 		InventoryData.EquippedItem = "Hands";
+		InventoryData.UpdateInv ();
 	}
 	public float Attack(){
 		return 0.5f;

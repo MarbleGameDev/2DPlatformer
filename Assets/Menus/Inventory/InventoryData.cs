@@ -31,13 +31,19 @@ public class InventoryData : MonoBehaviour {
 		return inventory.ContainsKey (item);
 	}
 
+	public static void UpdateInv(){
+		OnChange ();
+	}
+
 	public static void AddItem (string name, int number){
 		if (ItemDictionary.itemList.ContainsKey (name)) {
 			if (!HasItem (name)) {
 				inventory.Add (name, number);
+				//Notification Creation
 				noteman.AddNofication ("New Item", number + "x " + name);
 			} else {
 				inventory [name] += number;
+				//Notification Creation
 				noteman.AddNofication ("New Item", "+" + number + "x " + name);
 			}
 			if (OnChange != null)

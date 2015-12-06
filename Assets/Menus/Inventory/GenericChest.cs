@@ -8,7 +8,7 @@ public class GenericChest : MonoBehaviour {
 	public Transform ChestWindow;
 	public Text item;
 	public Text num;
-	Transform names, numbers;
+	Transform names;
 
 	public string[] itemsNames; 	//Must be of the same Length
 	public int[] itemQuantities;
@@ -58,24 +58,17 @@ public class GenericChest : MonoBehaviour {
 	private void SetupItems(){
 
 		names = GameObject.Find ("InvNames").transform;
-		numbers = GameObject.Find ("InvNumbers0").transform;
 
 		foreach (var entry in inventory) {
 			Text newItem = Instantiate(item);
 			newItem.transform.SetParent(names, false);
-			newItem.text = "  " + entry.Key;
+			newItem.text = " " + ((entry.Value > 1) ? ("" + entry.Value.ToString() + "x ") : ("")) + entry.Key + ((entry.Key.Equals(InventoryData.EquippedItem)) ? (" \u25cf") : (""));
 			newItem.name = entry.Key + "1";
-			
-			Text newNum = Instantiate(num);
-			newNum.transform.SetParent(numbers, false);
-			newNum.text = entry.Value.ToString() + "  ";
-			newNum.name = entry.Key + "2";
 		}
 	}
 
 	public void RemoveItem(string name){
 		DestroyObject (GameObject.Find (name + "1"));
-		DestroyObject (GameObject.Find (name + "2"));
 		empty = true;
 	}
 
