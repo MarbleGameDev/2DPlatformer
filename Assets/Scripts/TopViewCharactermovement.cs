@@ -42,7 +42,7 @@ public class TopViewCharactermovement : MonoBehaviour {
 			right = false;
 		}
 
-		if (Input.GetButtonDown ("Attack")) {
+		if (Input.GetButtonDown ("Attack") && !MenuManager.windowOpen) {
 			Vector2 dir = new Vector2(0,0);
 			switch (direction){
 			case 1:

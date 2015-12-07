@@ -23,6 +23,5 @@ public class DayCycle : MonoBehaviour {
 			days++;
 			hours = 0;
 		}
-		//Debug.Log ("minutes: " + minutes + " hours: " + hours);
 	}
 }

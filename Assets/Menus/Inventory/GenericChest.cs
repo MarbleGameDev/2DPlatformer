@@ -41,12 +41,12 @@ public class GenericChest : MonoBehaviour {
 	}
 
 	public void OpenWindow (){
-		if (!menu.IsWindowOpen ()) {
+		if (!MenuManager.windowOpen) {
 			menu.OpenCustomWindow (ChestWindow);
 			SetupItems();
-		} else if (menu.IsWindowOpen() && empty) {
+		} else if (MenuManager.windowOpen && empty) {
 			menu.CloseWindow ();
-		} else if (menu.IsWindowOpen() && !empty){
+		} else if (MenuManager.windowOpen && !empty){
 			foreach (var entry in inventory) {
 				InventoryData.AddItem (entry.Key, entry.Value);
 				RemoveItem(entry.Key);

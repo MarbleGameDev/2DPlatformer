@@ -6,8 +6,8 @@ public class OptionsBack : MonoBehaviour {
 	MenuManager menu;
 	// Use this for initialization
 	void Start () {
-		GetComponent<Button>().onClick.AddListener(() => { click(); });
 		menu = GameObject.Find ("Main Canvas").GetComponent<MenuManager> ();
+		GetComponent<Button>().onClick.AddListener(() => { click(); });
 	}
 	
 	// Update is called once per frame
