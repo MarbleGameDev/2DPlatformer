@@ -5,7 +5,8 @@ public class StartingMenu : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		GameObject.Find("MainCanvas").GetComponent<MenuManager> ().OpenWindow("MainMenu");
+		MenuManager menu = GetComponent<MenuManager> ();
+		menu.OpenWindow("MainMenu");
 	}
 	
 	// Update is called once per frame
