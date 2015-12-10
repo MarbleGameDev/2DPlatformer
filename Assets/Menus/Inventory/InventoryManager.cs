@@ -45,9 +45,7 @@ public class InventoryManager : MonoBehaviour {
 			newItem.name = entry.Key + "1";
 
 		}
-		if (QuestRepository.questObject != null)
-			QuestRepository.questObject.SendMessage (QuestRepository.currentQuest + "s");
-		questStatus.text = QuestRepository.currentQuest + "\n" + QuestRepository.currentQuestStatus;
+		questStatus.text = QuestDictionary.currentQuest + "\n" + QuestDictionary.GetUpdate(QuestDictionary.currentQuest);
 
 	}
 }

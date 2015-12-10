@@ -12,9 +12,4 @@ public class RegisterItems : MonoBehaviour {
 			hasRegistered = true;
 		}
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }
