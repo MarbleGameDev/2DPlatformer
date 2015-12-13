@@ -114,7 +114,7 @@ public class ConsoleCommandRouter : MonoBehaviour {
 		} catch (Exception e){
 			return "Missing content";
 		}
-		noteman.AddNofication (title, content);
+		NotificationManager.AddNotification (title, content);
 		return "notification created";
 	}
 
