@@ -17,6 +17,7 @@ public class QuestDictionary : MonoBehaviour {
 
 	public static void SetCurrent(string name){
 		SaveData.currentQuest = name;
+		SaveData.StoreData ();
 		GetUpdate (name);
 	}
 
