@@ -24,11 +24,15 @@ public class SaveData : MonoBehaviour {
 	}
 
 	public static void ResetInvData(){
-		ResetInv ();
+		if (ResetInv != null) {
+			ResetInv ();
+		}
 		StoreData ();
 	}
 	public static void ResetQuestData(){
-		ResetQuests ();
+		if (ResetQuests != null) {
+			ResetQuests ();
+		}
 		StoreData ();
 	}
 
@@ -57,5 +61,7 @@ public class SaveData : MonoBehaviour {
 		currentQuest = PlayerPrefs.GetString ("currentQuest");
 	}
 	
-
+	void AddQuestResets(){
+		ResetQuests += SampleQuest.Reset;
+	}
 }

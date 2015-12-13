@@ -19,7 +19,7 @@ public class ConsoleToggler : MonoBehaviour {
         } else {
             ConsoleCloseAction.Activate();
 			consoleEnabled = false;
-			Debug.Log("off");
+			//Debug.Log("off");
         }
     }
 }

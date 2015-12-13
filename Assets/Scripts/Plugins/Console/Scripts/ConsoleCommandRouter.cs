@@ -23,6 +23,7 @@ public class ConsoleCommandRouter : MonoBehaviour {
 		repo.RegisterCommand ("notification", notification);
 		repo.RegisterCommand ("removeItem", removeitem);
 		repo.RegisterCommand ("resetInvData", resetdata);
+		repo.RegisterCommand ("resetQuestData", resetQuestData);
 		repo.RegisterCommand ("saveGame", savegame);
 	}
 	
