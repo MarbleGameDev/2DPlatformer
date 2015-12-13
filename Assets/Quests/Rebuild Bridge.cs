@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
-
-public class RebuildBridge : QuestRepository {
+/*
+public class RebuildBridge : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -28,3 +28,4 @@ public class RebuildBridge : QuestRepository {
 	}
 	//walking next to the carpenter makes him say "OI BRO GET YOUR TIGHT PUSS RIGHT OVER HERE".
 }
+*/

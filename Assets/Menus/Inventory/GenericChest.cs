@@ -10,29 +10,41 @@ public class GenericChest : MonoBehaviour {
 	public Text num;
 	Transform names;
 
-	public string[] itemsNames; 	//Must be of the same Length
-	public int[] itemQuantities;
+	public string[] itemsNames; 	//Must be the same Length
+	public int[] itemQuantities; 	//as this
+
+	public string inventoryIdentifier; 	//Unique identifier
+	public bool enabled = true;
 
 	public bool empty = false;
+	public Dictionary<string, int> inventory = new Dictionary<string, int> ();
 
-	public static Dictionary<string, int> inventory;
-
-	// Use this for initialization
 	void Awake (){
-		inventory = new Dictionary<string, int> ();
+		SaveData.ResetInv += ResetInv;
+	}
+
+	void ResetInv(){
+		enabled = true;
+		PlayerPrefsX.SetBool (inventoryIdentifier, true);
+		Start ();
 	}
 
 	void Start () {
+		enabled = PlayerPrefsX.GetBool (inventoryIdentifier);
 		menu = GameObject.Find ("Main Canvas").GetComponent<MenuManager> ();
-		for (int i = 0; i < itemsNames.Length; i++) {
-			if (itemQuantities[i] > 0){
-				inventory.Add (itemsNames[i], itemQuantities[i]);
+		if (enabled == true){
+			for (int i = 0; i < itemsNames.Length; i++) {
+				if (itemQuantities [i] > 0) {
+					inventory.Add (itemsNames [i], itemQuantities [i]);
+				}
 			}
-		}
-		if (itemsNames.Length == 0 || itemQuantities.Length == 0) {
+			empty = false;
+			if (itemsNames.Length == 0 || itemQuantities.Length == 0) {
+				empty = true;
+			}
+		} else {
 			empty = true;
 		}
-
 	}
 	
 	// Update is called once per frame
@@ -43,7 +55,8 @@ public class GenericChest : MonoBehaviour {
 	public void OpenWindow (){
 		if (!MenuManager.windowOpen) {
 			menu.OpenCustomWindow (ChestWindow);
-			SetupItems();
+			if (empty == false)
+				SetupItems();
 		} else if (MenuManager.windowOpen && empty) {
 			menu.CloseWindow ();
 		} else if (MenuManager.windowOpen && !empty){
@@ -51,7 +64,9 @@ public class GenericChest : MonoBehaviour {
 				InventoryData.AddItem (entry.Key, entry.Value);
 				RemoveItem(entry.Key);
 			}
+			enabled = false;
 			inventory.Clear();
+			PlayerPrefsX.SetBool(inventoryIdentifier, enabled);
 		}
 	}
 

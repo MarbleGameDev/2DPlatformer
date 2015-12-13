@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System;
 
 public class QuestDictionary : MonoBehaviour {
-	public static string currentQuest;
 	public static Dictionary<string, Func<IQuest>> Quests = new Dictionary<string, Func<IQuest>>();
 
 	
@@ -17,7 +16,7 @@ public class QuestDictionary : MonoBehaviour {
 	}
 
 	public static void SetCurrent(string name){
-		currentQuest = name;
+		SaveData.currentQuest = name;
 		GetUpdate (name);
 	}
 

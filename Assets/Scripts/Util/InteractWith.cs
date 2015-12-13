@@ -22,7 +22,6 @@ public class InteractWith : MonoBehaviour {
 			//Debug.Log ("Interacts!");
 			onInteract.Invoke ();
 		}
-		inArea = false;
 	}
 
 	void OnTriggerStay2D(Collider2D other){

@@ -14,19 +14,36 @@ public class ConsoleCommandRouter : MonoBehaviour {
 			
 		}
 
-		repo.RegisterCommand ("additem", additem);
+		repo.RegisterCommand ("addItem", additem);
 		repo.RegisterCommand ("debug", DebugOn);
 		repo.RegisterCommand ("exit", Exit);
 		repo.RegisterCommand("help", Help);
 		repo.RegisterCommand("load", Load);
 		repo.RegisterCommand ("noclip", noClip);
 		repo.RegisterCommand ("notification", notification);
-		repo.RegisterCommand ("removeitem", removeitem);
+		repo.RegisterCommand ("removeItem", removeitem);
+		repo.RegisterCommand ("resetInvData", resetdata);
+		repo.RegisterCommand ("saveGame", savegame);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	
+	}
+
+	public string resetQuestData (params string[] args){
+		SaveData.ResetQuestData ();
+		return "Quest Data Rest";
+	}
+
+	public string resetdata (params string[] args){
+		SaveData.ResetInvData ();
+		return "Inventory Data Reset";
+	}
+
+	public string savegame (params string[] args){
+		SaveData.StoreData ();
+		return "Game Saved";
 	}
 
 	public string Exit(params string[] args){
