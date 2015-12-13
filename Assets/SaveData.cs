@@ -33,7 +33,11 @@ public class SaveData : MonoBehaviour {
 	}
 
 	void Start(){
-		InvokeRepeating ("StoreData", 1f, (float)(Settings.saveInterval * 60));
+		InvokeRepeating ("Store", 1f, (float)(Settings.saveInterval * 60));
+	}
+
+	void Store(){
+		StoreData ();
 	}
 
 	public static void StoreData(){
