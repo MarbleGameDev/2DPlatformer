@@ -14,12 +14,9 @@ public class SaveData : MonoBehaviour {
 
 	public static string currentQuest = "";
 
-	public static string[] genericChestNames;
-	public static bool[] genericChestValues;
+	public static string Left, Right, Up, Down, Interact, Inventory, Skip;
 	// Use this for initialization
 	void Awake () {
-		genericChestValues = new bool[1000];
-		genericChestNames = new string[1000];
 		GetData ();
 	}
 
@@ -50,6 +47,13 @@ public class SaveData : MonoBehaviour {
 		PlayerPrefs.SetFloat ("gameMinutes", (float)gameMinutes);
 		PlayerPrefs.SetString ("equippedItem", EquippedItem);
 		PlayerPrefs.SetString ("currentQuest", currentQuest);
+		PlayerPrefs.SetString ("Left", Left);
+		PlayerPrefs.SetString ("Right", Right);
+		PlayerPrefs.SetString ("Up", Up);
+		PlayerPrefs.SetString ("Down", Down);
+		PlayerPrefs.SetString ("Interact", Interact);
+		PlayerPrefs.SetString ("Inventory", Inventory);
+		PlayerPrefs.SetString ("Skip", Skip);
 		PlayerPrefs.Save ();
 	}
 
@@ -59,6 +63,13 @@ public class SaveData : MonoBehaviour {
 		gameMinutes = (double)PlayerPrefs.GetFloat ("gameMinutes");
 		EquippedItem = PlayerPrefs.GetString ("equippedItem");
 		currentQuest = PlayerPrefs.GetString ("currentQuest");
+		Left = PlayerPrefs.GetString ("Left", "a");
+		Right = PlayerPrefs.GetString ("Right", "d");
+		Up = PlayerPrefs.GetString ("Up", "w");
+		Down = PlayerPrefs.GetString ("Down", "s");
+		Interact = PlayerPrefs.GetString ("Interact", "e");
+		Inventory = PlayerPrefs.GetString ("Inventory", "tab");
+		Skip = PlayerPrefs.GetString ("Skip", "space");
 	}
 	
 	void AddQuestResets(){

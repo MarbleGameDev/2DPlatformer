@@ -12,6 +12,7 @@ public class InventoryData : MonoBehaviour {
 	public static event InvChanged OnChange;
 	// Use this for initialization
 	void Start () {
+
 	}
 	void Awake (){
 

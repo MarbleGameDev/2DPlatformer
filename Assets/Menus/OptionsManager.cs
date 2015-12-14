@@ -10,6 +10,7 @@ public class OptionsManager : MonoBehaviour {
 	public Transform video;
 	public Transform audio;
 	public Transform gameplay;
+	public Transform controls;
 	public Transform advanced;
 	
 	public static bool windowOpen = false;
@@ -41,6 +42,10 @@ public class OptionsManager : MonoBehaviour {
 		case "AdvancedSettings":
 			newWindow = Instantiate(advanced);
 			newWindow.SetParent(window, false);
+			break;
+		case "ControlSettings":
+			newWindow = Instantiate (controls);
+			newWindow.SetParent (window, false);
 			break;
 		}
 	}

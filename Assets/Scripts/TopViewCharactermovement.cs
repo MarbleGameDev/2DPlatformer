@@ -28,13 +28,13 @@ public class TopViewCharactermovement : MonoBehaviour {
 	void FixedUpdate () {
 		if (!MenuManager.windowOpen) {
 			if (!up && !down)
-				left = Input.GetButton ("Left");
+				left = Input.GetKey (InputManager.GetKey("Left"));
 			if (!up && !down)
-				right = Input.GetButton ("Right");
+				right = Input.GetKey(InputManager.GetKey("Right"));
 			if (!left && !right)
-				up = Input.GetButton ("Up");
+				up = Input.GetKey (InputManager.GetKey("Up"));
 			if (!left && !right)
-				down = Input.GetButton ("Down");
+				down = Input.GetKey (InputManager.GetKey("Down"));
 		} else {
 			up = false;
 			down = false;
