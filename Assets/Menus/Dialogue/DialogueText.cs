@@ -15,7 +15,7 @@ public class DialogueText : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetButtonDown ("Continue")) {
+		if (Input.GetKeyDown (InputManager.GetKey("Skip"))) {
 			Click();
 		}
 	}
