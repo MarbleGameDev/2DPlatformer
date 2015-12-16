@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class DialogueText : MonoBehaviour {
 	int paragraphNum = 0;
+	[HideInInspector]
 	public string[] paragraphs;
 	Text txt;
 	MenuManager menu;
