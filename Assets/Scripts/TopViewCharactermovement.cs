@@ -58,7 +58,7 @@ public class TopViewCharactermovement : MonoBehaviour {
 				dir = new Vector2(0, -1);
 				break;
 			}
-			RaycastHit2D hit = Physics2D.CircleCast(transform.position, 1f, dir, 2f, LayerMask.GetMask("Background")); 	//Change layer to enemy layer later
+			RaycastHit2D hit = Physics2D.CircleCast(transform.position, 1f, dir, 2f, LayerMask.GetMask("Enemy")); 	//Change layer to enemy layer later
 			if (hit.transform != null){
 				Debug.Log (hit.transform);
 				if ((hel = hit.transform.GetComponent<Health>()) != null){

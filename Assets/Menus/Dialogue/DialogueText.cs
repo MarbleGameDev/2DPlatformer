@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class DialogueText : MonoBehaviour {
 	int paragraphNum = 0;
@@ -8,6 +9,7 @@ public class DialogueText : MonoBehaviour {
 	public string[] paragraphs;
 	Text txt;
 	MenuManager menu;
+	public UnityEvent endFunct;
 	// Use this for initialization
 	void Awake () {
 		menu = GameObject.Find ("Main Canvas").GetComponent<MenuManager> ();
@@ -24,11 +26,14 @@ public class DialogueText : MonoBehaviour {
 	public void Click(){
 		if (paragraphNum < paragraphs.Length) {
 			if (txt != null){
-			txt.text = paragraphs [paragraphNum];
+			txt.text = paragraphs [paragraphNum].Replace("[player]", SaveData.playerName);
 			paragraphNum++;
 			}
 		} else {
 			menu.CloseWindow();
+			if (endFunct != null){
+				endFunct.Invoke();
+			}
 		}
 	}
 

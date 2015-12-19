@@ -26,6 +26,7 @@ public class GenericChest : MonoBehaviour {
 	void ResetInv(){
 		enabled = true;
 		PlayerPrefsX.SetBool (inventoryIdentifier, true);
+		inventory.Clear ();
 		Start ();
 	}
 

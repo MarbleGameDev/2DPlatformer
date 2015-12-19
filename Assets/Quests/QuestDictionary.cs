@@ -5,8 +5,7 @@ using System;
 
 public class QuestDictionary : MonoBehaviour {
 	public static Dictionary<string, Func<IQuest>> Quests = new Dictionary<string, Func<IQuest>>();
-
-	
+		
 	public static string GetUpdate(string name){
 		if (Quests.ContainsKey (name)) {
 			return (Quests [name]) ().StatusUpdate ();
@@ -23,5 +22,9 @@ public class QuestDictionary : MonoBehaviour {
 
 	public void InspectorSet(string name){
 		SetCurrent (name);
+	}
+
+	public static void Reset(){
+		SaveData.currentQuest = "";
 	}
 }

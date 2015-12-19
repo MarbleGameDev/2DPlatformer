@@ -14,6 +14,8 @@ public class SaveData : MonoBehaviour {
 
 	public static string currentQuest = "";
 
+	public static string playerName = "Joshabar";
+
 	public static string Left, Right, Up, Down, Interact, Inventory, Skip;
 	// Use this for initialization
 	void Awake () {

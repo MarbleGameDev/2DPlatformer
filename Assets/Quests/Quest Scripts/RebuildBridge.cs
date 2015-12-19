@@ -4,7 +4,6 @@ using System.Collections;
 public class RebuildBridge : MonoBehaviour, IQuest {
 	static string state = ""; 	//Store the Data to PlayerPrefs at some point
 	public string StatusUpdate(){ 	//Gets called any time the game wants to know what the status of the quest is, also when the quest is first started
-		SaveData.ResetQuests += Reset;
 		if (state.Equals ("")) {
 			state = PlayerPrefs.GetString("RebuildBridge", "blank"); 	//if the file is just initialized, read the data from disk, default to "blank" if it's the first time
 		}

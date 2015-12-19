@@ -19,6 +19,9 @@ public class SetupDialogue : MonoBehaviour {
 	public ICheckData data = null;
 	public string[] defaultDialogue;
 
+	[Tooltip ("Function that gets called once the dialogue is finished")]
+	public UnityEvent endingFunction;
+
 	void Start () {
 		if (GetComponent<ICheckData> () != null) {
 			data = GetComponent<ICheckData>();
@@ -43,6 +46,7 @@ public class SetupDialogue : MonoBehaviour {
 					dtxt.paragraphs = defaultDialogue;
 				}
 			}
+			dtxt.endFunct = endingFunction;
 			dtxt.Click ();
 		}
 	}

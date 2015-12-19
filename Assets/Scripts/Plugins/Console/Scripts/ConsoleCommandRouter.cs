@@ -13,7 +13,6 @@ public class ConsoleCommandRouter : MonoBehaviour {
 		}catch (Exception e){
 			
 		}
-
 		repo.RegisterCommand ("addItem", additem);
 		repo.RegisterCommand ("debug", DebugOn);
 		repo.RegisterCommand ("exit", Exit);
@@ -22,14 +21,30 @@ public class ConsoleCommandRouter : MonoBehaviour {
 		repo.RegisterCommand ("noclip", noClip);
 		repo.RegisterCommand ("notification", notification);
 		repo.RegisterCommand ("removeItem", removeitem);
+		repo.RegisterCommand ("resetAll", resetAll);
 		repo.RegisterCommand ("resetInvData", resetdata);
 		repo.RegisterCommand ("resetQuestData", resetQuestData);
 		repo.RegisterCommand ("saveGame", savegame);
+		repo.RegisterCommand ("setTime", setTime);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	
+	}
+
+	public string setTime(params string[] args){
+		string hours;
+		string minutes;
+		try{
+			hours = args[0];
+			minutes = args[1];
+		} catch (Exception e){
+			return "Missing <hours minutes>";
+		}
+		DayCycle.minutes = double.Parse (minutes);
+		DayCycle.hours = int.Parse (hours);
+		return "Time Set";
 	}
 
 	public string resetQuestData (params string[] args){
@@ -40,6 +55,12 @@ public class ConsoleCommandRouter : MonoBehaviour {
 	public string resetdata (params string[] args){
 		SaveData.ResetInvData ();
 		return "Inventory Data Reset";
+	}
+
+	public string resetAll(params string[] args){
+		SaveData.ResetQuestData ();
+		SaveData.ResetInvData ();
+		return "All Data Reset";
 	}
 
 	public string savegame (params string[] args){
