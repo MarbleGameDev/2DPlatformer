@@ -7,6 +7,7 @@ public class SetupDialogue : MonoBehaviour {
 	[System.Serializable]
 	public class DialoguePaths{
 		public string[] speech;
+		public UnityEvent endingFunction;
 	}
 
 	[Space(10)]
@@ -18,9 +19,7 @@ public class SetupDialogue : MonoBehaviour {
 
 	public ICheckData data = null;
 	public string[] defaultDialogue;
-
-	[Tooltip ("Function that gets called once the dialogue is finished")]
-	public UnityEvent endingFunction;
+	public UnityEvent defaultEndingFunction;
 
 	void Start () {
 		if (GetComponent<ICheckData> () != null) {
@@ -39,14 +38,15 @@ public class SetupDialogue : MonoBehaviour {
 				for (int i = 0; i < dialogues.Length; i++){
 					if (data.CheckData(i)){
 						dtxt.paragraphs = dialogues[i].speech;
+						dtxt.endFunct = dialogues[i].endingFunction;
 						set = true;
 					}
 				}
 				if (set == false){
 					dtxt.paragraphs = defaultDialogue;
+					dtxt.endFunct = defaultEndingFunction;
 				}
 			}
-			dtxt.endFunct = endingFunction;
 			dtxt.Click ();
 		}
 	}
