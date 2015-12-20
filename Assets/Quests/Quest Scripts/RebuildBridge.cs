@@ -51,6 +51,10 @@ public class RebuildBridge : MonoBehaviour, IQuest {
 	}
 
 
+	public void StatUpdate(){
+		StatusUpdate ();
+	}
+
 	public void Setstate(string state_set){
 	
 		state = state_set;
