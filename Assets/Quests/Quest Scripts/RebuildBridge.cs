@@ -30,6 +30,10 @@ public class RebuildBridge : MonoBehaviour, IQuest {
 			break;
 		case "wait until midnight for bridge to be built":
 			break;
+		case "test":
+			NotificationManager.AddNotification("god fucking damnit", "you did shit");
+			break;
+		case "quest finished":
 			state = "Finished";
 			NotificationManager.AddNotification("Quest Complete", "Rebuild Town Bridge"); 	//adding notification that the quest is finished
 			InventoryData.OnChange -= InvUpdate; 	//stop listening to inventory updates
@@ -44,6 +48,13 @@ public class RebuildBridge : MonoBehaviour, IQuest {
 	}
 	void PosUpdate(){
 
+	}
+
+
+	public void Setstate(string state_set){
+	
+		state = state_set;
+	
 	}
 
 	public static void Reset(){
