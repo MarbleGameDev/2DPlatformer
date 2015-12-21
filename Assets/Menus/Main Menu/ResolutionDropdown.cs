@@ -19,7 +19,7 @@ public class ResolutionDropdown : DropDownBase {
 	
 	// Update is called once per frame
 	void Update () {
-		
+
 	}
 	
 	public override void GetButtonClick(int indx){

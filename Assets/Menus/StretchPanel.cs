@@ -8,6 +8,7 @@ public class StretchPanel : MonoBehaviour {
 	void Start () {
 		items = this.transform.Find("Items");
 		GetComponent<RectTransform>().sizeDelta = new Vector2(width,(items.transform.childCount * 30));
+		transform.localPosition = new Vector3 (transform.localPosition.x + 3, transform.localPosition.y, transform.localPosition.z);
 	}
 	
 	// Update is called once per frame
