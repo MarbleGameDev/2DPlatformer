@@ -17,9 +17,25 @@ public class KeyMapping : MonoBehaviour {
 	void Update () {
 		if (isSelected) {
 			if (Input.anyKeyDown) {
-				InputManager.SetKey (keyName, Input.inputString);
+				string inputString = "";
+				if (Input.inputString.Equals(" ")){
+				    inputString = "space";
+				}
+				if (Input.inputString.Equals("\t")){
+					inputString = "tab";
+				}
+				if (Input.inputString.Equals("\n") || Input.inputString.Equals("\r")){
+					inputString = "enter";
+				}
+				if (Input.inputString.Equals("\b")){
+					inputString = "backspace";
+				}
+				if (Input.GetKey("tab")){
+					inputString = "tab";
+				}
+				InputManager.SetKey (keyName, inputString);
 				isSelected = false;
-				txt.text = Input.inputString;
+				txt.text = inputString;
 			}
 		} else {
 			txt.text = InputManager.GetKey (keyName);

@@ -93,6 +93,9 @@ public class InputManager : MonoBehaviour {
 			key = SaveData.Skip;
 			break;
 		}
+		if (key.Equals ("")) {
+			key = "\\";
+		}
 		return key;
 	}
 

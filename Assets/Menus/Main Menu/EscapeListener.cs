@@ -30,6 +30,7 @@ public class EscapeListener : MonoBehaviour {
 
 	void inventory (){
 		if (MenuManager.windowOpen) {
+			if (!MenuManager.currentWindowName.Equals("OptionsMenu") && !MenuManager.currentWindowName.Equals("PauseMenu"))
 			menu.CloseWindow ();
 		}else {
 			menu.OpenWindow (inventoryName);
