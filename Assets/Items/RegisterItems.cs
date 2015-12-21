@@ -9,6 +9,7 @@ public class RegisterItems : MonoBehaviour {
 			ItemDictionary.itemList.Add ("Diary", () => new Diary ());
 			ItemDictionary.itemList.Add ("Sword", () => new Sword ());
 			ItemDictionary.itemList.Add ("Hands", () => new Hands ());
+			ItemDictionary.itemList.Add ("SleepingBag", () => new SleepingBag() );
 			hasRegistered = true;
 		}
 	}
