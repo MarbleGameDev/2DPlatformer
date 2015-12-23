@@ -11,6 +11,8 @@ public class RegisterQuests : MonoBehaviour {
 			SaveData.ResetQuests += SampleQuest.Reset;
 			QuestDictionary.Quests.Add ("Rebuild Town Bridge", () => new RebuildBridge());
 			SaveData.ResetQuests += RebuildBridge.Reset;
+			QuestDictionary.Quests.Add ("A mystery with wooden proportions", () => new Beavers());
+			SaveData.ResetQuests += Beavers.Reset;
 			hasRegistered = true;
 		}
 	}

@@ -25,7 +25,7 @@ public class InteractWith : MonoBehaviour {
 			}
 	}
 
-	void OnTriggerStay2D(Collider2D other){
+	void OnTriggerEnter2D(Collider2D other){
 		inArea = true;
 		onEnter.Invoke ();
 	}
