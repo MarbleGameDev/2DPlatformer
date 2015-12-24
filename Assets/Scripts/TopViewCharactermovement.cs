@@ -26,6 +26,8 @@ public class TopViewCharactermovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+
+		//Checked movement and deals with movement in only one direction at a time
 		if (!MenuManager.windowOpen) {
 			if (!up && !down)
 				left = Input.GetKey (InputManager.GetKey("Left"));
@@ -42,6 +44,16 @@ public class TopViewCharactermovement : MonoBehaviour {
 			right = false;
 		}
 
+		//Fix movement if the character gets bumped into a diagonal trajectory
+		if (rb.velocity.x != 0 && rb.velocity.y != 0) {
+			if (Mathf.Abs(rb.velocity.y) >= Mathf.Abs(rb.velocity.x)){
+				rb.velocity = new Vector2(0, rb.velocity.y);
+			}else{
+				rb.velocity = new Vector2(rb.velocity.x, 0);
+			}
+		}
+
+		//Attack Code
 		if (Input.GetButtonDown ("Attack") && !MenuManager.windowOpen) {
 			Vector2 dir = new Vector2(0,0);
 			switch (direction){
@@ -66,7 +78,7 @@ public class TopViewCharactermovement : MonoBehaviour {
 				}
 			}
 		}
-
+		//Movement Direction Code and Animation Playing
 		if (left) {
 			direction = 1;
 			if (rb.velocity.x > -horizontalMax) {

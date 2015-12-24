@@ -5,13 +5,12 @@ public class Health : MonoBehaviour {
 	public float health = 10;
 
 	void Update () {
-		if (health <= 0) {
+		if (health <= 0 && !gameObject.tag.Equals("Player")) {
 			DestroyObject(gameObject);
 		}
 	}
 
 	public void Damage(float attack){
-		Debug.Log (attack);
 		health -= attack;
 	}
 	public void Heal(float heal){
