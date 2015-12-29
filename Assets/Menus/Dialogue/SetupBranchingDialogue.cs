@@ -3,10 +3,11 @@ using System.Collections;
 
 [RequireComponent (typeof(OpenWindow))]
 public class SetupBranchingDialogue : MonoBehaviour {
-	public int pathNum;
-	public int choiceNum;
 	[System.Serializable]
 	public class DialoguePaths{
+		public bool isChoice;
+		public string[] option;
+		public int[] destination;
 		public string[] speech;
 	}
 
