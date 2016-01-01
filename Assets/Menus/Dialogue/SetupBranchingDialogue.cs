@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Events;
 
 [RequireComponent (typeof(OpenWindow))]
 public class SetupBranchingDialogue : MonoBehaviour {
@@ -12,10 +13,14 @@ public class SetupBranchingDialogue : MonoBehaviour {
 	}
 
 	public DialoguePaths[] dialogue;
-
+	public ICheckData data = null;
+	public string[] defaultDialogue;
+	public UnityEvent defaultEndingFunction;
 	// Use this for initialization
 	void Start () {
-	
+		if (GetComponent<ICheckData> () != null) {
+			data = GetComponent<ICheckData>();
+		}
 	}
 	
 	// Update is called once per frame

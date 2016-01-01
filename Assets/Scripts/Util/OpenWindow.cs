@@ -15,12 +15,19 @@ public class OpenWindow : MonoBehaviour {
 	
 	}
 
-	public void Open(){
+	public void Open(){ 	//TODO Halp out this block
 		if (!MenuManager.windowOpen) {
-			if (window != null){
+			if (window != null) {
 				menu.OpenCustomWindow (window);
-			}else{
-				Debug.LogError("NullPointerException: No window object attached to the OpenWindow script");
+			} else {
+				Debug.LogError ("NullPointerException: No window object attached to the OpenWindow script");
+			}
+		} else {
+			menu.CloseWindow();
+			if (window != null) {
+				menu.OpenCustomWindow (window);
+			} else {
+				Debug.LogError ("NullPointerException: No window object attached to the OpenWindow script");
 			}
 		}
 	}
