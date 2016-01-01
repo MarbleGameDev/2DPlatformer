@@ -1,12 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Events;
 
 [RequireComponent (typeof(OpenWindow))]
 public class DialogueObject : MonoBehaviour, IDialogue {
+    [Tooltip("Must be unique among similar children")]
 	public string Name;
-	private string[] dialogue = new string[20];
+    [Header("Leave Empty for Options")]
+    public string[] dialogue;
+    [Header("Not used with Dialogue ")]
 	public string prompt;
+    [Header("Not used with Options")]
+    public UnityEvent endFunct;
 	// Use this for initialization
 	void Start () {
 	
@@ -21,13 +27,13 @@ public class DialogueObject : MonoBehaviour, IDialogue {
 	}
 	public void OpenDialogue(){
 		if (gameObject.transform.childCount > 1) { 	//Branching Dialogue
-			Debug.Log("Branching Dialogue!!!!");
 			var dialogues = new List<IDialogue> ();
 			foreach (Transform child in gameObject.transform){
 				if (child.GetComponent<IDialogue>() != null)
 					dialogues.Add(child.GetComponent<IDialogue>());
 			}
 			int i = 0;
+            dialogue = new string[dialogues.Count];
 			foreach (IDialogue dial in dialogues){
 				dialogue[i] = dial.GetName();
 				i++;
@@ -39,11 +45,17 @@ public class DialogueObject : MonoBehaviour, IDialogue {
 			opBtn.nextDialogue = dialogues;
 			opBtn.Click();
 		}else{ 	//Linear Dialogue
-			Debug.Log("Linear Dialogue!!");
-			GetComponent<OpenWindow>().Open();
-
-
-		}
+            GetComponent<OpenWindow>().Open();
+            LinearDialogue lnDial = GameObject.Find("LinearDialogue(Clone)").GetComponentInChildren<LinearDialogue>();
+            lnDial.dialogue = dialogue;
+            lnDial.endFunct = endFunct;
+            if (gameObject.transform.childCount > 0) {
+                lnDial.nextDialogue = gameObject.transform.GetChild(0).GetComponent<IDialogue>();
+            } else {
+                lnDial.nextDialogue = null;
+            }
+            lnDial.Click();
+        }
 
 	}
 }

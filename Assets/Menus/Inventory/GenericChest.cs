@@ -14,7 +14,7 @@ public class GenericChest : MonoBehaviour {
 	public int[] itemQuantities; 	//as this
 
 	public string inventoryIdentifier; 	//Unique identifier
-	public bool enabled = true;
+	public bool Enabled = true;
 
 	public bool empty = false;
 	public Dictionary<string, int> inventory = new Dictionary<string, int> ();
@@ -24,16 +24,16 @@ public class GenericChest : MonoBehaviour {
 	}
 
 	void ResetInv(){
-		enabled = true;
+		Enabled = true;
 		PlayerPrefsX.SetBool (inventoryIdentifier, true);
 		inventory.Clear ();
 		Start ();
 	}
 
 	void Start () {
-		enabled = PlayerPrefsX.GetBool (inventoryIdentifier);
+		Enabled = PlayerPrefsX.GetBool (inventoryIdentifier);
 		menu = GameObject.Find ("Main Canvas").GetComponent<MenuManager> ();
-		if (enabled == true){
+		if (Enabled == true){
 			for (int i = 0; i < itemsNames.Length; i++) {
 				if (itemQuantities [i] > 0) {
 					inventory.Add (itemsNames [i], itemQuantities [i]);
@@ -65,9 +65,9 @@ public class GenericChest : MonoBehaviour {
 				InventoryData.AddItem (entry.Key, entry.Value);
 				RemoveItem(entry.Key);
 			}
-			enabled = false;
+			Enabled = false;
 			inventory.Clear();
-			PlayerPrefsX.SetBool(inventoryIdentifier, enabled);
+			PlayerPrefsX.SetBool(inventoryIdentifier, Enabled);
 		}
 	}
 
