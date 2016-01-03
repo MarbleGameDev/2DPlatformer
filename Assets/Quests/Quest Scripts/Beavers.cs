@@ -5,9 +5,9 @@ public class Beavers : MonoBehaviour, IQuest {
 	static string state = ""; 	
 	public string StatusUpdate(){ 
 		if (state.Equals ("")) {
-			state = PlayerPrefs.GetString("SampleQuest", "blank");
+			state = PlayerPrefs.GetString("Beavers", "blank");
 		}
-		PlayerPrefs.SetString ("SampleQuest", state); 
+		PlayerPrefs.SetString ("Beavers", state); 
 		switch (state){ 
 		case "blank": 
 			InventoryData.OnChange += InvUpdate; 
@@ -15,8 +15,6 @@ public class Beavers : MonoBehaviour, IQuest {
 			state = "Goto the scene of the crim";
 			break;
 		case "Goto the scene of the crime":
-			state = "Return to foreser";
-			NotificationManager.AddNotification("Quest Complete", "A mystery with wooden proportions");
 			break;
 
 			//stuff happens here... WIP
@@ -29,11 +27,21 @@ public class Beavers : MonoBehaviour, IQuest {
 	
 	void InvUpdate(){ 
 	
-		}
+	
+	}
 	
 	public static void Reset(){
+
 		//Debug.Log("Reset");
 		state = "blank";
 		PlayerPrefs.SetString("Beavers", "blank");
+
 	}
+
+	public void Setstate(string state_set){
+
+		state = state_set;
+		StatusUpdate();
+
+	} 
 }
