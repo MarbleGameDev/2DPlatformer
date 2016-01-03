@@ -19,10 +19,10 @@ public class InteractWith : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		string key = InputManager.GetKey (keyListener);
-			if (Input.GetKeyDown (key) && inArea) {
-				//Debug.Log ("Interacts!");
-				onInteract.Invoke ();
-			}
+		if (Input.GetKeyDown (key) && inArea && !MenuManager.windowOpen) {
+			//Debug.Log ("Interacts!");
+			onInteract.Invoke ();
+		}
 	}
 
 	void OnTriggerEnter2D(Collider2D other){

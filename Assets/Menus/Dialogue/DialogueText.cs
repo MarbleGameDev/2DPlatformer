@@ -15,7 +15,7 @@ public class DialogueText : MonoBehaviour {
 		menu = GameObject.Find ("Main Canvas").GetComponent<MenuManager> ();
 		txt = GetComponent<Text> ();
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown (InputManager.GetKey("Skip"))) {
@@ -26,8 +26,8 @@ public class DialogueText : MonoBehaviour {
 	public void Click(){
 		if (paragraphNum < paragraphs.Length) {
 			if (txt != null){
-			txt.text = paragraphs [paragraphNum].Replace("[player]", SaveData.playerName);
-			paragraphNum++;
+				txt.text = paragraphs [paragraphNum].Replace("[player]", SaveData.playerName);
+				paragraphNum++;
 			}
 		} else {
 			menu.CloseWindow();

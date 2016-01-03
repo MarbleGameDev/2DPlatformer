@@ -8,7 +8,6 @@ public class LinearDialogue : MonoBehaviour {
     public string[] dialogue;
     public UnityEvent endFunct;
     public IDialogue nextDialogue;
-
     Text txt;
     MenuManager menu;
     void Awake() {
@@ -29,7 +28,7 @@ public class LinearDialogue : MonoBehaviour {
         {
             if (txt != null)
             {
-                txt.text = dialogue[dialogueNum].Replace("[player]", SaveData.playerName);
+				txt.text = dialogue[dialogueNum].Replace("[player]", SaveData.playerName);
                 dialogueNum++;
             }
         }

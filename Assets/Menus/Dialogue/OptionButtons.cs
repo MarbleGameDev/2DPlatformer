@@ -12,11 +12,11 @@ public class OptionButtons : MonoBehaviour {
 	public void Click(){
         GetComponent<Text>().text = prompt;
 		int i = 0;
-		foreach (IDialogue dials in nextDialogue) {
+		foreach (string str in optionNames) {
 			Button btn = Instantiate(optionButton);
 			btn.transform.SetParent(this.gameObject.transform, false);
-			btn.GetComponentInChildren<Text>().text = optionNames[i];
-			btn.transform.name = optionNames[i];
+			btn.GetComponentInChildren<Text>().text = str;
+			btn.transform.name = str;
 			btn.GetComponent<OptionButtonClick>().nextDialogue = nextDialogue[i];
 			i++;
 		}

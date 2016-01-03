@@ -27,9 +27,6 @@ public class SetupDialogue : MonoBehaviour {
 		}
 	}
 
-	void Update () {
-	
-	}
 	public void OpenDialogue(){
 		if (GetComponent<OpenWindow> () != null) {
 			DialogueText dtxt = GameObject.Find ("Paragraph Text").GetComponent<DialogueText> ();
