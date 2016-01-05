@@ -14,13 +14,6 @@ public class InventoryData : MonoBehaviour {
 	void Start () {
 
 	}
-	void Awake (){
-
-	}
-	
-	// Update is called once per frame
-	void FixedUpdate () {
-	}
 
 	public static float Attack(){
 		return ItemDictionary.AttackItem(EquippedItem);
@@ -32,6 +25,41 @@ public class InventoryData : MonoBehaviour {
 
 	public static void UpdateInv(){
 		OnChange ();
+	}
+
+	public static void Awake (){
+		SaveData.ResetInv += ResetInv;
+		GetInventory ();
+	}
+
+
+	public static void ResetInv(){
+		inventory.Clear ();
+		SaveInventory ();
+	}
+
+	public static void SaveInventory(){
+		if (inventory.Count > 0) {
+			string[] invNames = new string[inventory.Count];
+			int[] invNums = new int[inventory.Count];
+			int y = 0;
+			for (var e = inventory.GetEnumerator(); e.MoveNext(); y++) {
+				invNames [y] = e.Current.Key;
+				invNums [y] = e.Current.Value;
+			}
+			PlayerPrefsX.SetStringArray ("playerInvNames", invNames);
+			PlayerPrefsX.SetIntArray ("playerInvNums", invNums);
+		}
+	}
+	public static void GetInventory(){
+		string[] invNames = PlayerPrefsX.GetStringArray("playerInvNames", "", 0);
+		int[] invNums = PlayerPrefsX.GetIntArray("playerInvNums", 0, 0);
+		inventory.Clear ();
+		if (invNames.Length > 0 && invNums.Length > 0) {
+			for (int i = 0; i < invNames.Length; i++) {
+				inventory.Add (invNames [i], invNums [i]);
+			}
+		}
 	}
 
 	public static void AddItem (string name, int number){
@@ -48,6 +76,7 @@ public class InventoryData : MonoBehaviour {
 			if (OnChange != null)
 				OnChange ();
 		}
+		SaveInventory ();
 	}
 
 	public static bool RemoveItem (string name, int number){

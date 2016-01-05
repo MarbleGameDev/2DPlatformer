@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿#pragma strict
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
@@ -31,7 +32,7 @@ public class GenericChest : MonoBehaviour {
 	}
 
 	void Start () {
-		Enabled = PlayerPrefsX.GetBool (inventoryIdentifier);
+		Enabled = PlayerPrefsX.GetBool (inventoryIdentifier, true);
 		menu = GameObject.Find ("Main Canvas").GetComponent<MenuManager> ();
 		if (Enabled == true){
 			for (int i = 0; i < itemsNames.Length; i++) {
@@ -50,7 +51,7 @@ public class GenericChest : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+
 	}
 
 	public void OpenWindow (){
