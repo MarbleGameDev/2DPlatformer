@@ -9,7 +9,7 @@ public class MinimapShader : MonoBehaviour {
 
 	}
 	void Update(){
-		if (Input.GetKey (InputManager.GetKey ("Minimap"))) {
+		if (Input.GetKey (InputManager.GetKey ("Minimap")) && !MenuManager.windowOpen) {
 			if (!cam.enabled) {
 				cam.enabled = true;
 			}

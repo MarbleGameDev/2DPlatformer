@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Collections.Generic;
+using System;
+using System.Text.RegularExpressions;
 
 public class KeyMapping : MonoBehaviour {
 	public string keyName;
@@ -16,25 +19,16 @@ public class KeyMapping : MonoBehaviour {
 	void Update () { 	//Really need to work on figuring out a better solution
 		if (isSelected) {
 			if (Input.anyKeyDown) {
-				string inputString = "";
-				if (Input.inputString.Equals(" ")){
-				    inputString = "space";
-				}else if (Input.inputString.Equals("\t")){
-					inputString = "tab";
-				}else if (Input.inputString.Equals("\n") || Input.inputString.Equals("\r")){
-					inputString = ".";
-				}else if (Input.inputString.Equals("\b")){
-					inputString = "backspace";
-				}else if (Input.GetKey("tab")){
-					inputString = "tab";
-				}else if (Input.inputString.Equals("")){
-					inputString = "left shift";
-				}else{
-					inputString = Input.inputString;
+				foreach (KeyCode kcode in Enum.GetValues(typeof(KeyCode))){
+					if (Input.GetKeyDown(kcode) && !kcode.ToString().Equals("LeftCommand")){
+						string key = Regex.Replace(kcode.ToString(), "(\\B[A-Z])", " $1").ToLower();
+						if (key.Equals("left control"))
+							key = "left ctrl";
+						InputManager.SetKey (keyName, key);
+						isSelected = false;
+						txt.text = key;
+					}
 				}
-				InputManager.SetKey (keyName, inputString);
-				isSelected = false;
-				txt.text = inputString;
 			}
 		} else {
 			txt.text = InputManager.GetKey (keyName);
