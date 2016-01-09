@@ -1,5 +1,4 @@
-﻿#pragma strict
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
@@ -81,12 +80,15 @@ public class GenericChest : MonoBehaviour {
 			newItem.transform.SetParent(names, false);
 			newItem.text = " " + ((entry.Value > 1) ? ("" + entry.Value.ToString() + "x ") : ("")) + entry.Key + ((entry.Key.Equals(InventoryData.EquippedItem)) ? (" \u25cf") : (""));
 			newItem.name = entry.Key + "1";
+			newItem.GetComponent<ContainerTransfer>().container = this.transform;
 		}
 	}
 
 	public void RemoveItem(string name){
 		DestroyObject (GameObject.Find (name + "1"));
-		empty = true;
+		inventory.Remove (name);
+		if (inventory.Count == 0)
+			empty = true;
 	}
 
 }

@@ -21,6 +21,7 @@ public class InputManager : MonoBehaviour {
 		SaveData.Inventory = "tab";
 		SaveData.Interact = "e";
 		SaveData.Skip = "space";
+		SaveData.Minimap = "left shift";
 		SaveData.StoreData ();
 	}
 
@@ -58,6 +59,10 @@ public class InputManager : MonoBehaviour {
 		case "skip":
 			SaveData.Skip = key;
 			break;
+		case "Minimap":
+		case "minimap":
+			SaveData.Minimap = key;
+			break;
 		}
 		SaveData.StoreData ();
 	}
@@ -91,6 +96,10 @@ public class InputManager : MonoBehaviour {
 		case "Skip":
 		case "skip":
 			key = SaveData.Skip;
+			break;
+		case "Minimap":
+		case "minimap":
+			key = SaveData.Minimap;
 			break;
 		}
 		if (key.Equals ("")) {

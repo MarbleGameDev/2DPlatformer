@@ -16,7 +16,7 @@ public class SaveData : MonoBehaviour {
 
 	public static string playerName = "Joshabar";
 
-	public static string Left, Right, Up, Down, Interact, Inventory, Skip;
+	public static string Left, Right, Up, Down, Interact, Inventory, Skip, Minimap;
 	// Use this for initialization
 	void Awake () {
 		GetData ();
@@ -57,6 +57,7 @@ public class SaveData : MonoBehaviour {
 		PlayerPrefs.SetString ("Interact", Interact);
 		PlayerPrefs.SetString ("Inventory", Inventory);
 		PlayerPrefs.SetString ("Skip", Skip);
+		PlayerPrefs.SetString ("Minimap", Minimap);
 		PlayerPrefs.Save ();
 	}
 
@@ -73,6 +74,7 @@ public class SaveData : MonoBehaviour {
 		Interact = PlayerPrefs.GetString ("Interact", "e");
 		Inventory = PlayerPrefs.GetString ("Inventory", "tab");
 		Skip = PlayerPrefs.GetString ("Skip", "space");
+		Minimap = PlayerPrefs.GetString("Minimap", "left shift");
 	}
 	
 	void AddQuestResets(){

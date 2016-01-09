@@ -12,26 +12,25 @@ public class KeyMapping : MonoBehaviour {
 		but = GetComponent<Button> ();
 		txt = but.GetComponentInChildren<Text> ();
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+	void Update () { 	//Really need to work on figuring out a better solution
 		if (isSelected) {
 			if (Input.anyKeyDown) {
 				string inputString = "";
 				if (Input.inputString.Equals(" ")){
 				    inputString = "space";
-				}
-				if (Input.inputString.Equals("\t")){
+				}else if (Input.inputString.Equals("\t")){
 					inputString = "tab";
-				}
-				if (Input.inputString.Equals("\n") || Input.inputString.Equals("\r")){
-					inputString = "enter";
-				}
-				if (Input.inputString.Equals("\b")){
+				}else if (Input.inputString.Equals("\n") || Input.inputString.Equals("\r")){
+					inputString = ".";
+				}else if (Input.inputString.Equals("\b")){
 					inputString = "backspace";
-				}
-				if (Input.GetKey("tab")){
+				}else if (Input.GetKey("tab")){
 					inputString = "tab";
+				}else if (Input.inputString.Equals("")){
+					inputString = "left shift";
+				}else{
+					inputString = Input.inputString;
 				}
 				InputManager.SetKey (keyName, inputString);
 				isSelected = false;
