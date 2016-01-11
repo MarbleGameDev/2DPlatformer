@@ -91,6 +91,7 @@ public class InventoryData : MonoBehaviour {
 		} else {
 			return false;
 		}
+		SaveInventory ();
 	}
 
 }
