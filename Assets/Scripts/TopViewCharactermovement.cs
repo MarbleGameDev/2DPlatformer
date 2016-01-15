@@ -6,12 +6,12 @@ public class TopViewCharactermovement : MonoBehaviour {
 	private float horizontalMax = 10f;
 	Rigidbody2D rb;
 	Health hel;
-	int direction;
+	int direction = 5;
 
-	private bool left;
-	private bool right;
-	private bool up;
-	private bool down;
+	private bool left = false;
+	private bool right = false;
+	private bool up = false;
+	private bool down = false;
 	private bool horizontal;
 	
 
@@ -109,6 +109,7 @@ public class TopViewCharactermovement : MonoBehaviour {
 			} else {
 				rb.velocity = new Vector2 (0, 0);
 			}
+
 			switch (direction) {
 			case 1:
 				anim.Play ("StandLeft");
