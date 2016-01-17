@@ -30,7 +30,7 @@ public class ConsoleCommandRouter : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		
 	}
 
 	public string setTime(params string[] args){
@@ -44,6 +44,8 @@ public class ConsoleCommandRouter : MonoBehaviour {
 		}
 		DayCycle.minutes = double.Parse (minutes);
 		DayCycle.hours = int.Parse (hours);
+		SaveData.gameHours = int.Parse (hours);
+		SaveData.StoreData ();
 		return "Time Set";
 	}
 

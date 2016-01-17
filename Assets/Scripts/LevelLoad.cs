@@ -23,9 +23,9 @@ public class LevelLoad : MonoBehaviour {
 	void Start () {
 		if (Application.loadedLevel == 0) { 	//Not used to reduce loading times
 			if (stringUse) {
-				Application.LoadLevelAsync (levelName);
+				Application.LoadLevel (levelName);
 			} else {
-				Application.LoadLevelAsync (levelNum);
+				Application.LoadLevel (levelNum);
 			}
 		}
 	}
@@ -36,9 +36,9 @@ public class LevelLoad : MonoBehaviour {
 		menu.CloseWindow ();
 		//Application.LoadLevelAsync (0);
 		if (stringUse) {
-			Application.LoadLevelAsync (levelName);
+			Application.LoadLevel (levelName);
 		} else {
-			Application.LoadLevelAsync (levelNum);
+			Application.LoadLevel (levelNum);
 		}
 	}
 }

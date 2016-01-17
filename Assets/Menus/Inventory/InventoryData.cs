@@ -43,9 +43,10 @@ public class InventoryData : MonoBehaviour {
 			string[] invNames = new string[inventory.Count];
 			int[] invNums = new int[inventory.Count];
 			int y = 0;
-			for (var e = inventory.GetEnumerator(); e.MoveNext(); y++) {
-				invNames [y] = e.Current.Key;
-				invNums [y] = e.Current.Value;
+			foreach (KeyValuePair<string, int> e in inventory) {
+				invNames [y] = e.Key;
+				invNums [y] = e.Value;
+				y++;
 			}
 			PlayerPrefsX.SetStringArray ("playerInvNames", invNames);
 			PlayerPrefsX.SetIntArray ("playerInvNums", invNums);
@@ -87,11 +88,11 @@ public class InventoryData : MonoBehaviour {
 			}
 			if (OnChange != null)
 				OnChange ();
+			SaveInventory ();
 			return true;
 		} else {
 			return false;
 		}
-		SaveInventory ();
 	}
 
 }

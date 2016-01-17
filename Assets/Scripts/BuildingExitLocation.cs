@@ -7,7 +7,7 @@ public class BuildingExitLocation : MonoBehaviour {
 	static Dictionary<string, Vector2> locations = new Dictionary<string, Vector2>();
 	void Awake(){
 		if (locations.Count == 0) {
-			locations.Add ("villageRoom1", new Vector2 (-20.4f, 9f));
+			locations.Add ("villageRoom1", new Vector2 (-40f, 20.1f));
 			locations.Add ("villageSpawn", new Vector2 (0f, 0f));
 		}
 	}
