@@ -4,30 +4,34 @@ using System.Collections.Generic;
 using System;
 
 public class ItemDictionary : MonoBehaviour{
-
-	public static Dictionary<string, Func<Iitem>> itemList = new Dictionary<string, Func<Iitem>>();
-
+	
+	public static InterfaceDictionary itemDict = new InterfaceDictionary ();
+	
 	public static void UseItem(string name){
-		if (itemList.ContainsKey (name)) {
-			(itemList [name])().Use();
+		if (itemDict.Contains(name)) {
+			Iitem itm = itemDict.GetValue<Iitem>(name);
+			itm.Use();
 		}
 	}
-
+	
 	public static void EquipItem(string name){
-		if (itemList.ContainsKey (name)) {
-			(itemList [name])().Equip();
+		if (itemDict.Contains(name) && (itemDict.IsWeapon(name) || itemDict.IsEquippable(name))) {
+			IEquippable itm = itemDict.GetValue<IEquippable>(name);
+			itm.Equip();
 		}
 	}
-
+	
 	public static void DropItem(string name){
-		if (itemList.ContainsKey (name)) {
-			(itemList [name])().Drop();
+		if (itemDict.Contains(name)) {
+			Iitem itm = itemDict.GetValue<Iitem>(name);
+			itm.Drop();
 		}
 	}
-
+	
 	public static float AttackItem(string name){
-		if (itemList.ContainsKey (name)) {
-			return (itemList [name]) ().Attack ();
+		if (itemDict.Contains (name) && itemDict.IsWeapon (name)) {
+			IWeapon itm = itemDict.GetValue<IWeapon> (name);
+			return itm.Attack ();
 		} else {
 			return 0f;
 		}

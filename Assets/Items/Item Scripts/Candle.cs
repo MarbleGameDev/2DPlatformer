@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Sword : IWeapon {
+public class Candle : IEquippable {
 	public void Use(){
 		Equip ();
 	}
@@ -9,10 +9,7 @@ public class Sword : IWeapon {
 
 	}
 	public void Equip(){
-		InventoryData.EquippedItem = "Sword";
+		InventoryData.EquippedItem = "Candle";
 		InventoryData.UpdateInv ();
-	}
-	public float Attack(){
-		return 1f;
 	}
 }

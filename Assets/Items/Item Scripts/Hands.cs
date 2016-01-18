@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Hands : Iitem {
+public class Hands : IWeapon {
 	public void Use(){
 		Equip ();
 	}

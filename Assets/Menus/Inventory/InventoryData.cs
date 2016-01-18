@@ -64,7 +64,7 @@ public class InventoryData : MonoBehaviour {
 	}
 
 	public static void AddItem (string name, int number){
-		if (ItemDictionary.itemList.ContainsKey (name)) {
+		if (ItemDictionary.itemDict.Contains (name)) {
 			if (!HasItem (name)) {
 				inventory.Add (name, number);
 				//Notification Creation

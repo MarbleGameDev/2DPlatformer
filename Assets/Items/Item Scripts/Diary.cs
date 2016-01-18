@@ -9,8 +9,4 @@ public class Diary : Iitem {
 	public void Drop(){
 		InventoryData.RemoveItem ("Diary", 1);
 	}
-	public void Equip(){}
-	public float Attack(){
-		return 0;
-	}
 }

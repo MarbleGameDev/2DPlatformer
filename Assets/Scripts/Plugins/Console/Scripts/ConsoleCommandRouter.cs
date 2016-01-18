@@ -155,13 +155,13 @@ public class ConsoleCommandRouter : MonoBehaviour {
 			return "Missing Quantity";
 		}
 		InventoryData.AddItem (name, num);
-		if (ItemDictionary.itemList.ContainsKey (name)) {
+		if (ItemDictionary.itemDict.Contains (name)) {
 			return "Item added to inventory";
 		} else {
 			return "Item does not exist";
 		}
 	}
-
+		
 	public string removeitem (params string[] args){
 		String name;
 		int num;

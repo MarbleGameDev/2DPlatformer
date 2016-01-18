@@ -8,8 +8,4 @@ public class SleepingBag : Iitem {
 	public void Drop(){
 		
 	}
-	public void Equip(){}
-	public float Attack(){
-		return 0f;
-	}
 }
