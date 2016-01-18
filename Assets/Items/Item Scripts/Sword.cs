@@ -2,6 +2,31 @@
 using System.Collections;
 
 public class Sword : IWeapon {
+	public float damage{
+		get{
+			return PlayerPrefs.GetFloat("SwordDamage", 3f);
+		}
+		set{
+			PlayerPrefs.SetFloat("SwordDamage", value);
+		}
+	}
+	public float swingSpeed{
+		get{
+			return PlayerPrefs.GetFloat("SwordSpeed", 2f);
+		}
+		set{
+			PlayerPrefs.SetFloat("SwordSpeed", value);
+			PlayerPrefs.Save();
+		}
+	}
+	public float range{
+		get{
+			return PlayerPrefs.GetFloat("SwordRange", 1.5f);
+		}
+		set{
+			PlayerPrefs.SetFloat("SwordRange", value);
+		}
+	}
 	public void Use(){
 		Equip ();
 	}
@@ -13,6 +38,6 @@ public class Sword : IWeapon {
 		InventoryData.UpdateInv ();
 	}
 	public float Attack(){
-		return 1f;
+		return damage;
 	}
 }
