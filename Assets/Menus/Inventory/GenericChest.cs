@@ -7,7 +7,6 @@ public class GenericChest : MonoBehaviour {
 	MenuManager menu;
 	public Transform ChestWindow;
 	public Text item;
-	public Text num;
 	Transform names;
 
 	public string[] itemsNames; 	//Must be the same Length
@@ -61,9 +60,10 @@ public class GenericChest : MonoBehaviour {
 		} else if (MenuManager.windowOpen && empty) {
 			menu.CloseWindow ();
 		} else if (MenuManager.windowOpen && !empty){
-			foreach (var entry in inventory) {
-				InventoryData.AddItem (entry.Key, entry.Value);
-				RemoveItem(entry.Key);
+			List<string> keys = new List<string>(inventory.Keys);
+			foreach (string e in keys) {
+				InventoryData.AddItem (e, inventory[e]);
+				RemoveItem(e);
 			}
 			Enabled = false;
 			inventory.Clear();

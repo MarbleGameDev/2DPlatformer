@@ -8,7 +8,6 @@ using System.Collections.Generic;
 public class InventoryManager : MonoBehaviour {
 	Transform content;
 	public Text item;
-	public Text num;
 	GameObject names;
 	public Text questStatus;
 
