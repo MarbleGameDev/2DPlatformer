@@ -25,12 +25,12 @@ public class InteractWith : MonoBehaviour {
 		}
 	}
 
-	void OnTriggerEnter2D(Collider2D other){
+	void OnTriggerEnter(Collider other){
 		inArea = true;
 		onEnter.Invoke ();
 	}
 
-	void OnTriggerExit2D(Collider2D other){
+	void OnTriggerExit(Collider other){
 		inArea = false;
 		onExit.Invoke ();
 	}

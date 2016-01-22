@@ -4,7 +4,7 @@ using System;
 
 public class TopViewCharactermovement : MonoBehaviour {
 	private float horizontalMax = 10f;
-	Rigidbody2D rb;
+	Rigidbody rb;
 	Health hel;
 	int direction = 5;
 
@@ -20,7 +20,7 @@ public class TopViewCharactermovement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		rb = GetComponent<Rigidbody2D> ();
+		rb = GetComponent<Rigidbody> ();
 		anim = GetComponent<Animator> ();
 	}
 	

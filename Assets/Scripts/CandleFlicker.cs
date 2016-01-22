@@ -13,14 +13,14 @@ public class CandleFlicker : MonoBehaviour {
 	void Light () {
 		float num = Random.value;
 		float direction = Random.value;
-		if (direction <= 0.5f && light.intensity < 1.25f && light.intensity > .75f) {
+		if (direction <= 0.5f && light.intensity < 8f && light.intensity > 7f) {
 			light.intensity = Mathf.SmoothStep (light.intensity, light.intensity - (num / 2), 0.25f);
 			light.spotAngle = light.spotAngle - (num / 2f);
-		} else if (direction > 0.5f && light.intensity < 1.25f && light.intensity > .75f) {
+		} else if (direction > 0.5f && light.intensity < 8f && light.intensity > 7f) {
 			light.intensity = Mathf.SmoothStep (light.intensity, light.intensity + (num / 2), 0.25f);
 			light.spotAngle = light.spotAngle + (num / 2f);
 		} else {
-			light.intensity = Mathf.SmoothStep (light.intensity, 1, 0.25f);
+			light.intensity = Mathf.SmoothStep (light.intensity, 7.5f, 0.25f);
 		}
 	}
 }

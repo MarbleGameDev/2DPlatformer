@@ -14,10 +14,14 @@ public class LevelLoad : MonoBehaviour {
 	}
 
 	public void LoadLevel(int num){
+		GameObject character = GameObject.Find("Character");
+		character.transform.position = new Vector3(character.transform.position.x, character.transform.position.y, -20 * num - .001f);
+		/*
 		stringUse = false;
 		levelNum = num;
 		levelName = "";
 		Load ();
+		*/
 	}
 	
 	void Start () {

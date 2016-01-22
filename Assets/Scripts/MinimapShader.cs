@@ -4,10 +4,12 @@ using System.Collections;
 public class MinimapShader : MonoBehaviour {
 	Camera cam;
 	GameObject boarder;
+	public static bool MEnabled;
 	void Start(){
 		cam = GetComponent<Camera> ();
 		cam.SetReplacementShader (Shader.Find("Sprites/Default"), null);
 		boarder = GameObject.Find("Minimap-Image");
+		Input.ResetInputAxes ();
 
 	}
 	void Update(){
@@ -15,11 +17,13 @@ public class MinimapShader : MonoBehaviour {
 			if (!cam.enabled) {
 				cam.enabled = true;
 				boarder.SetActive(true);
+				MEnabled = true;
 			}
 		} else {
 			if (cam.enabled){
 				cam.enabled = false;
 				boarder.SetActive(false);
+				MEnabled = false;
 			}
 		}
 	}
