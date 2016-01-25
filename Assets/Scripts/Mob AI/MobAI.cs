@@ -27,7 +27,7 @@ public class MobAI : MonoBehaviour
 	public void Start (){
 		rb = GetComponent<Rigidbody2D> ();
     	seeker = GetComponent<Seeker>();
-		target = GameObject.FindGameObjectWithTag ("Player");
+        target = GameObject.Find("Character");
 		SetupPath ();
 	}
 
@@ -44,6 +44,7 @@ public class MobAI : MonoBehaviour
 
 	public void SetupPath(){
 		seeker.StartPath( transform.position, target.transform.position, OnPathComplete );
+        Debug.LogWarning("");   //The code doesn't work without this...
 	}
 	
 	public void FixedUpdate (){
@@ -59,6 +60,7 @@ public class MobAI : MonoBehaviour
 				rb.velocity = new Vector2 (0, 0);
 			}
 			currentWaypoint = 0;
+            SetupPath();
 			return;
     	}
 
@@ -67,7 +69,7 @@ public class MobAI : MonoBehaviour
 			SetupPath();
 		}
 		Vector3 dir = ( path.vectorPath[ currentWaypoint] - transform.position ).normalized;
-			rb.velocity = new Vector2 (dir.x, dir.y) * movementSpeed;
+		rb.velocity = new Vector2 (dir.x, dir.y) * movementSpeed;
 
 		if (Vector3.Distance( transform.position, path.vectorPath[ currentWaypoint ] ) < nextWaypointDistance){
 	      currentWaypoint++;
@@ -75,7 +77,8 @@ public class MobAI : MonoBehaviour
 		}
 	}
 
-	void OnCollisionStay2D(Collision2D coll){
+	void OnCollisionStay(Collision coll){
+        if (coll.gameObject.Equals(target.gameObject))
 		target.GetComponent<Health> ().Damage (attackDamage);
 	}
 }

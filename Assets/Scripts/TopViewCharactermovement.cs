@@ -13,7 +13,7 @@ public class TopViewCharactermovement : MonoBehaviour {
 	private bool up = false;
 	private bool down = false;
 	private bool horizontal;
-	
+    private bool attacking;
 
 	Animator anim;
 
@@ -23,8 +23,40 @@ public class TopViewCharactermovement : MonoBehaviour {
 		rb = GetComponent<Rigidbody> ();
 		anim = GetComponent<Animator> ();
 	}
+
+    void Update() {
+        //Attack Code
+        if (Input.GetButtonDown("Attack") && !MenuManager.windowOpen)
+        {
+            Vector2 dir = new Vector2(0, 0);
+            switch (direction)
+            {
+                case 1:
+                    dir = new Vector2(-1, 0);
+                    break;
+                case 2:
+                    dir = new Vector2(1, 0);
+                    break;
+                case 3:
+                    dir = new Vector2(0, 1);
+                    break;
+                case 4:
+                    dir = new Vector2(0, -1);
+                    break;
+            }
+            attacking = true;
+            RaycastHit2D hit = Physics2D.CircleCast(transform.position, 1f, dir, 2f, LayerMask.GetMask("Enemy"));   //Change layer to enemy layer later
+            if (hit.transform != null && attacking)
+            {
+                if ((hel = hit.transform.GetComponent<Health>()) != null)
+                {
+                    hel.Damage(InventoryData.Attack());
+                    attacking = false;
+                }
+            }
+        }
+    }
 	
-	// Update is called once per frame
 	void FixedUpdate () {
 
 		//Checked movement and deals with movement in only one direction at a time
@@ -53,31 +85,6 @@ public class TopViewCharactermovement : MonoBehaviour {
 			}
 		}
 
-		//Attack Code
-		if (Input.GetButtonDown ("Attack") && !MenuManager.windowOpen) {
-			Vector2 dir = new Vector2(0,0);
-			switch (direction){
-			case 1:
-				dir = new Vector2(-1, 0);
-				break;
-			case 2:
-				dir = new Vector2(1, 0);
-				break;
-			case 3:
-				dir = new Vector2(0, 1);
-				break;
-			case 4:
-				dir = new Vector2(0, -1);
-				break;
-			}
-			RaycastHit2D hit = Physics2D.CircleCast(transform.position, 1f, dir, 2f, LayerMask.GetMask("Enemy")); 	//Change layer to enemy layer later
-			if (hit.transform != null){
-				Debug.Log (hit.transform);
-				if ((hel = hit.transform.GetComponent<Health>()) != null){
-					hel.Damage(InventoryData.Attack());
-				}
-			}
-		}
 		//Movement Direction Code and Animation Playing
 		if (left) {
 			direction = 1;
