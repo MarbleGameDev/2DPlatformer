@@ -13,6 +13,7 @@ public class SampleQuest : MonoBehaviour, IQuest {
 		case "blank": 	//blank state can be used as a startup function
 			NotificationManager.AddNotification("Quest Started", "Started SampleQuest"); 	//Adding notification that the quest started
 			state = "Pick up Diary (0/1)";
+            QuestDictionary.SetCurrent("SampleQuest");
 			break;
 		case "Pick up Diary (0/1)":
 			break;

@@ -18,6 +18,12 @@ public class InventoryData : MonoBehaviour {
 	public static float Attack(){
 		return ItemDictionary.AttackItem(EquippedItem);
 	}
+    public static float Cooldown() {
+        return ItemDictionary.CooldownItem(EquippedItem);
+    }
+    public static float Range() {
+        return ItemDictionary.RangeItem(EquippedItem);
+    }
 
 	public static bool HasItem(string item){
 		return inventory.ContainsKey (item);

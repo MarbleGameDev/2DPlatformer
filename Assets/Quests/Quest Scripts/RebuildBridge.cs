@@ -10,32 +10,33 @@ public class RebuildBridge : MonoBehaviour, IQuest {
 		}
 		PlayerPrefs.SetString ("RebuildBridge", state); 	//Store the data again in case it changes
 		switch (state){ 	//switch between the set states
-		case "blank": 	//blank state can be used as a startup function
-			InventoryData.OnChange += InvUpdate; 	//start listening to inventory updates
-			break;
-		case "Styoit":
-			state = "Go to Forester";
-			NotificationManager.AddNotification("Quest Started", "Rebuild Town Bridge"); //Adding notification that the quest started
-			break;
-		case "Go to Forester":
-			break;
-		case "Solve the mystery of foresters wood":
-			// Place for second quest that has to do with beavers
-			break;
-		case "Bring wood back to carpenter":
-			break;
-		case "Get tools from carpenters house":
-			break;
-		case "Bring tools back to carpenter":
-			break;
-		case "wait until midnight for bridge to be built":
-			break;
-		case "quest finished":
-			state = "Finished";
-			NotificationManager.AddNotification("Quest Complete", "Rebuild Town Bridge"); 	//adding notification that the quest is finished
-			InventoryData.OnChange -= InvUpdate; 	//stop listening to inventory updates
-			PlayerPrefs.Save(); 	//Writes all data changes to disk just in case
-			break;
+		    case "blank": 	//blank state can be used as a startup function
+			    InventoryData.OnChange += InvUpdate; 	//start listening to inventory updates
+			    break;
+		    case "Styoit":
+			    state = "Go to Forester";
+			    NotificationManager.AddNotification("Quest Started", "Rebuild Town Bridge"); //Adding notification that the quest started
+                QuestDictionary.SetCurrent("Rebuild Town Bridge");
+			    break;
+		    case "Go to Forester":
+			    break;
+		    case "Solve the mystery of foresters wood":
+			    // Place for second quest that has to do with beavers
+			    break;
+		    case "Bring wood back to carpenter":
+			    break;
+		    case "Get tools from carpenters house":
+			    break;
+		    case "Bring tools back to carpenter":
+			    break;
+		    case "wait until midnight for bridge to be built":
+			    break;
+		    case "quest finished":
+			    state = "Finished";
+			    NotificationManager.AddNotification("Quest Complete", "Rebuild Town Bridge"); 	//adding notification that the quest is finished
+			    InventoryData.OnChange -= InvUpdate; 	//stop listening to inventory updates
+			    PlayerPrefs.Save(); 	//Writes all data changes to disk just in case
+			    break;
 		}
 		return state; 	//Return a string stating the status of the quest
 	}

@@ -30,6 +30,10 @@ public class SaveData : MonoBehaviour {
         QuestDictionary.Reset();
 		StoreData ();
 	}
+    public static void ResetEverything() {
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
+    }
 
 	void Start(){
 		InvokeRepeating ("Store", 1f, (float)(Settings.saveInterval * 60));

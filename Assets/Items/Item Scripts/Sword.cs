@@ -10,9 +10,9 @@ public class Sword : IWeapon {
 			PlayerPrefs.SetFloat("SwordDamage", value);
 		}
 	}
-	public float swingSpeed{
+	public float swingSpeed{    //10 per second
 		get{
-			return PlayerPrefs.GetFloat("SwordSpeed", 2f);
+			return PlayerPrefs.GetFloat("SwordSpeed", 10f);
 		}
 		set{
 			PlayerPrefs.SetFloat("SwordSpeed", value);

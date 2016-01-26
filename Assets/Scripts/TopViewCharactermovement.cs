@@ -17,12 +17,22 @@ public class TopViewCharactermovement : MonoBehaviour {
 
 	Animator anim;
 
+    private float attackCooldown = 0;
 
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
 		anim = GetComponent<Animator> ();
+        InvokeRepeating("Cooldown", 0f, .1f);
 	}
+
+    void Cooldown() {
+        if (attackCooldown > 0) {
+            attackCooldown -= 1;
+        } else {
+            attackCooldown = 0;
+        }
+    }
 
     void Update() {
         //Attack Code
@@ -45,11 +55,12 @@ public class TopViewCharactermovement : MonoBehaviour {
                     break;
             }
             attacking = true;
-            RaycastHit2D hit = Physics2D.CircleCast(transform.position, 1f, dir, 2f, LayerMask.GetMask("Enemy"));   //Change layer to enemy layer later
-            if (hit.transform != null && attacking)
+            RaycastHit2D hit = Physics2D.CircleCast(transform.position, 1f, dir, InventoryData.Range(), LayerMask.GetMask("Enemy"));   //Change layer to enemy layer later
+            if (hit.transform != null && attacking && attackCooldown == 0)
             {
                 if ((hel = hit.transform.GetComponent<Health>()) != null)
                 {
+                    attackCooldown = InventoryData.Cooldown();
                     hel.Damage(InventoryData.Attack());
                     attacking = false;
                 }

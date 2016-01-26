@@ -26,12 +26,18 @@ public class ConsoleCommandRouter : MonoBehaviour {
 		repo.RegisterCommand ("resetQuestData", resetQuestData);
 		repo.RegisterCommand ("saveGame", savegame);
 		repo.RegisterCommand ("setTime", setTime);
+        repo.RegisterCommand ("resetEverything", resetEverything);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
+
+    public string resetEverything(params string[] args) {
+        SaveData.ResetEverything();
+        return "The deed is done";
+    }
 
 	public string setTime(params string[] args){
 		string hours;

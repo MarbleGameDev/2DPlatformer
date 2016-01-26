@@ -36,4 +36,20 @@ public class ItemDictionary : MonoBehaviour{
 			return 0f;
 		}
 	}
+    public static float CooldownItem(string name) {
+        if (itemDict.Contains(name) && itemDict.IsWeapon(name)) {
+            IWeapon itm = itemDict.GetValue<IWeapon>(name);
+            return itm.swingSpeed;
+        } else {
+            return 0f;
+        }
+    }
+    public static float RangeItem(string name) {
+        if (itemDict.Contains(name) && itemDict.IsWeapon(name)) {
+            IWeapon itm = itemDict.GetValue<IWeapon>(name);
+            return itm.range;
+        } else {
+            return 0f;
+        }
+    }
 }

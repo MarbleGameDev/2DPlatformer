@@ -9,18 +9,21 @@ public class Beavers : MonoBehaviour, IQuest {
 		}
 		PlayerPrefs.SetString ("Beavers", state); 
 		switch (state){ 
-		case "blank": 
-			InventoryData.OnChange += InvUpdate; 
-			NotificationManager.AddNotification("Quest Started", "A mystery with wooden proportions"); 
-			state = "Goto the scene of the crim";
-			break;
-		case "Goto the scene of the crime":
-			break;
+		    case "blank": 
+			    InventoryData.OnChange += InvUpdate;
+                break;
+            case "stoiyt":
+                NotificationManager.AddNotification("Quest Started", "A mystery with wooden proportions");
+                QuestDictionary.SetCurrent("Beavers");
+			    state = "Go to the scene of the crime";
+			    break;
+		    case "Go to the scene of the crime":
+			    break;
 
-			//stuff happens here... WIP
+			    //stuff happens here... WIP
 
-		case "Return to forester":
-			break;
+		    case "Return to forester":
+			    break;
 		}
 		return state; 
 	}
