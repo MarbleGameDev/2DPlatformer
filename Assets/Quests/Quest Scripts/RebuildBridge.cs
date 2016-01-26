@@ -6,7 +6,7 @@ public class RebuildBridge : MonoBehaviour, IQuest {
 	static bool firstEnter = false;
 	public string StatusUpdate(){ 	//Gets called any time the game wants to know what the status of the quest is, also when the quest is first started
 		if (state.Equals ("")) {
-			state = PlayerPrefs.GetString("RebuildBridge", ""); 	//if the file is just initialized, read the data from disk, default to "blank" if it's the first time
+			state = PlayerPrefs.GetString("RebuildBridge", "blank"); 	//if the file is just initialized, read the data from disk, default to "blank" if it's the first time
 		}
 		PlayerPrefs.SetString ("RebuildBridge", state); 	//Store the data again in case it changes
 		switch (state){ 	//switch between the set states
@@ -14,10 +14,10 @@ public class RebuildBridge : MonoBehaviour, IQuest {
 			InventoryData.OnChange += InvUpdate; 	//start listening to inventory updates
 			break;
 		case "Styoit":
-			state = "Goto Forester";
+			state = "Go to Forester";
 			NotificationManager.AddNotification("Quest Started", "Rebuild Town Bridge"); //Adding notification that the quest started
 			break;
-		case "Goto Forester":
+		case "Go to Forester":
 			break;
 		case "Solve the mystery of foresters wood":
 			// Place for second quest that has to do with beavers
@@ -64,7 +64,7 @@ public class RebuildBridge : MonoBehaviour, IQuest {
 	
 	}
 
-	public static void Reset(){
+	public void Reset(){
 		//Debug.Log("Reset");
 		state = "blank";
 		PlayerPrefs.SetString("RebuildBridge", "blank");

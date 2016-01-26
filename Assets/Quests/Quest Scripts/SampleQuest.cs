@@ -36,7 +36,7 @@ public class SampleQuest : MonoBehaviour, IQuest {
 		state = stat;
 	}
 
-	public static void Reset(){
+	public void Reset(){
 		//Debug.Log("Reset");
 		state = "blanke";
 		PlayerPrefs.SetString("SampleQuest", "blanke");

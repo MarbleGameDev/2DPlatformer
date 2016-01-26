@@ -26,5 +26,8 @@ public class QuestDictionary : MonoBehaviour {
 
 	public static void Reset(){
 		SaveData.currentQuest = "";
+        foreach (KeyValuePair<string, Func<IQuest>> quest in Quests) {
+            (Quests[quest.Key])().Reset();
+        }
 	}
 }

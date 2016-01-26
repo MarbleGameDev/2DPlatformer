@@ -69,7 +69,15 @@ public class MobAI : MonoBehaviour
 			SetupPath();
 		}
 		Vector3 dir = ( path.vectorPath[ currentWaypoint] - transform.position ).normalized;
-		rb.velocity = new Vector2 (dir.x, dir.y) * movementSpeed;
+        if (!MenuManager.windowOpen) {
+            rb.velocity = new Vector2(dir.x, dir.y) * movementSpeed;
+        } else {
+            if (Mathf.Floor(rb.velocity.y) != 0) {
+                rb.velocity = new Vector2(rb.velocity.x / 2, rb.velocity.y / 2);
+            } else {
+                rb.velocity = new Vector2(0, 0);
+            }
+        }
 
 		if (Vector3.Distance( transform.position, path.vectorPath[ currentWaypoint ] ) < nextWaypointDistance){
 	      currentWaypoint++;

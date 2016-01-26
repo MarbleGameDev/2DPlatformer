@@ -30,7 +30,7 @@ public class Beavers : MonoBehaviour, IQuest {
 	
 	}
 	
-	public static void Reset(){
+	public void Reset(){
 
 		//Debug.Log("Reset");
 		state = "blank";

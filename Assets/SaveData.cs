@@ -4,8 +4,6 @@ using System.Collections;
 public class SaveData : MonoBehaviour {
 	public delegate void resetData();
 	public static event resetData ResetInv;
-	public delegate void resetQuestData();
-	public static event resetQuestData ResetQuests;
 
 	public static int gameHours, gameDays;
 	
@@ -29,9 +27,7 @@ public class SaveData : MonoBehaviour {
 		StoreData ();
 	}
 	public static void ResetQuestData(){
-		if (ResetQuests != null) {
-			ResetQuests ();
-		}
+        QuestDictionary.Reset();
 		StoreData ();
 	}
 
@@ -72,9 +68,5 @@ public class SaveData : MonoBehaviour {
 		Inventory = PlayerPrefs.GetString ("Inventory", "tab");
 		Skip = PlayerPrefs.GetString ("Skip", "space");
 		Minimap = PlayerPrefs.GetString("Minimap", "left shift");
-	}
-	
-	void AddQuestResets(){
-		ResetQuests += SampleQuest.Reset;
 	}
 }

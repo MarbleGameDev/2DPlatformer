@@ -39,7 +39,7 @@ public class DialogueObject : MonoBehaviour, IDialogue {
 			int w = 0;
 			foreach (Transform child in gameObject.transform){
 				if (child.GetComponent<IDialogue>() != null){
-					if (data != null){
+					if (data != null){  //ICheckData data check before adding the options
 						if (data.CheckData(w)){
 							dialogues.Add(child.GetComponent<IDialogue>());
 						}
@@ -52,8 +52,8 @@ public class DialogueObject : MonoBehaviour, IDialogue {
 			int y = 0;
             foreach (Transform child in extraChildren) {
 				if (child.GetComponent<IDialogue>() != null){
-					if (data != null){
-						if (data.CheckData(y)){
+					if (data != null){  //ICheckData data check before adding the options
+					    if (data.CheckData(y)){
 							dialogues.Add(child.GetComponent<IDialogue>());
 						}
 					}else{
@@ -76,7 +76,7 @@ public class DialogueObject : MonoBehaviour, IDialogue {
 				opBtn.nextDialogue = dialogues;
 				opBtn.Click();
 			}else{
-				dialogues[0].OpenDialogue();
+				dialogues[0].OpenDialogue();    //Execute the first option if the skip button is selected
 			}
 		}else{ 	//Linear Dialogue
             GetComponent<OpenWindow>().Open();

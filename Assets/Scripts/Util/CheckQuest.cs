@@ -12,10 +12,14 @@ public class CheckQuest : MonoBehaviour, ICheckData {
 	public string[] questNames;
 	public bool CheckData(int node){
 		for (int i = 0; i < Quests.Length; i++) {
-			if (QuestDictionary.Quests.ContainsKey(questNames[i]) && node <= Quests.Length){
-				if (Quests[i].states[node] != null && Quests[i].states[node].Equals(QuestDictionary.GetUpdate(questNames[i])) || Quests[i].states[node].Equals("true"))
-					return true;
-			}
+            if (QuestDictionary.Quests.ContainsKey(questNames[i])){
+                if (node <= Quests.Length - 1){
+                    if (Quests[i].states[node] != null && Quests[i].states[node].Equals(QuestDictionary.GetUpdate(questNames[i])) || Quests[i].states[node].Equals("true"))
+                        return true;
+                } else {
+                    return true;
+                }
+            }
 		}
 		return false;
 	}

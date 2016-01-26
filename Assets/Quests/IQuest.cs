@@ -3,4 +3,5 @@ using System.Collections;
 
 public interface IQuest{
 	string StatusUpdate ();
+    void Reset();
 }
