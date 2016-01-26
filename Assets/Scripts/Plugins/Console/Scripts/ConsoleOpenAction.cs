@@ -9,6 +9,7 @@ public class ConsoleOpenAction : ConsoleAction {
         ConsoleGui.active = false;
 #else
         ConsoleGui.SetActive(true);
+        MenuManager.windowOpen = true;
 #endif
     }
 }

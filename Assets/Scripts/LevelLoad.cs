@@ -6,22 +6,13 @@ public class LevelLoad : MonoBehaviour {
 	public static int levelNum = 1;
 	public static string levelName;
 
-	public void LoadLevel(string name){
-		stringUse = true;
-		levelName = name;
-		levelNum = 0;
-		Load ();
-	}
+    public void LoadScene(int num) {
+        Application.LoadLevelAsync(num);
+    }
 
 	public void LoadLevel(int num){
 		GameObject character = GameObject.Find("Character");
 		character.transform.position = new Vector3(character.transform.position.x, character.transform.position.y, -20 * num - .001f);
-		/*
-		stringUse = false;
-		levelNum = num;
-		levelName = "";
-		Load ();
-		*/
 	}
 	
 	void Start () {

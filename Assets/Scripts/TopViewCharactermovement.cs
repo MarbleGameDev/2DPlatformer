@@ -8,10 +8,10 @@ public class TopViewCharactermovement : MonoBehaviour {
 	Health hel;
 	int direction = 5;
 
-	private bool left = false;
-	private bool right = false;
-	private bool up = false;
-	private bool down = false;
+	public bool left = false;
+	public bool right = false;
+	public bool up = false;
+	public bool down = false;
 	private bool horizontal;
     private bool attacking;
 
@@ -74,7 +74,7 @@ public class TopViewCharactermovement : MonoBehaviour {
 			down = false;
 			left = false;
 			right = false;
-		}
+        }
 
 		//Fix movement if the character gets bumped into a diagonal trajectory
 		if (rb.velocity.x != 0 && rb.velocity.y != 0) {
