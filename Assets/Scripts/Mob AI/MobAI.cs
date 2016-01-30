@@ -17,6 +17,7 @@ public class MobAI : MonoBehaviour
 	
 	public int movementSpeed;
 	private bool isCalculating = true;
+    public int range;
 
     private int movementCooldown = 0;
     private int attackCooldown = 10;
@@ -77,12 +78,13 @@ public class MobAI : MonoBehaviour
 			return;
     	}
 
-		if (Mathf.Round(target.transform.position.x) != Mathf.Round(tempPos.x) || Mathf.Round(target.transform.position.y) != Mathf.Round(tempPos.y) && isCalculating == false) {
+		if (Mathf.Abs(Mathf.Round(target.transform.position.x) - Mathf.Round(tempPos.x)) > 2|| Mathf.Abs(Mathf.Round(target.transform.position.y) - Mathf.Round(tempPos.y)) > 2 && isCalculating == false && Vector2.Distance(gameObject.transform.position, target.transform.position) < range) {
 			isCalculating = true;
 			SetupPath();
+            return;
 		}
 		Vector3 dir = ( path.vectorPath[ currentWaypoint] - transform.position ).normalized;
-        if (!MenuManager.windowOpen && Mathf.RoundToInt(target.transform.position.z) == Mathf.RoundToInt(gameObject.transform.position.z)) {
+        if (!MenuManager.windowOpen && Mathf.RoundToInt(target.transform.position.z) == Mathf.RoundToInt(gameObject.transform.position.z) && Vector2.Distance(gameObject.transform.position, target.transform.position) < range) {
             if (movementCooldown == 0) {
                 rb.velocity = new Vector2(dir.x, dir.y) * movementSpeed;
             }

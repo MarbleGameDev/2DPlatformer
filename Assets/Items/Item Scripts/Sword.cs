@@ -27,7 +27,8 @@ public class Sword : IWeapon {
 			PlayerPrefs.SetFloat("SwordRange", value);
 		}
 	}
-	public void Use(){
+    
+    public void Use(){
 		Equip ();
 	}
 	public void Drop(){
