@@ -62,7 +62,7 @@ public class GenericChest : MonoBehaviour {
 		} else if (MenuManager.windowOpen && !empty){
 			List<string> keys = new List<string>(inventory.Keys);
 			foreach (string e in keys) {
-				InventoryData.AddItem (e, inventory[e]);
+				InventoryData.AddItem (ItemDictionary.itemDict.GetItem(e), inventory[e]);   //Quick fix to transfer strings to item objects
 				RemoveItem(e);
 			}
 			Enabled = false;
@@ -78,7 +78,7 @@ public class GenericChest : MonoBehaviour {
 		foreach (var entry in inventory) {
 			Text newItem = Instantiate(item);
 			newItem.transform.SetParent(names, false);
-			newItem.text = " " + ((entry.Value > 1) ? ("" + entry.Value.ToString() + "x ") : ("")) + entry.Key + ((entry.Key.Equals(InventoryData.EquippedItem)) ? (" \u25cf") : (""));
+			newItem.text = " " + ((entry.Value > 1) ? ("" + entry.Value.ToString() + "x ") : ("")) + entry.Key;
 			newItem.name = entry.Key + "1";
 			newItem.GetComponent<ContainerTransfer>().container = this.transform;
 		}

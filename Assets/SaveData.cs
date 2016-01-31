@@ -7,7 +7,7 @@ public class SaveData : MonoBehaviour {
 
 	public static int gameHours, gameDays;
 	
-	public static string EquippedItem = "Hands";
+	public static int EquippedItem = -1;
 
 	public static string currentQuest = "";
 
@@ -46,7 +46,7 @@ public class SaveData : MonoBehaviour {
 	public static void StoreData(){
 		PlayerPrefs.SetInt ("gameDays", gameDays);
 		PlayerPrefs.SetInt ("gameHours", gameHours);
-		PlayerPrefs.SetString ("equippedItem", EquippedItem);
+		PlayerPrefs.SetInt ("equippedItem", EquippedItem);
 		PlayerPrefs.SetString ("currentQuest", currentQuest);
 		PlayerPrefs.SetString ("Left", Left);
 		PlayerPrefs.SetString ("Right", Right);
@@ -62,7 +62,7 @@ public class SaveData : MonoBehaviour {
 	public static void GetData(){
 		gameHours = PlayerPrefs.GetInt ("gameHours", 8);
 		gameDays = PlayerPrefs.GetInt ("gameDays", 0);
-		EquippedItem = PlayerPrefs.GetString ("equippedItem", "hands");
+		EquippedItem = PlayerPrefs.GetInt ("equippedItem", -1);
 		currentQuest = PlayerPrefs.GetString ("currentQuest");
 		Left = PlayerPrefs.GetString ("Left", "a");
 		Right = PlayerPrefs.GetString ("Right", "d");

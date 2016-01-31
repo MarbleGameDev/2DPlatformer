@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
+[Serializable]
 public class Candle : IEquippable {
 	public void Use(){
 		Equip ();
@@ -9,7 +11,10 @@ public class Candle : IEquippable {
 
 	}
 	public void Equip(){
-		InventoryData.EquippedItem = "Candle";
+        InventoryData.equipItem(this);
 		InventoryData.UpdateInv ();
 	}
+    public override string ToString() {
+        return "Candle";
+    }
 }

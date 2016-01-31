@@ -3,12 +3,13 @@ using System.Collections;
 
 public class ConsoleOpenAction : ConsoleAction {
     public GameObject ConsoleGui;
-
+    public static bool wasOpen;
     public override void Activate() {
 #if UNITY_3_5
         ConsoleGui.active = false;
 #else
         ConsoleGui.SetActive(true);
+        wasOpen = MenuManager.windowOpen;
         MenuManager.windowOpen = true;
 #endif
     }

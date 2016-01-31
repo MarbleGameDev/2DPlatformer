@@ -1,12 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
+[Serializable]
 public class Diary : Iitem {
 	public void Use(){
 		Debug.Log("I feel used");
-		InventoryData.RemoveItem ("Diary", 1);
+		InventoryData.RemoveItem (this, 1);
 	}
 	public void Drop(){
-		InventoryData.RemoveItem ("Diary", 1);
+		InventoryData.RemoveItem (this, 1);
 	}
+    public string ToString() {
+        return "Diary";
+    }
 }

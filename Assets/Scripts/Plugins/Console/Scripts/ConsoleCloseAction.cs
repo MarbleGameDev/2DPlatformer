@@ -11,7 +11,7 @@ public class ConsoleCloseAction : ConsoleAction {
         ConsoleGui.active = false;
 #else
         ConsoleGui.SetActive(false);
-        MenuManager.windowOpen = false;
+        MenuManager.windowOpen = ConsoleOpenAction.wasOpen;
         ConsoleToggler.consoleEnabled = false;
         Input.ResetInputAxes();
 #endif

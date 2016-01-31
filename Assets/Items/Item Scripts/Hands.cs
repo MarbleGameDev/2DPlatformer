@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
+[Serializable]
 public class Hands : IWeapon {
 	public float damage{
 		get{
@@ -27,6 +29,14 @@ public class Hands : IWeapon {
 			PlayerPrefs.SetFloat("HandRange", value);
 		}
 	}
+    public string ID {
+        get {
+            return "hnd";
+        }
+        set {
+            ID = value;
+        }
+    }
 	public void Use(){
 		Equip ();
 	}
@@ -34,10 +44,13 @@ public class Hands : IWeapon {
 
 	}
 	public void Equip(){
-		InventoryData.EquippedItem = "Hands";
+        InventoryData.equippedItem = -1;
 		InventoryData.UpdateInv ();
 	}
 	public float Attack(){
 		return damage;
 	}
+    public string toString() {
+        return "Hands";
+    }
 }

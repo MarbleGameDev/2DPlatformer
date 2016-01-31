@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
+[Serializable]
 public class Sword : IWeapon {
-	public float damage{
+    string ide = GUID.GetUniqueID();
+    public float damage{
 		get{
 			return PlayerPrefs.GetFloat("SwordDamage", 3f);
 		}
@@ -27,7 +30,14 @@ public class Sword : IWeapon {
 			PlayerPrefs.SetFloat("SwordRange", value);
 		}
 	}
-    
+    public string ID {
+        get {
+            return ide;
+        }
+        set {
+            ide = value;
+        }
+    }
     public void Use(){
 		Equip ();
 	}
@@ -35,10 +45,13 @@ public class Sword : IWeapon {
 
 	}
 	public void Equip(){
-		InventoryData.EquippedItem = "Sword";
+        InventoryData.equipItem(this);
 		InventoryData.UpdateInv ();
 	}
 	public float Attack(){
 		return damage;
 	}
+    public override string ToString() {
+        return "Sword";
+    }
 }

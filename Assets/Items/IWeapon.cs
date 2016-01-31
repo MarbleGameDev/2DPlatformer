@@ -14,5 +14,10 @@ public interface IWeapon : IEquippable {
 		get;
 		set;
 	}
-	float Attack();
+    string ID {  //ID is used to determine uniqueness for weapons
+        get;    //Way to generate unique string
+            //return GUID.GetUniqueID();
+        set;
+    }
+    float Attack();
 }

@@ -2,8 +2,8 @@
 using System.Collections;
 
 public class ItemExecution : MonoBehaviour {
-
+    public object item;
 	public void Click(){
-		ItemDictionary.UseItem (transform.name.TrimEnd('1'));
+		InventoryData.UseItem (item);
 	}
 }

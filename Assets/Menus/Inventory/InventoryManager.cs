@@ -22,7 +22,7 @@ public class InventoryManager : MonoBehaviour {
 	void UpdateInv () {
 		if (MenuManager.currentWindowName.Equals("Inventory") && MenuManager.windowOpen) {
 			names = GameObject.Find("InvNames");
-			if (names.gameObject != null || names.transform.childCount > 0) {
+			if (names != null && names.transform.childCount > 0) {
 				var children = new List<GameObject> ();
 				foreach (Transform child in names.transform)
 					children.Add (child.gameObject);
@@ -36,15 +36,16 @@ public class InventoryManager : MonoBehaviour {
 		DestroyObject (GameObject.Find (name + "1"));
 	}
 
-	public void DrawInv(){
-		foreach (var entry in InventoryData.inventory) {
-			Text newItem = Instantiate (item);
-			newItem.transform.SetParent (names.transform, false);
-			newItem.text = " " + ((entry.Value > 1) ? ("" + entry.Value.ToString() + "x ") : ("")) + entry.Key + ((entry.Key.Equals(InventoryData.EquippedItem)) ? (" \u25cf") : (""));
-			newItem.name = entry.Key + "1";
-
-		}
-		questStatus.text = SaveData.currentQuest + ((!SaveData.currentQuest.Equals(""))? (": \n\n"): ("")) + QuestDictionary.GetUpdate(SaveData.currentQuest);
-
+    public void DrawInv() {
+        if (names != null) {
+            foreach (object entry in InventoryData.items) {
+                Text newItem = Instantiate(item);
+                newItem.transform.SetParent(names.transform, false);
+                newItem.text = " " + ((InventoryData.itemCount[entry] > 1) ? ("" + InventoryData.itemCount[entry] + "x ") : ("")) + entry.ToString() + ((InventoryData.compareItems(InventoryData.getEquipped(), entry)) ? (" \u25cf") : (""));
+                newItem.name = entry.ToString() + "1";
+                newItem.GetComponent<ItemExecution>().item = entry;
+            }
+        questStatus.text = SaveData.currentQuest + ((!SaveData.currentQuest.Equals("")) ? (": \n\n") : ("")) + QuestDictionary.GetUpdate(SaveData.currentQuest);
+        }
 	}
 }

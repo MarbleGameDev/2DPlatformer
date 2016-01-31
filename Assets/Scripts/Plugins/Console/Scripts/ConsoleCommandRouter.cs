@@ -160,7 +160,7 @@ public class ConsoleCommandRouter : MonoBehaviour {
 		} catch (Exception e){
 			return "Missing Quantity";
 		}
-		InventoryData.AddItem (name, num);
+        InventoryData.AddItem(ItemDictionary.itemDict.GetItem(name), num);
 		if (ItemDictionary.itemDict.Contains (name)) {
 			return "Item added to inventory";
 		} else {
