@@ -4,40 +4,59 @@ using System;
 
 [Serializable]
 public class Hands : IWeapon {
-	public float damage{
-		get{
-			return PlayerPrefs.GetFloat("HandDamage", 1f);
-		}
-		set{
-			PlayerPrefs.SetFloat("HandDamage", value);
-		}
-	}
-	public float swingSpeed{
-		get{
-			return PlayerPrefs.GetFloat("HandSpeed", 1f);
-		}
-		set{
-			PlayerPrefs.SetFloat("HandSpeed", value);
-			PlayerPrefs.Save();
-		}
-	}
-	public float range{
-		get{
-			return PlayerPrefs.GetFloat("HandRange", 1f);
-		}
-		set{
-			PlayerPrefs.SetFloat("HandRange", value);
-		}
-	}
-    public string ID {
+    string ide = GUID.GetUniqueID();
+    string[] information = new string[4];
+    string name = "Hands", description = "Nothing but skin.";
+    float swordDamage = 1f, swordSwingSpeed = 1f, swordRange = 1f;
+    public float damage {
         get {
-            return "hnd";
+            return swordDamage;
         }
         set {
-            ID = value;
+            swordDamage = value;
         }
     }
-	public void Use(){
+    public float swingSpeed {    //10 per second
+        get {
+            return swordSwingSpeed;
+        }
+        set {
+            swordSwingSpeed = value;
+        }
+    }
+    public float range {
+        get {
+            return swordRange;
+        }
+        set {
+            swordRange = value;
+        }
+    }
+    public string ID {
+        get {
+            return ide;
+        }
+        set {
+            ide = value;
+        }
+    }
+    public string Name {
+        get {
+            return name;
+        }
+        set {
+            name = value;
+        }
+    }
+    public string Description {
+        get {
+            return description;
+        }
+        set {
+            description = value;
+        }
+    }
+    public void Use(){
 		Equip ();
 	}
 	public void Drop(){
@@ -51,6 +70,13 @@ public class Hands : IWeapon {
 		return damage;
 	}
     public string toString() {
-        return "Hands";
+        return name;
+    }
+    public string[] DisplayInformation() {
+        information[0] = this.description;
+        information[1] = damage.ToString();
+        information[2] = swingSpeed.ToString();
+        information[3] = range.ToString();
+        return information;
     }
 }

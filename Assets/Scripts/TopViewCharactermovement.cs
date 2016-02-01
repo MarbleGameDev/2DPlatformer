@@ -36,8 +36,7 @@ public class TopViewCharactermovement : MonoBehaviour {
 
     void Update() {
         //Attack Code
-        if (Input.GetButtonDown("Attack") && !MenuManager.windowOpen)
-        {
+        if (Input.GetButtonDown("Attack") && !MenuManager.windowOpen){
             Vector2 dir = new Vector2(0, 0);
             switch (direction)
             {

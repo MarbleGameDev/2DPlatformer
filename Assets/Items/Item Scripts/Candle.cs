@@ -4,7 +4,18 @@ using System;
 
 [Serializable]
 public class Candle : IEquippable {
-	public void Use(){
+    string description = "Light your way.";
+
+    public string Description {
+        get {
+            return description;
+        }
+        set {
+            description = value;
+        }
+    }
+
+    public void Use(){
 		Equip ();
 	}
 	public void Drop(){
@@ -16,5 +27,10 @@ public class Candle : IEquippable {
 	}
     public override string ToString() {
         return "Candle";
+    }
+    public string[] DisplayInformation() {
+        string[] description = new string[1];
+        description[0] = this.description;
+        return description;
     }
 }

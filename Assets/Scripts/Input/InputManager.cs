@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class InputManager : MonoBehaviour {
-
+    
 	// Use this for initialization
 	void Start () {
 
@@ -67,7 +67,7 @@ public class InputManager : MonoBehaviour {
 		SaveData.StoreData ();
 	}
 	public static string GetKey(string name){
-		string key = "\\";
+		string key = "f12";
 		switch (name) {
 		case "Left":
 		case "left":
@@ -102,8 +102,8 @@ public class InputManager : MonoBehaviour {
 			key = SaveData.Minimap;
 			break;
 		}
-		if (key.Equals ("")) {
-			key = "\\";
+		if (key != null && key.Equals ("")) {
+			key = "f12";
 		}
 		return key;
 	}

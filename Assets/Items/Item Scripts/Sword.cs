@@ -5,29 +5,31 @@ using System;
 [Serializable]
 public class Sword : IWeapon {
     string ide = GUID.GetUniqueID();
+    string[] information = new string[4];
+    string name = "Sword", description = "It's pointy.";
+    float swordDamage = 3f, swordSwingSpeed = 10f, swordRange = 1.5f;
     public float damage{
 		get{
-			return PlayerPrefs.GetFloat("SwordDamage", 3f);
+			return swordDamage;
 		}
 		set{
-			PlayerPrefs.SetFloat("SwordDamage", value);
+			swordDamage = value;
 		}
 	}
 	public float swingSpeed{    //10 per second
 		get{
-			return PlayerPrefs.GetFloat("SwordSpeed", 10f);
+			return swordSwingSpeed;
 		}
 		set{
-			PlayerPrefs.SetFloat("SwordSpeed", value);
-			PlayerPrefs.Save();
+			swordSwingSpeed = value;
 		}
 	}
 	public float range{
 		get{
-			return PlayerPrefs.GetFloat("SwordRange", 1.5f);
+			return swordRange;
 		}
 		set{
-			PlayerPrefs.SetFloat("SwordRange", value);
+			swordRange = value;
 		}
 	}
     public string ID {
@@ -36,6 +38,22 @@ public class Sword : IWeapon {
         }
         set {
             ide = value;
+        }
+    }
+    public string Name {
+        get {
+            return name;
+        }
+        set {
+            name = value;
+        }
+    }
+    public string Description {
+        get {
+            return description;
+        }
+        set {
+            description = value;
         }
     }
     public void Use(){
@@ -52,6 +70,13 @@ public class Sword : IWeapon {
 		return damage;
 	}
     public override string ToString() {
-        return "Sword";
+        return name;
+    }
+    public string[] DisplayInformation() {
+        information[0] = this.description;
+        information[1] = damage.ToString();
+        information[2] = swingSpeed.ToString();
+        information[3] = range.ToString();
+        return information;
     }
 }

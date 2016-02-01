@@ -52,8 +52,12 @@ public class InventoryData : MonoBehaviour {
         return 0f;
     }
     public static float Range() {
-        if (getEquipped() is IWeapon)
-            return ((IWeapon)(items[equippedItem])).range;
+        if (getEquipped() is IWeapon) {
+            if (getEquipped() is Hands) {
+                return new Hands().range;
+            }
+            return (((IWeapon)(items[equippedItem])).range);
+        }
         return 0f;
     }
     public static void UseItem(object obj) {
@@ -75,7 +79,9 @@ public class InventoryData : MonoBehaviour {
         if (equippedItem == -1) {
             return new Hands();
         }
-        return items[equippedItem];
+        if (items.Contains(equippedItem))
+            return items[equippedItem];
+        return new Hands();
     }
 
     public static object GetItem(string name) {
@@ -162,24 +168,25 @@ public class InventoryData : MonoBehaviour {
     }
 
     private static void AddObject(object obj, int number) {
-        if (HasItem(obj)) {
-            foreach (object e in items) {
-                if (obj is IWeapon) {
-                    if (e is IWeapon) {
-                        if (((IWeapon)e).ID.Equals(((IWeapon)obj).ID)) {
+        Debug.Log(obj);
+            if (HasItem(obj)) {
+                foreach (object e in items) {
+                    if (obj is IWeapon) {
+                        if (e is IWeapon) {
+                            if (((IWeapon)e).ID.Equals(((IWeapon)obj).ID)) {
+                                itemCount[e] += number;
+                            }
+                        }
+                    } else {
+                        if (e.ToString().Equals(obj.ToString())) {
                             itemCount[e] += number;
                         }
                     }
-                } else {
-                    if (e.ToString().Equals(obj.ToString())) {
-                        itemCount[e] += number;
-                    }
                 }
+            } else {
+                items.Add(obj);
+                itemCount[obj] = number;
             }
-        } else {
-            items.Add(obj);
-            itemCount[obj] = number;
-        }
         if (obj is IWeapon) {
             weaponList.Add(obj.ToString());
         } else if (obj is IEquippable) {

@@ -19,5 +19,9 @@ public interface IWeapon : IEquippable {
             //return GUID.GetUniqueID();
         set;
     }
+    string Name {
+        get;
+        set;
+    }
     float Attack();
 }
