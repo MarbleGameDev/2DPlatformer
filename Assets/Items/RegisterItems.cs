@@ -3,7 +3,7 @@ using System.Collections;
 
 public class RegisterItems : MonoBehaviour {
 	static bool hasRegistered = false;
-	void Start () {
+	void Awake () {
 
 		if (hasRegistered == false) {
 			ItemDictionary.itemDict.Add<Diary>("Diary", new Diary ());

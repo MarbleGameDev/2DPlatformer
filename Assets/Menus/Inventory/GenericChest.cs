@@ -8,48 +8,36 @@ public class GenericChest : MonoBehaviour {
 	public Transform ChestWindow;
 	public Text item;
 	Transform names;
+    public Dictionary<object, int> itemCount = new Dictionary<object, int>();
+    public List<object> items = new List<object>();
 
-	public string[] itemsNames; 	//Must be the same Length
-	public int[] itemQuantities; 	//as this
-
-	public string inventoryIdentifier; 	//Unique identifier
+    public string inventoryIdentifier; 	//Unique identifier
 	public bool Enabled = true;
 
 	public bool empty = false;
-	public Dictionary<string, int> inventory = new Dictionary<string, int> ();
 
 	void Awake (){
 		SaveData.ResetInv += ResetInv;
 	}
+    public void AddItem(object obj, int num) {
+        items.Add(obj);
+        itemCount[obj] = num;
+    }
 
 	void ResetInv(){
 		Enabled = true;
 		PlayerPrefsX.SetBool (inventoryIdentifier, true);
-		inventory.Clear ();
+		items.Clear ();
+		itemCount.Clear();
 		Start ();
+		if (gameObject.GetComponent<CreateItemObject>() != null) {
+			gameObject.GetComponent<CreateItemObject>().Start();
+		}
 	}
 
 	void Start () {
+		menu = GameObject.Find("Main Canvas").GetComponent<MenuManager>();
 		Enabled = PlayerPrefsX.GetBool (inventoryIdentifier, true);
-		menu = GameObject.Find ("Main Canvas").GetComponent<MenuManager> ();
-		if (Enabled == true){
-			for (int i = 0; i < itemsNames.Length; i++) {
-				if (itemQuantities [i] > 0) {
-					inventory.Add (itemsNames [i], itemQuantities [i]);
-				}
-			}
-			empty = false;
-			if (itemsNames.Length == 0 || itemQuantities.Length == 0) {
-				empty = true;
-			}
-		} else {
-			empty = true;
-		}
-	}
-	
-	// Update is called once per frame
-	void Update () {
-
 	}
 
 	public void OpenWindow (){
@@ -60,13 +48,14 @@ public class GenericChest : MonoBehaviour {
 		} else if (MenuManager.windowOpen && empty) {
 			menu.CloseWindow ();
 		} else if (MenuManager.windowOpen && !empty){
-			List<string> keys = new List<string>(inventory.Keys);
-			foreach (string e in keys) {
-				InventoryData.AddItem (ItemDictionary.itemDict.GetItem(e), inventory[e]);   //Quick fix to transfer strings to item objects
-				RemoveItem(e);
+			object[] entries = items.ToArray();
+			foreach (object entry in entries) {
+				InventoryData.AddItem (entry, itemCount[entry]);
+				RemoveItem(entry);
 			}
 			Enabled = false;
-			inventory.Clear();
+			items.Clear();
+			itemCount.Clear();
 			PlayerPrefsX.SetBool(inventoryIdentifier, Enabled);
 		}
 	}
@@ -75,19 +64,21 @@ public class GenericChest : MonoBehaviour {
 
 		names = GameObject.Find ("InvNames").transform;
 
-		foreach (var entry in inventory) {
-			Text newItem = Instantiate(item);
-			newItem.transform.SetParent(names, false);
-			newItem.text = " " + ((entry.Value > 1) ? ("" + entry.Value.ToString() + "x ") : ("")) + entry.Key;
-			newItem.name = entry.Key + "1";
-			newItem.GetComponent<ContainerTransfer>().container = this.transform;
+		if (names != null) {
+			foreach (object entry in items) {
+				Text newItem = Instantiate(item);
+				newItem.transform.SetParent(names.transform, false);
+				newItem.text = " " + ((itemCount[entry] > 1) ? ("" + itemCount[entry] + "x ") : ("")) + entry.ToString();
+				newItem.name = entry.ToString() + "2";
+			}
 		}
 	}
 
-	public void RemoveItem(string name){
-		DestroyObject (GameObject.Find (name + "1"));
-		inventory.Remove (name);
-		if (inventory.Count == 0)
+	public void RemoveItem(object obj){
+		DestroyObject (GameObject.Find (obj.ToString() + "2"));
+		items.Remove (obj);
+		itemCount.Remove(obj);
+		if (items.Count == 0)
 			empty = true;
 	}
 

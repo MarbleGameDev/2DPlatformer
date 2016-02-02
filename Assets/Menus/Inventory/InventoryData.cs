@@ -168,31 +168,38 @@ public class InventoryData : MonoBehaviour {
     }
 
     private static void AddObject(object obj, int number) {
-        Debug.Log(obj);
-            if (HasItem(obj)) {
-                foreach (object e in items) {
-                    if (obj is IWeapon) {
-                        if (e is IWeapon) {
-                            if (((IWeapon)e).ID.Equals(((IWeapon)obj).ID)) {
-                                itemCount[e] += number;
-                            }
-                        }
-                    } else {
-                        if (e.ToString().Equals(obj.ToString())) {
-                            itemCount[e] += number;
-                        }
-                    }
-                }
-            } else {
-                items.Add(obj);
-                itemCount[obj] = number;
-            }
-        if (obj is IWeapon) {
-            weaponList.Add(obj.ToString());
-        } else if (obj is IEquippable) {
-            equipList.Add(obj.ToString());
-        }
-        SaveInventory();
+		if (number > 0) {
+			if (HasItem(obj)) {
+				object[] entries = items.ToArray();
+				foreach (object e in entries) {
+					if (obj is IWeapon) {
+						if (e is IWeapon) {
+							if (((IWeapon)e).ID.Equals(((IWeapon)obj).ID)) {
+								itemCount[e] += number;
+							}
+						}
+					} else {
+						if (e.ToString().Equals(obj.ToString())) {
+							if (((Iitem)e).Description.Equals(((Iitem)obj).Description)) {
+								itemCount[e] += number;
+							} else {
+								items.Add(obj);
+								itemCount[obj] = number;
+							}
+						}
+					}
+				}
+			} else {
+				items.Add(obj);
+				itemCount[obj] = number;
+			}
+			if (obj is IWeapon) {
+				weaponList.Add(obj.ToString());
+			} else if (obj is IEquippable) {
+				equipList.Add(obj.ToString());
+			}
+			SaveInventory();
+		}
     }
 
     public static void AddItem (object name, int number){
