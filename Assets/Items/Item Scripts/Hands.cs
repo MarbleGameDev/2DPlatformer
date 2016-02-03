@@ -7,7 +7,7 @@ public class Hands : IWeapon {
     string ide = GUID.GetUniqueID();
     string[] information = new string[4];
     string name = "Hands", description = "Nothing but skin.";
-    float swordDamage = 1f, swordSwingSpeed = 1f, swordRange = 1f;
+    float swordDamage = 0f, swordSwingSpeed = 1f, swordRange = 1f;
     public float damage {
         get {
             return swordDamage;

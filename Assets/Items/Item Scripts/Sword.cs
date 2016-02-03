@@ -7,7 +7,7 @@ public class Sword : IWeapon {
     string ide = GUID.GetUniqueID();
     string[] information = new string[4];
     string name = "Sword", description = "It's pointy.";
-    float swordDamage = 3f, swordSwingSpeed = 10f, swordRange = 1.5f;
+    float swordDamage = 1f, swordSwingSpeed = 10f, swordRange = 1.5f;
     public float damage{
 		get{
 			return swordDamage;

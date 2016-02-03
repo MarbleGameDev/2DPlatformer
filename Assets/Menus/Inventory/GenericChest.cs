@@ -70,6 +70,7 @@ public class GenericChest : MonoBehaviour {
 				newItem.transform.SetParent(names.transform, false);
 				newItem.text = " " + ((itemCount[entry] > 1) ? ("" + itemCount[entry] + "x ") : ("")) + entry.ToString();
 				newItem.name = entry.ToString() + "2";
+				newItem.GetComponent<ContainerTransfer>().container = this.transform;
 			}
 		}
 	}
