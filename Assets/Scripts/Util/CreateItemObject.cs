@@ -15,7 +15,7 @@ public class CreateItemObject : MonoBehaviour {
     }
     public Items[] ItemObjects;
 
-    public void Start() {
+    public void AddItems() {
         GenericChest chest = gameObject.GetComponent<GenericChest>();
         if (chest != null) {
             foreach (Items itm in ItemObjects) {
@@ -39,6 +39,7 @@ public class CreateItemObject : MonoBehaviour {
 					}
 				}
             }
+			chest.SaveInventory();
         }
     }
 

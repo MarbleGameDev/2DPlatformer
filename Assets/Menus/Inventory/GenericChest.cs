@@ -24,20 +24,62 @@ public class GenericChest : MonoBehaviour {
         itemCount[obj] = num;
     }
 
+	public void SaveInventory() {
+		if (items.Count > 0) {
+			int y = 0;
+			int[] count = new int[itemCount.Count];
+			foreach (object e in items) {
+				PlayerPrefsSerializer.Save(inventoryIdentifier + y, e);
+				count[y] = itemCount[e];
+				y++;
+			}
+			PlayerPrefsX.SetIntArray(inventoryIdentifier + "Count", count);
+			PlayerPrefs.SetInt(inventoryIdentifier + "Length", items.Count);
+			PlayerPrefs.Save();
+		} else {
+			PlayerPrefs.SetInt(inventoryIdentifier + "Length", 0);
+			PlayerPrefs.Save();
+		}
+	}
+	public void GetInventory() {
+		items.Clear();
+		itemCount.Clear();
+		int invLength = PlayerPrefs.GetInt(inventoryIdentifier + "Length", 0);
+		var count = PlayerPrefsX.GetIntArray(inventoryIdentifier + "Count", 0, 0);
+		if (invLength > 0 && count.Length > 0) {
+			for (int i = 0; i < invLength; i++) {
+				AddItem(PlayerPrefsSerializer.Load(inventoryIdentifier + i), count[i]);
+			}
+			empty = false;
+		} else {
+			empty = true;
+		}
+	}
+
 	void ResetInv(){
+		Debug.Log("Reset");
 		Enabled = true;
-		PlayerPrefsX.SetBool (inventoryIdentifier, true);
+		PlayerPrefsX.SetBool (inventoryIdentifier, Enabled);
 		items.Clear ();
 		itemCount.Clear();
 		Start ();
-		if (gameObject.GetComponent<CreateItemObject>() != null) {
-			gameObject.GetComponent<CreateItemObject>().Start();
-		}
 	}
 
 	void Start () {
 		menu = GameObject.Find("Main Canvas").GetComponent<MenuManager>();
 		Enabled = PlayerPrefsX.GetBool (inventoryIdentifier, true);
+		if (Enabled) {
+			CreateItemObject itmobj = GetComponent<CreateItemObject>();
+			if (itmobj != null) {
+				itmobj.AddItems();
+				Enabled = false;
+				PlayerPrefsX.SetBool(inventoryIdentifier, Enabled);
+				PlayerPrefs.Save();
+			}
+			SaveInventory();
+		} else {
+			GetInventory();
+		}
 	}
 
 	public void OpenWindow (){
@@ -53,10 +95,9 @@ public class GenericChest : MonoBehaviour {
 				InventoryData.AddItem (entry, itemCount[entry]);
 				RemoveItem(entry);
 			}
-			Enabled = false;
 			items.Clear();
 			itemCount.Clear();
-			PlayerPrefsX.SetBool(inventoryIdentifier, Enabled);
+			empty = true;
 		}
 	}
 
@@ -70,7 +111,9 @@ public class GenericChest : MonoBehaviour {
 				newItem.transform.SetParent(names.transform, false);
 				newItem.text = " " + ((itemCount[entry] > 1) ? ("" + itemCount[entry] + "x ") : ("")) + entry.ToString();
 				newItem.name = entry.ToString() + "2";
-				newItem.GetComponent<ContainerTransfer>().container = this.transform;
+				ContainerTransfer cont = newItem.GetComponent<ContainerTransfer>();
+				cont.container = this.transform;
+				cont.item = entry;
 			}
 		}
 	}
@@ -81,6 +124,12 @@ public class GenericChest : MonoBehaviour {
 		itemCount.Remove(obj);
 		if (items.Count == 0)
 			empty = true;
+	}
+
+	public void TransferItem(object obj) {
+		InventoryData.AddItem(obj, itemCount[obj]);
+		RemoveItem(obj);
+		SaveInventory();
 	}
 
 }

@@ -12,7 +12,7 @@ public class EscapeListener : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown (InputManager.GetKey("Inventory"))) {
+		if (Input.GetKeyDown ((InputManager.GetKey("Inventory") != null) ? (InputManager.GetKey("Inventory")) : ("\\"))) {
 			inventory();
 		}
 		if (Input.GetButtonDown ("Escape")) {

@@ -4,7 +4,7 @@ using System.Collections;
 public class MenuManager : MonoBehaviour {
 	public Transform window;
 	static Transform newWindow;
-	public static string currentWindowName;
+	public static string currentWindowName = "";
 
 	public Transform mainMenu;
 	public Transform optionsMenu;

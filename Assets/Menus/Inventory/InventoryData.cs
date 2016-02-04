@@ -138,20 +138,25 @@ public class InventoryData : MonoBehaviour {
 		itemCount.Clear ();
         items.Clear();
 		SaveInventory ();
+		if (OnChange != null)
+			OnChange();
 	}
 
 	public static void SaveInventory(){
 		if (items.Count > 0) {
 			int y = 0;
-            int[] count = new int[itemCount.Count];
+			int[] count = new int[itemCount.Count];
 			foreach (object e in items) {
-                PlayerPrefsSerializer.Save("PlayerInventory" + y, e);
-                count[y] = itemCount[e];
-                y++;
+				PlayerPrefsSerializer.Save("PlayerInventory" + y, e);
+				count[y] = itemCount[e];
+				y++;
 			}
-            PlayerPrefsX.SetIntArray("PlayerInventoryCount", count);
-            PlayerPrefs.SetInt("PlayerInventoryLength", items.Count);
-            PlayerPrefs.Save();
+			PlayerPrefsX.SetIntArray("PlayerInventoryCount", count);
+			PlayerPrefs.SetInt("PlayerInventoryLength", items.Count);
+			PlayerPrefs.Save();
+		} else {
+			PlayerPrefs.SetInt("PlayerInventoryLength", 0);
+			PlayerPrefs.Save();
 		}
 	}
     public static void GetInventory() {
