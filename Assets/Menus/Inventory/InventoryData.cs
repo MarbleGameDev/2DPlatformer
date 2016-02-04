@@ -2,13 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Events;
+using System.Linq;
 
 public class InventoryData : MonoBehaviour {
 
     public static Dictionary<object, int> itemCount = new Dictionary<object, int>();
     public static List<object> items = new List<object>();
-    private static List<string> weaponList = new List<string>();
-    private static List<string> equipList = new List<string>();
     public static int equippedItem;
 
 	public delegate void InvChanged();
@@ -70,16 +69,11 @@ public class InventoryData : MonoBehaviour {
             ((Iitem)obj).Drop();
         }
     }
-    public static void EquipItem(object obj) {
-        if (obj is IEquippable) {
-            ((IEquippable)obj).Equip();
-        }
-    }
     public static object getEquipped() {
         if (equippedItem == -1) {
             return new Hands();
         }
-        if (items.Contains(equippedItem))
+        if (items[equippedItem] != null)
             return items[equippedItem];
         return new Hands();
     }
@@ -197,11 +191,6 @@ public class InventoryData : MonoBehaviour {
 			} else {
 				items.Add(obj);
 				itemCount[obj] = number;
-			}
-			if (obj is IWeapon) {
-				weaponList.Add(obj.ToString());
-			} else if (obj is IEquippable) {
-				equipList.Add(obj.ToString());
 			}
 			SaveInventory();
 		}

@@ -64,7 +64,6 @@ public class Sword : IWeapon {
 	}
 	public void Equip(){
         InventoryData.equipItem(this);
-		InventoryData.UpdateInv ();
 	}
 	public float Attack(){
 		return damage;

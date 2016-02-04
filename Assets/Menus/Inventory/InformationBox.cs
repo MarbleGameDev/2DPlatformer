@@ -4,7 +4,9 @@ using UnityEngine.UI;
 
 public class InformationBox : MonoBehaviour {
     GameObject equip;
+	EquipScript equipS;
 	GameObject eat;
+	EatScript eatS;
     Text txt;
     string displayFormat = "Name: [name] \nDescription: [description]";
     string weaponFormat = "Damage: [damage] \nSpeed: [speed] \nRange: [range]";
@@ -12,9 +14,11 @@ public class InformationBox : MonoBehaviour {
 	void Start () {
         txt = GetComponent<Text>();
         equip = GameObject.Find("EquipButton");
-		//eat = GameObject.Find("EatButton");
+		equipS = equip.GetComponent<EquipScript>();
+		eat = GameObject.Find("EatButton");
+		eatS = eat.GetComponent<EatScript>();
         equip.SetActive(false);
-
+		eat.SetActive(false);
     }
 	
 	// Update is called once per frame
@@ -24,21 +28,23 @@ public class InformationBox : MonoBehaviour {
     public void DisplayObject(object obj) {
         string display = displayFormat;
         if (obj is IEquippable) {
-            if (!equip.activeSelf)
-                equip.SetActive(true);
-        } else {
+			if (!equip.activeSelf) {
+				equip.SetActive(true);
+			}
+			equipS.obj = obj;
+		} else {
             if (equip.activeSelf)
                 equip.SetActive(false);
         }
-		/*
-		if (obj is IFood) {		//Need to add button first
-			if (!equip.activeSelf)
-				equip.SetActive(true);
+		if (obj is IFood) {
+			if (!eat.activeSelf) {
+				eat.SetActive(true);
+			}
+			eatS.obj = obj;
 		} else {
-			if (equip.activeSelf)
-				equip.SetActive(false);
+			if (eat.activeSelf)
+				eat.SetActive(false);
 		}
-		*/
         if (obj is IWeapon) {
             IWeapon weapon = (IWeapon)obj;
             string[] description = weapon.DisplayInformation();
@@ -60,5 +66,6 @@ public class InformationBox : MonoBehaviour {
         }
         txt.text = "";
         equip.SetActive(false);
+		eat.SetActive(false);
     }
 }
