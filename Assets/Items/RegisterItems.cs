@@ -11,6 +11,10 @@ public class RegisterItems : MonoBehaviour {
 			ItemDictionary.itemDict.Add<Hands>("Hands", new Hands ());
 			ItemDictionary.itemDict.Add<SleepingBag>("SleepingBag", new SleepingBag());
 			ItemDictionary.itemDict.Add<Candle>("Candle", new Candle());
+			ItemDictionary.itemDict.Add<BreadLoaf>("BreadLoaf", new BreadLoaf());
+			ItemDictionary.itemDict.Add<Planks>("Planks", new Planks());
+			ItemDictionary.itemDict.Add<Meatloaf>("Meatloaf", new Meatloaf());
+			ItemDictionary.itemDict.Add<FrogLegs>("FrogLegs", new FrogLegs());
 			hasRegistered = true;
 		}
 	}

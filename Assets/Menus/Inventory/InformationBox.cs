@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class InformationBox : MonoBehaviour {
     GameObject equip;
+	GameObject eat;
     Text txt;
     string displayFormat = "Name: [name] \nDescription: [description]";
     string weaponFormat = "Damage: [damage] \nSpeed: [speed] \nRange: [range]";
@@ -11,7 +12,9 @@ public class InformationBox : MonoBehaviour {
 	void Start () {
         txt = GetComponent<Text>();
         equip = GameObject.Find("EquipButton");
+		//eat = GameObject.Find("EatButton");
         equip.SetActive(false);
+
     }
 	
 	// Update is called once per frame
@@ -27,6 +30,15 @@ public class InformationBox : MonoBehaviour {
             if (equip.activeSelf)
                 equip.SetActive(false);
         }
+		/*
+		if (obj is IFood) {		//Need to add button first
+			if (!equip.activeSelf)
+				equip.SetActive(true);
+		} else {
+			if (equip.activeSelf)
+				equip.SetActive(false);
+		}
+		*/
         if (obj is IWeapon) {
             IWeapon weapon = (IWeapon)obj;
             string[] description = weapon.DisplayInformation();
