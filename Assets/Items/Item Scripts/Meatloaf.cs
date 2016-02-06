@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[System.Serializable]
 public class Meatloaf : IFood {
 	string description = "Doesn't look like real meat.";
 	float health = 1;

@@ -17,7 +17,7 @@ public class SaveData : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
 		GetData ();
-		InventoryData.Awake ();
+		InventoryData.Awake();
 	}
 
 	public static void ResetInvData(){
