@@ -102,7 +102,7 @@ public class InputManager : MonoBehaviour {
 			key = SaveData.Minimap;
 			break;
 		}
-		if (key != null && key.Equals ("")) {
+		if (key == null || key.Equals ("") || key.Equals(" ")) {
 			key = "f12";
 		}
 		return key;

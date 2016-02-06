@@ -10,16 +10,15 @@ public class Sun : MonoBehaviour {
 	void Start () {
 		sun = GetComponent<Light> ();
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
-		if (DayCycle.hours >= 19 && DayCycle.hours < 21) {
+		if (DayCycle.hours >= 18 && DayCycle.hours < 20) {
 			sun.intensity -= (sun.intensity > nightBrightness) ? (sunRate) : (0);
 		} else if (DayCycle.hours >= 6 && DayCycle.hours < 8) {
 			sun.intensity += (sun.intensity < dayBrightness) ? (sunRate) : (0);
-		} else if (DayCycle.hours >= 8 && DayCycle.hours < 19) {
+		} else if (DayCycle.hours >= 8 && DayCycle.hours < 18) {
 			sun.intensity = dayBrightness;
-		} else if (DayCycle.hours >= 21 || DayCycle.hours < 6) {
+		} else if (DayCycle.hours >= 20 || DayCycle.hours < 6) {
 			sun.intensity = nightBrightness;
 		}
 	}
