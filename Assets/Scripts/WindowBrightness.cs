@@ -8,7 +8,7 @@ public class WindowBrightness : MonoBehaviour {
 	float nightRed = .01f;
 	float dayRed = 1;
 	void Start () {
-		windowSprite = GetComponent<SpriteRenderer>();
+	windowSprite = GetComponent<SpriteRenderer>();
 		window = windowSprite.color;
 	}
 
