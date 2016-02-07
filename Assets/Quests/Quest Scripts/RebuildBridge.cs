@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class RebuildBridge : MonoBehaviour, IQuest {
@@ -23,9 +23,9 @@ public class RebuildBridge : MonoBehaviour, IQuest {
 		    case "Solve the mystery of foresters wood":
 			    // Place for second quest that has to do with beavers
 			    break;
+			case "Get tools from carpenters house":
+				break;
 		    case "Bring wood back to carpenter":
-			    break;
-		    case "Get tools from carpenters house":
 			    break;
 		    case "Bring tools back to carpenter":
 			    break;
