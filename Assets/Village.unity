@@ -217,6 +217,7 @@ GameObject:
   - 65: {fileID: 69641156}
   - 114: {fileID: 69641155}
   - 114: {fileID: 69641157}
+  - 65: {fileID: 69641158}
   m_Layer: 0
   m_Name: Toolbox
   m_TagString: Untagged
@@ -257,7 +258,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 69641152}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 48, y: -29, z: -.00999999978}
+  m_LocalPosition: {x: 44, y: -25.6000004, z: -.00999999978}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
@@ -325,6 +326,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   notificationTop: Kill me
   notificationBottom: Fuck
+--- !u!65 &69641158
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 69641152}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .159999996, y: .111456655, z: .200000003}
+  m_Center: {x: 0, y: -.0242721569, z: 0}
 --- !u!1 &131627606
 GameObject:
   m_ObjectHideFlags: 0
@@ -1320,7 +1333,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 825056834}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .0233292393, y: -.00354804588, z: 0}
+  m_LocalPosition: {x: .063000001, y: .0240000002, z: 0}
   m_LocalScale: {x: 4.187428, y: 4.187428, z: 4.187428}
   m_Children: []
   m_Father: {fileID: 701523788}
@@ -1397,6 +1410,60 @@ Transform:
   m_Children: []
   m_Father: {fileID: 706951686}
   m_RootOrder: 2
+--- !u!1 &848485043
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 848485045}
+  - 212: {fileID: 848485044}
+  m_Layer: 0
+  m_Name: Blank Room
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!212 &848485044
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 848485043}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_ReflectionProbeUsage: 0
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_ImportantGI: 0
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 34bbcdd01c1efc44fbf58fb57a97cce6, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!4 &848485045
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 848485043}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -29.8999996, y: 2.9000001, z: -29.7000008}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
 --- !u!1 &874679516
 GameObject:
   m_ObjectHideFlags: 0
@@ -1535,9 +1602,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Story
   dialogue:
-  - Hey, you there!!
-  - Can you help a man out?
-  - This bridge here got damaged in the storm last night
+  - Hey, there [player] I got myself into a bit of a pickle here
+  - I need some desperate help with this here bridge
+  - You see this bridge here got damaged in the storm last night
   skipButtons: 0
   prompt: 
   endFunct:
@@ -2337,7 +2404,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: No Thanks
   dialogue:
-  - Sorry man, too busy right now. Maybe later...
+  - Well I understand, but this bridge will take forever to fix if I dont get my supplies
   skipButtons: 0
   prompt: 
   endFunct:
@@ -2474,9 +2541,9 @@ MonoBehaviour:
   onEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1916149959}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1916149963}
+        m_MethodName: OpenDialogue
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2516,13 +2583,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf6dfcd4d0dc56a40a5732f446c540e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: 
-  dialogue: []
+  Name: Destructed dialogue
+  dialogue:
+  - Oh hello [Player].
+  - Would you mind coming over here and helping me out
   skipButtons: 0
   prompt: 
   endFunct:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1916149959}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   extraChildren: []
@@ -2537,7 +2617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c61fdd49dc6b441b2b52fc581571df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  window: {fileID: 0}
+  window: {fileID: 22493682, guid: 718d25a39c5cfc645b8298fda23a89d1, type: 2}
 --- !u!1 &2009801757
 GameObject:
   m_ObjectHideFlags: 0
