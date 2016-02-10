@@ -20,6 +20,13 @@ public class MenuManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (windowOpen && !currentWindowName.Contains("LinearDialogue")) {
+			Cursor.lockState = CursorLockMode.Confined;
+			Cursor.visible = true;
+		} else {
+			Cursor.lockState = CursorLockMode.Locked;
+			Cursor.visible = false;
+		}
 		
 	}
 	public void OpenWindow(string name){
