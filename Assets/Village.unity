@@ -1034,6 +1034,22 @@ Prefab:
       propertyPath: ItemObjects.Array.data[2].range
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6552428, guid: 05f1de93a8f44c24aa71b789e6ac04e5, type: 2}
+      propertyPath: m_Size.y
+      value: 4.71164513
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552428, guid: 05f1de93a8f44c24aa71b789e6ac04e5, type: 2}
+      propertyPath: m_Center.y
+      value: -1.72821426
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552428, guid: 05f1de93a8f44c24aa71b789e6ac04e5, type: 2}
+      propertyPath: m_Size.x
+      value: 5.11131096
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552428, guid: 05f1de93a8f44c24aa71b789e6ac04e5, type: 2}
+      propertyPath: m_Center.x
+      value: .185855865
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 05f1de93a8f44c24aa71b789e6ac04e5, type: 2}
   m_IsPrefabParent: 0

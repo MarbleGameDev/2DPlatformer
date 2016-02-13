@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using System;
 
 public class GenericChest : MonoBehaviour {
 	MenuManager menu;
@@ -65,19 +66,22 @@ public class GenericChest : MonoBehaviour {
 	}
 
 	void Start () {
-		menu = GameObject.Find("Main Canvas").GetComponent<MenuManager>();
-		Enabled = PlayerPrefsX.GetBool (inventoryIdentifier, true);
-		if (Enabled) {
-			CreateItemObject itmobj = GetComponent<CreateItemObject>();
-			if (itmobj != null) {
-				itmobj.AddItems();
-				Enabled = false;
-				PlayerPrefsX.SetBool(inventoryIdentifier, Enabled);
-				PlayerPrefs.Save();
+		if (this != null) {
+			menu = GameObject.Find("Main Canvas").GetComponent<MenuManager>();
+			Enabled = PlayerPrefsX.GetBool(inventoryIdentifier, true);
+			if (Enabled) {
+				Debug.Log(inventoryIdentifier);
+				CreateItemObject itmobj = GetComponent<CreateItemObject>();
+				if (itmobj != null) {
+					itmobj.AddItems();
+					Enabled = false;
+					PlayerPrefsX.SetBool(inventoryIdentifier, Enabled);
+					PlayerPrefs.Save();
+				}
+				SaveInventory();
+			} else {
+				GetInventory();
 			}
-			SaveInventory();
-		} else {
-			GetInventory();
 		}
 	}
 

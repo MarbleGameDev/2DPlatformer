@@ -15,7 +15,7 @@ public class MenuManager : MonoBehaviour {
 	public static bool windowOpen = false;
 	// Use this for initialization
 	void Start () {
-		
+
 	}
 	
 	// Update is called once per frame

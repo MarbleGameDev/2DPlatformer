@@ -3,7 +3,7 @@ using System.Collections;
 
 public class SaveData : MonoBehaviour {
 	public delegate void resetData();
-	public static event resetData ResetInv;
+	public static event resetData ResetInv = null;
 
 	public static int gameHours, gameDays;
 	
@@ -13,7 +13,7 @@ public class SaveData : MonoBehaviour {
 
 	public static string playerName = "Joshabar";
 
-	public static string Left, Right, Up, Down, Interact, Inventory, Skip, Minimap;
+	public static string Left, Right, Up, Down, Interact, Inventory, Skip, Minimap;		//Key bindings
 	// Use this for initialization
 	void Awake () {
 		GetData ();
