@@ -34,7 +34,7 @@ public class DialogueObject : MonoBehaviour, IDialogue {
 		return Name;
 	}
 	public void OpenDialogue(){
-		if (gameObject.transform.childCount + extraChildren.Length > 1) { 	//Branching Dialogue
+		if (gameObject.transform.childCount + extraChildren.Length > 1 || skipButtons) { 	//Branching Dialogue
 			var dialogues = new List<IDialogue> ();
 			int w = 0;
 			foreach (Transform child in gameObject.transform){
@@ -49,7 +49,7 @@ public class DialogueObject : MonoBehaviour, IDialogue {
 				}
 				w++;
 			}
-			int y = 0;
+			int y = w;
             foreach (Transform child in extraChildren) {
 				if (child.GetComponent<IDialogue>() != null){
 					if (data != null){  //ICheckData data check before adding the options
@@ -76,7 +76,8 @@ public class DialogueObject : MonoBehaviour, IDialogue {
 				opBtn.nextDialogue = dialogues;
 				opBtn.Click();
 			}else{
-				dialogues[0].OpenDialogue();    //Execute the first option if the skip button is selected
+				if (dialogues.Count > 0)
+					dialogues[0].OpenDialogue();    //Execute the first option if the skip button is selected
 			}
 		}else{ 	//Linear Dialogue
             GetComponent<OpenWindow>().Open();

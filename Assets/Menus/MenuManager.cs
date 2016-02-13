@@ -63,7 +63,7 @@ public class MenuManager : MonoBehaviour {
 	}
 	public void CloseWindow(){
 		windowOpen = false;
-		if (currentWindowName != null) {
+		if (currentWindowName != null && !currentWindowName.Equals("")) {
 			DestroyImmediate (GameObject.Find (currentWindowName + "(Clone)"));
 		}
 	}

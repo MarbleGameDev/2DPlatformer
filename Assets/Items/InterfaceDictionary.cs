@@ -25,6 +25,10 @@ public class InterfaceDictionary{
 		return equipList.Contains (key);
 	}
     */
+	/// <summary>
+	/// Returns Item object from given name
+	/// </summary>
+
     public object GetItem(string name) {
         if (itemList.ContainsKey(name)) {
             ObjectHandle hand = Activator.CreateInstance(null, name);

@@ -87,19 +87,21 @@ public class InventoryData : MonoBehaviour {
     }
 
     public static bool HasItem(object obj){
-        foreach (object e in items) {
-            if (obj is IWeapon) {
-                if (e is IWeapon) {
-                    if (((IWeapon)e).ID.Equals(((IWeapon)obj).ID)) {
-                        return true;
-                    }
-                }
-            } else {
-                if (e.ToString().Equals(obj.ToString())) {
-                    return true;
-                }
-            }
-        }
+		if (obj != null) {
+			foreach (object e in items) {
+				if (obj is IWeapon) {
+					if (e is IWeapon) {
+						if (((IWeapon)e).ID.Equals(((IWeapon)obj).ID)) {
+							return true;
+						}
+					}
+				} else {
+					if (e.ToString().Equals(obj.ToString())) {
+						return true;
+					}
+				}
+			}
+		}
         return false;
 	}
 
@@ -134,6 +136,9 @@ public class InventoryData : MonoBehaviour {
 		SaveInventory ();
 		if (OnChange != null)
 			OnChange();
+		equippedItem = -1;
+		SaveData.EquippedItem = equippedItem;
+		SaveData.StoreData();
 	}
 
 	public static void SaveInventory(){

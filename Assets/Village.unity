@@ -185,7 +185,9 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -205,6 +207,70 @@ Transform:
   m_Children: []
   m_Father: {fileID: 706951686}
   m_RootOrder: 1
+--- !u!1 &50511284
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 50511287}
+  - 114: {fileID: 50511286}
+  - 114: {fileID: 50511285}
+  m_Layer: 0
+  m_Name: Dialogue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &50511285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 50511284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf6dfcd4d0dc56a40a5732f446c540e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: W
+  dialogue:
+  - Oh hey there [player]
+  - Wanna help out your friend Dmitrei here real quick?
+  skipButtons: 0
+  prompt: 
+  endFunct:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  extraChildren: []
+--- !u!114 &50511286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 50511284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c61fdd49dc6b441b2b52fc581571df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  window: {fileID: 22493682, guid: 718d25a39c5cfc645b8298fda23a89d1, type: 2}
+--- !u!4 &50511287
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 50511284}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1916149962}
+  m_RootOrder: 0
 --- !u!1 &69641152
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,7 +309,9 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -424,6 +492,8 @@ MonoBehaviour:
   Quests:
   - states:
     - blank
+    - '!blank2'
+    - blank2
   questNames:
   - Rebuild Town Bridge
 --- !u!114 &131627610
@@ -446,7 +516,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  extraChildren: []
+  extraChildren:
+  - {fileID: 922845479}
 --- !u!114 &131627611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -480,8 +551,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 158911979}
   - 212: {fileID: 158911978}
-  - 114: {fileID: 158911977}
-  - 114: {fileID: 158911976}
   - 65: {fileID: 158911980}
   - 114: {fileID: 158911981}
   m_Layer: 0
@@ -491,29 +560,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &158911976
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 158911975}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98467677a7ed61c49966ecd145320eb2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &158911977
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 158911975}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15c61fdd49dc6b441b2b52fc581571df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  window: {fileID: 22401880, guid: 96321d8bde2d78e48b8629296ed29923, type: 2}
 --- !u!212 &158911978
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -532,7 +578,9 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -866,60 +914,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.28116643, y: .956987679, z: .0898425505}
   m_Center: {x: -.0162756443, y: .0738090575, z: .00242360542}
---- !u!1 &446319369
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 446319371}
-  - 212: {fileID: 446319370}
-  m_Layer: 0
-  m_Name: Oh my god
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!212 &446319370
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 446319369}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_ReflectionProbeUsage: 0
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d219338469f1fc84182416d78ac8ebdd, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
---- !u!4 &446319371
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 446319369}
-  m_LocalRotation: {x: -7.26306607e-05, y: -.999917567, z: .00658682827, w: .0110256644}
-  m_LocalPosition: {x: -75.0999985, y: -11.96, z: -.289999992}
-  m_LocalScale: {x: 2.36087155, y: 2.36087155, z: 2.36087155}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
 --- !u!224 &499972509 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 22403556, guid: 05f1de93a8f44c24aa71b789e6ac04e5,
@@ -1145,7 +1139,9 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -1467,7 +1463,9 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -1595,7 +1593,9 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -1693,7 +1693,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf6dfcd4d0dc56a40a5732f446c540e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: I guess I have the time...
+  Name: Sure
   dialogue:
   - "Great. We would normally have the wood to fix this up in a jiffy, but the caravan
     that normally brings our wood hasn\u2019t shown up yet. They were supposed to
@@ -1777,11 +1777,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf6dfcd4d0dc56a40a5732f446c540e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Story
+  Name: What did you want again?
   dialogue:
-  - Hey, there [player] I got myself into a bit of a pickle here
-  - I need some desperate help with this here bridge
-  - You see this bridge here got damaged in the storm last night
+  - My master is still out in the main town, so I, the apprentice, am the only one
+    qualified to build this bridge
+  - I want to show the world that I can be a master...
+  - But enough of that, this bridge here got damaged in the massive thunder storm
+    two nights ago
+  - and people need this bridge so they can head into town to get food and medicine
   skipButtons: 0
   prompt: 
   endFunct:
@@ -1848,7 +1851,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Uhh, what were they again?
   dialogue:
-  - It was just some planks, tools, and food. Try to pay better attention next time.
+  - It was just that wood, tools, and food. Hurry up the people need this
   skipButtons: 0
   prompt: 
   endFunct:
@@ -1914,13 +1917,14 @@ MonoBehaviour:
   Name: Choice
   dialogue: []
   skipButtons: 0
-  prompt: Will you help me fix it?
+  prompt: Will you help the village and recover a few supplies for me to fix it?
   endFunct:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  extraChildren: []
+  extraChildren:
+  - {fileID: 895071789}
 --- !u!114 &922845481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2174,7 +2178,9 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -2419,7 +2425,7 @@ MonoBehaviour:
   Name: Supplies?
   dialogue: []
   skipButtons: 0
-  prompt: Hey, did you get those supplies?
+  prompt: Hey, did you me those supplies yet?
   endFunct:
     m_PersistentCalls:
       m_Calls: []
@@ -2638,6 +2644,7 @@ GameObject:
   - 4: {fileID: 1645184111}
   - 114: {fileID: 1645184110}
   - 114: {fileID: 1645184109}
+  - 114: {fileID: 1645184112}
   m_Layer: 0
   m_Name: No
   m_TagString: Untagged
@@ -2656,14 +2663,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf6dfcd4d0dc56a40a5732f446c540e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: No Thanks
+  Name: Sorry, busy right now
   dialogue:
-  - Well I understand, but this bridge will take forever to fix if I dont get my supplies
+  - Ok, I'll just wait here for you to finish then
   skipButtons: 0
   prompt: 
   endFunct:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1645184112}
+        m_MethodName: Setstate
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: blank2
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   extraChildren: []
@@ -2691,6 +2709,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 922845479}
   m_RootOrder: 1
+--- !u!114 &1645184112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1645184108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df06eb29c99991e46a04ff4ea57e8338, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1753950308
 GameObject:
   m_ObjectHideFlags: 0
@@ -2725,7 +2754,9 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -2809,6 +2840,7 @@ GameObject:
   - 65: {fileID: 1916149960}
   - 114: {fileID: 1916149964}
   - 114: {fileID: 1916149963}
+  - 114: {fileID: 1916149965}
   m_Layer: 0
   m_Name: Carpenter_D^2
   m_TagString: Untagged
@@ -2875,7 +2907,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -56.7000008, y: -12.9200001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 50511287}
   m_Father: {fileID: 0}
   m_RootOrder: 8
 --- !u!114 &1916149963
@@ -2890,25 +2923,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Destructed dialogue
-  dialogue:
-  - Oh heya [player]
-  - Give me a hand real quick
-  skipButtons: 0
+  dialogue: []
+  skipButtons: 1
   prompt: 
   endFunct:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1916149959}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   extraChildren: []
@@ -2923,7 +2943,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c61fdd49dc6b441b2b52fc581571df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  window: {fileID: 22493682, guid: 718d25a39c5cfc645b8298fda23a89d1, type: 2}
+  window: {fileID: 0}
+--- !u!114 &1916149965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1916149959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5df913b475927ef43ad2b75f44e1005d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Quests:
+  - states:
+    - blank
+  questNames:
+  - Rebuild Town Bridge
 --- !u!1 &2009801757
 GameObject:
   m_ObjectHideFlags: 0

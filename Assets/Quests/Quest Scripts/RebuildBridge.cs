@@ -4,44 +4,61 @@ using System.Collections;
 public class RebuildBridge : MonoBehaviour, IQuest {
 	static string state = ""; 	//Store the Data to PlayerPrefs at some point
 	static bool firstEnter = false;
-	public string StatusUpdate(){ 	//Gets called any time the game wants to know what the status of the quest is, also when the quest is first started
-		if (state.Equals ("")) {
-			state = PlayerPrefs.GetString("RebuildBridge", "blank"); 	//if the file is just initialized, read the data from disk, default to "blank" if it's the first time
+	static bool[] items = new bool[]{ false, false, false};	//Planks, Tools, Cider
+	static RebuildBridge() {	//Executes at the beginning of the game
+		InventoryData.OnChange += InvUpdate;    //start listening to inventory updates
+	}
+
+	public string StatusUpdate(){   //Gets called any time the game wants to know what the status of the quest is, also when the quest is first started
+		if (state.Equals("")) {
+			state = PlayerPrefs.GetString("RebuildBridge", "blank");    //if the file is just initialized, read the data from disk, default to "blank" if it's the first time
+			items = PlayerPrefsX.GetBoolArray("RebuildBridgeItems", false, 3);
 		}
-		PlayerPrefs.SetString ("RebuildBridge", state); 	//Store the data again in case it changes
+		PlayerPrefs.SetString ("RebuildBridge", state);     //Store the data again in case it changes
+		PlayerPrefsX.SetBoolArray("RebuildBridgeItems", items);
+		PlayerPrefs.Save();
 		switch (state){ 	//switch between the set states
-		    case "blank": 	//blank state can be used as a startup function
-			    InventoryData.OnChange += InvUpdate; 	//start listening to inventory updates
+		    case "blank":
 			    break;
+			case "blank2":
+				break;
 		    case "Styoit":
-			    state = "Go to Forester";
+			    state = "Collected: ";
 			    NotificationManager.AddNotification("Quest Started", "Rebuild Town Bridge"); //Adding notification that the quest started
                 QuestDictionary.SetCurrent("Rebuild Town Bridge");
 			    break;
-		    case "Go to Forester":
-			    break;
+			case "Collected: ":
+				break;
 		    case "Solve the mystery of foresters wood":
 			    // Place for second quest that has to do with beavers
-			    break;
-			case "Get tools from carpenters house":
-				break;
-		    case "Bring wood back to carpenter":
-			    break;
-		    case "Bring tools back to carpenter":
 			    break;
 		    case "wait until midnight for bridge to be built":
 			    break;
 		    case "quest finished":
 			    state = "Finished";
 			    NotificationManager.AddNotification("Quest Complete", "Rebuild Town Bridge"); 	//adding notification that the quest is finished
-			    InventoryData.OnChange -= InvUpdate; 	//stop listening to inventory updates
 			    PlayerPrefs.Save(); 	//Writes all data changes to disk just in case
 			    break;
+		}
+		if (state.Equals("Collected: ")) {	//Create dynamic list of items
+			state += ("\nWood: " + items[0] + "\nTools: " + items[1] + "\nCider: " + items[2]);
 		}
 		return state; 	//Return a string stating the status of the quest
 	}
 	
-	void InvUpdate(){ 	//Function for inventory updates, setup above
+	static void InvUpdate(){    //Function for inventory updates, setup above
+		if (!state.Equals("Finished")) {
+			//Check for the wood, tools, and cider in the inventory, set the boolean values
+			if (InventoryData.HasItem(ItemDictionary.itemDict.GetItem("Planks"))) {
+				items[0] = true;
+			}
+			if (InventoryData.HasItem(ItemDictionary.itemDict.GetItem("Cider"))) {
+				items[1] = true;
+			}
+			if (InventoryData.HasItem(ItemDictionary.itemDict.GetItem("Tools"))) {
+				items[2] = true;
+			}
+		}
 
 	}
 	void PosUpdate(){
@@ -54,7 +71,6 @@ public class RebuildBridge : MonoBehaviour, IQuest {
 	}
 
 	public void Setstate(string state_set){
-	
 		state = state_set;
 		StatusUpdate();
 	}

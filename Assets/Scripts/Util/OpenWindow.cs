@@ -20,7 +20,7 @@ public class OpenWindow : MonoBehaviour {
 			if (window != null) {
 				menu.OpenCustomWindow (window);
 			} else {
-				Debug.LogError ("NullPointerException: No window object attached to the OpenWindow script");
+				Debug.LogError ("NullReferenceException: No window object attached to the OpenWindow script");
 			}
 		} else {
 			menu.CloseWindow();
