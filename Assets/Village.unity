@@ -185,7 +185,9 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -370,7 +372,9 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -832,7 +836,9 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -1378,22 +1384,6 @@ Prefab:
       propertyPath: m_Name
       value: A*
       objectReference: {fileID: 0}
-    - target: {fileID: 11403492, guid: 92cb7513c170d86459f6cb918e895508, type: 2}
-      propertyPath: astarData.dataString
-      value: UEsDBBQAAAgIAACYn+uKdpWt/AEAAN4DAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1Ustu2zAQ/JWCZ8WQVCmxdUvt2C2QNkGcomeaWlkLU6RAUvUj8L93ScmvAPXBhmdmH7PDD7busGTFB/vLZQesYON0UmVinEzSfFWKJL57eIh5DpnI41WWJ6Jix4hx24Jwb9yhZkUSMbS6AWdQPKq1pC5xxDqFlTbNU7mGqbbOsqLi0kLEjHa+TvmhO1ZMSLsPFQf6pt4ClAMzsJ/JTgnJmxbKJR5g0CRpHlRjL1C6hJ6LRwQLLSXaYZrbt97hsq3BAItYiZy29rO+RqwGXNeOFdlV0UtVWXBhvuH7GRoyHXqxb9rV1KHhdnN1vDxJj6dOP28pv1tldPN9GJPE1NTVKDZvfC+4def7XIOz84aJ977lcsNXEv7UoH7phdGdouyc6aiss5DOzk3OFqY1iM1J0282QIOya29OnY8m93F2n2Xjp7t43N99NOk/2fHoLe+mEpuVx7PL38cdUsRpAJZS+0P7ZMFQHj/IQYjchimE+c1+W3jn68u7GOA5GuuICJZ55/Qzqs3CYHlRntAZWveMDYZzUvTe3Up3hpRsTr8UkOjcVBsF5lLdguLS7V9pmrvN+BPzv4o5F073kQzM8Opv5QE8a+P4lnjV2yFWVNSVy9eeDIvQ+dQpM0UvgPz4C3xZGN76Z1cavl3godH2pEJV6aUwAOol1IZVjv8AUEsDBBQAAAgAAACYn+sef112MgAAADIAAAASACQAZ3JhcGgwX2VkaXRvci5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BeyJsb2NrZWQiOnRydWUsInNob3dFeHRyYSI6ZmFsc2UsInBpdm90IjoiQ2VudGVyIn1QSwMEFAAACAgAAJif6zXDWOR1AAAAgwAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQEdjLEOgyAUAP/lzZaAhaCuHdxM98YBeQ9lKBhEE9P03yvdbri7DxyUNh8DdHBnmkmoYE5mXTboxIW7x4te0NStk7YRba0mtILftOZGkbSKT1IJ62CsIJ8rDeZN/+Jp8uJ8QB9m1iePfbkWK0SkR9xDLhofvz9QSwECLQAUAAAICAAAmJ/rinaVrfwBAADeAwAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAIAAAAmJ/rHn9ddjIAAAAyAAAAEgAkAAAAAAAAAAAAAABJAgAAZ3JhcGgwX2VkaXRvci5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAAJif6zXDWOR1AAAAgwAAAAkAJAAAAAAAAAAAAAAAzwIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAwADABwBAACPAwAAAAA=
-      objectReference: {fileID: 0}
-    - target: {fileID: 11403492, guid: 92cb7513c170d86459f6cb918e895508, type: 2}
-      propertyPath: lastUniqueAreaIndex
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11403492, guid: 92cb7513c170d86459f6cb918e895508, type: 2}
-      propertyPath: scanOnStartup
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11403492, guid: 92cb7513c170d86459f6cb918e895508, type: 2}
-      propertyPath: heuristic
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 92cb7513c170d86459f6cb918e895508, type: 2}
   m_IsPrefabParent: 0
@@ -1705,7 +1695,9 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -2056,7 +2048,9 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -2187,7 +2181,9 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -2966,7 +2962,9 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -3368,11 +3366,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 427762, guid: f75af3a50f122be40816b77e2f3b1b27, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -7.9460001
+      value: -1.30999994
       objectReference: {fileID: 0}
     - target: {fileID: 427762, guid: f75af3a50f122be40816b77e2f3b1b27, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 5.19000006
+      value: .560000002
       objectReference: {fileID: 0}
     - target: {fileID: 427762, guid: f75af3a50f122be40816b77e2f3b1b27, type: 2}
       propertyPath: m_LocalPosition.z
@@ -3609,7 +3607,9 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
