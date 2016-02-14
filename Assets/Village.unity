@@ -1301,6 +1301,46 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.04285991, y: 1.12235582, z: .0572608486}
   m_Center: {x: .725766659, y: .0611796379, z: -.00573070068}
+--- !u!1 &372382481
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 372382482}
+  - 65: {fileID: 372382483}
+  m_Layer: 0
+  m_Name: Plug
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &372382482
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 372382481}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.74599981, y: -3.47300005, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 701523788}
+  m_RootOrder: 10
+--- !u!65 &372382483
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 372382481}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .708163917, y: .329586893, z: 1}
+  m_Center: {x: .145924091, y: .0136973858, z: 0}
 --- !u!1001 &388658128
 Prefab:
   m_ObjectHideFlags: 0
@@ -1343,6 +1383,22 @@ Prefab:
     - target: {fileID: 122998, guid: 92cb7513c170d86459f6cb918e895508, type: 2}
       propertyPath: m_Name
       value: A*
+      objectReference: {fileID: 0}
+    - target: {fileID: 11403492, guid: 92cb7513c170d86459f6cb918e895508, type: 2}
+      propertyPath: astarData.dataString
+      value: UEsDBBQAAAgIAACYn+uKdpWt/AEAAN4DAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1Ustu2zAQ/JWCZ8WQVCmxdUvt2C2QNkGcomeaWlkLU6RAUvUj8L93ScmvAPXBhmdmH7PDD7busGTFB/vLZQesYON0UmVinEzSfFWKJL57eIh5DpnI41WWJ6Jix4hx24Jwb9yhZkUSMbS6AWdQPKq1pC5xxDqFlTbNU7mGqbbOsqLi0kLEjHa+TvmhO1ZMSLsPFQf6pt4ClAMzsJ/JTgnJmxbKJR5g0CRpHlRjL1C6hJ6LRwQLLSXaYZrbt97hsq3BAItYiZy29rO+RqwGXNeOFdlV0UtVWXBhvuH7GRoyHXqxb9rV1KHhdnN1vDxJj6dOP28pv1tldPN9GJPE1NTVKDZvfC+4def7XIOz84aJ977lcsNXEv7UoH7phdGdouyc6aiss5DOzk3OFqY1iM1J0282QIOya29OnY8m93F2n2Xjp7t43N99NOk/2fHoLe+mEpuVx7PL38cdUsRpAJZS+0P7ZMFQHj/IQYjchimE+c1+W3jn68u7GOA5GuuICJZ55/Qzqs3CYHlRntAZWveMDYZzUvTe3Up3hpRsTr8UkOjcVBsF5lLdguLS7V9pmrvN+BPzv4o5F073kQzM8Opv5QE8a+P4lnjV2yFWVNSVy9eeDIvQ+dQpM0UvgPz4C3xZGN76Z1cavl3godH2pEJV6aUwAOol1IZVjv8AUEsDBBQAAAgAAACYn+sef112MgAAADIAAAASACQAZ3JhcGgwX2VkaXRvci5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BeyJsb2NrZWQiOnRydWUsInNob3dFeHRyYSI6ZmFsc2UsInBpdm90IjoiQ2VudGVyIn1QSwMEFAAACAgAAJif6zXDWOR1AAAAgwAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQEdjLEOgyAUAP/lzZaAhaCuHdxM98YBeQ9lKBhEE9P03yvdbri7DxyUNh8DdHBnmkmoYE5mXTboxIW7x4te0NStk7YRba0mtILftOZGkbSKT1IJ62CsIJ8rDeZN/+Jp8uJ8QB9m1iePfbkWK0SkR9xDLhofvz9QSwECLQAUAAAICAAAmJ/rinaVrfwBAADeAwAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAIAAAAmJ/rHn9ddjIAAAAyAAAAEgAkAAAAAAAAAAAAAABJAgAAZ3JhcGgwX2VkaXRvci5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAAJif6zXDWOR1AAAAgwAAAAkAJAAAAAAAAAAAAAAAzwIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAwADABwBAACPAwAAAAA=
+      objectReference: {fileID: 0}
+    - target: {fileID: 11403492, guid: 92cb7513c170d86459f6cb918e895508, type: 2}
+      propertyPath: lastUniqueAreaIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11403492, guid: 92cb7513c170d86459f6cb918e895508, type: 2}
+      propertyPath: scanOnStartup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11403492, guid: 92cb7513c170d86459f6cb918e895508, type: 2}
+      propertyPath: heuristic
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 92cb7513c170d86459f6cb918e895508, type: 2}
@@ -1684,6 +1740,7 @@ Transform:
   - {fileID: 316334590}
   - {fileID: 8540539}
   - {fileID: 1755436520}
+  - {fileID: 372382482}
   m_Father: {fileID: 0}
   m_RootOrder: 5
 --- !u!65 &701523789
@@ -1696,8 +1753,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: .462329119, y: 7.14812851, z: .200000003}
-  m_Center: {x: 5.76884079, y: .292317599, z: 0}
+  m_Size: {x: .462329119, y: 7.24712229, z: .200000003}
+  m_Center: {x: 5.76884079, y: .242822275, z: 0}
 --- !u!65 &701523790
 BoxCollider:
   m_ObjectHideFlags: 0
