@@ -235,7 +235,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2055188827}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!114 &20963036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -980,6 +980,7 @@ GameObject:
   - 4: {fileID: 241823910}
   - 114: {fileID: 241823913}
   - 114: {fileID: 241823912}
+  - 114: {fileID: 241823911}
   m_Layer: 0
   m_Name: Wood?
   m_TagString: Untagged
@@ -1001,6 +1002,22 @@ Transform:
   - {fileID: 85368832}
   m_Father: {fileID: 287981168}
   m_RootOrder: 0
+--- !u!114 &241823911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 241823909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5df913b475927ef43ad2b75f44e1005d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Quests:
+  - states:
+    - Collect...
+  questNames:
+  - Rebuild Town Bridge
 --- !u!114 &241823912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1906,11 +1923,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 460046, guid: c7d1a91debc092946a25e5ae198ea4ed, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -.600000024
+      value: 37.4000015
       objectReference: {fileID: 0}
     - target: {fileID: 460046, guid: c7d1a91debc092946a25e5ae198ea4ed, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -6.0999999
+      value: 9.39999962
       objectReference: {fileID: 0}
     - target: {fileID: 460046, guid: c7d1a91debc092946a25e5ae198ea4ed, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2296,7 +2313,7 @@ Transform:
   - {fileID: 1317327316}
   - {fileID: 937871781}
   m_Father: {fileID: 2055188827}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!114 &872722583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2312,9 +2329,16 @@ MonoBehaviour:
   - states:
     - Finished
     - Return to Desislav
-    - blank2
+    - false
+    - '!Finished'
+  - states:
+    - false
+    - false
+    - Collect...
+    - false
   questNames:
   - A mystery of Wooden Proportions
+  - Rebuild Town Bridge
 --- !u!114 &872722584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3996,8 +4020,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 287981168}
-  - {fileID: 20963035}
   - {fileID: 872722582}
+  - {fileID: 20963035}
   m_Father: {fileID: 0}
   m_RootOrder: 12
 --- !u!65 &2055188828
@@ -4064,7 +4088,7 @@ MonoBehaviour:
   Quests:
   - states:
     - blank
-    - '!Finished'
+    - blank2
   questNames:
   - A mystery of Wooden Proportions
 --- !u!114 &2055188831
