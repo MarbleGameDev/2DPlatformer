@@ -207,6 +207,69 @@ Transform:
   m_Children: []
   m_Father: {fileID: 706951686}
   m_RootOrder: 1
+--- !u!1 &20963034
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 20963035}
+  - 114: {fileID: 20963037}
+  - 114: {fileID: 20963036}
+  m_Layer: 0
+  m_Name: Beaver In Progress
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &20963035
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 20963034}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2055188827}
+  m_RootOrder: 1
+--- !u!114 &20963036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 20963034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf6dfcd4d0dc56a40a5732f446c540e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: In Progress
+  dialogue:
+  - Any update on the wood?
+  skipButtons: 0
+  prompt: 
+  endFunct:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  extraChildren: []
+--- !u!114 &20963037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 20963034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c61fdd49dc6b441b2b52fc581571df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  window: {fileID: 22493682, guid: 718d25a39c5cfc645b8298fda23a89d1, type: 2}
 --- !u!1 &50511284
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,6 +469,201 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: .159999996, y: .111456655, z: .200000003}
   m_Center: {x: 0, y: -.0242721569, z: 0}
+--- !u!1 &71163251
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 71163252}
+  - 114: {fileID: 71163254}
+  - 114: {fileID: 71163253}
+  m_Layer: 0
+  m_Name: I got Chu
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &71163252
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 71163251}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 163159251}
+  - {fileID: 2026603774}
+  m_Father: {fileID: 80625783}
+  m_RootOrder: 0
+--- !u!114 &71163253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 71163251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf6dfcd4d0dc56a40a5732f446c540e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: 
+  dialogue: []
+  skipButtons: 0
+  prompt: I just don't understand what's been happening to it
+  endFunct:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  extraChildren: []
+--- !u!114 &71163254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 71163251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c61fdd49dc6b441b2b52fc581571df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  window: {fileID: 22464180, guid: 2bef916241bc143458390d162165590a, type: 2}
+--- !u!1 &80625780
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 80625783}
+  - 114: {fileID: 80625782}
+  - 114: {fileID: 80625781}
+  m_Layer: 0
+  m_Name: I need Wood
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &80625781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 80625780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf6dfcd4d0dc56a40a5732f446c540e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: I need wood
+  dialogue:
+  - Well then my friend you have come to the right place. But alas you have come at  the
+    wrong time.
+  - For I have lost almost my entire supply as of the other nights storm night's storm
+  - Its very odd as my stock has also been disappearing regularly for the past few
+    nights
+  skipButtons: 0
+  prompt: 
+  endFunct:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  extraChildren: []
+--- !u!114 &80625782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 80625780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c61fdd49dc6b441b2b52fc581571df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  window: {fileID: 22493682, guid: 718d25a39c5cfc645b8298fda23a89d1, type: 2}
+--- !u!4 &80625783
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 80625780}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 71163252}
+  m_Father: {fileID: 241823910}
+  m_RootOrder: 0
+--- !u!1 &85368831
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 85368832}
+  - 114: {fileID: 85368834}
+  - 114: {fileID: 85368833}
+  m_Layer: 0
+  m_Name: Empty Shop
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &85368832
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 85368831}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 241823910}
+  m_RootOrder: 1
+--- !u!114 &85368833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 85368831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf6dfcd4d0dc56a40a5732f446c540e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Got anything for Sell?
+  dialogue:
+  - Sorry, I'm all out of anything useful right now
+  skipButtons: 0
+  prompt: 
+  endFunct:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  extraChildren: []
+--- !u!114 &85368834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 85368831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c61fdd49dc6b441b2b52fc581571df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  window: {fileID: 22493682, guid: 718d25a39c5cfc645b8298fda23a89d1, type: 2}
 --- !u!1 &131627606
 GameObject:
   m_ObjectHideFlags: 0
@@ -420,7 +678,7 @@ GameObject:
   - 114: {fileID: 131627609}
   - 114: {fileID: 131627608}
   m_Layer: 0
-  m_Name: Carpenter_D
+  m_Name: Dmitri_D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -623,6 +881,159 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2e33e44a9298b04395c83aa961dfbfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &163159250
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 163159251}
+  - 114: {fileID: 163159253}
+  - 114: {fileID: 163159252}
+  - 114: {fileID: 163159254}
+  m_Layer: 0
+  m_Name: Yes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &163159251
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 163159250}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 71163252}
+  m_RootOrder: 0
+--- !u!114 &163159252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 163159250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf6dfcd4d0dc56a40a5732f446c540e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: I will figure it out
+  dialogue:
+  - will you really?
+  - wowie. If you figure my problem out, I will give you the finest wood in all of
+    Aeronia free of charge
+  - thank you friend. But in the meantime I do have a few wares that you may desire
+  skipButtons: 0
+  prompt: 
+  endFunct:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 163159254}
+        m_MethodName: Setstate
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: stoiyt
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  extraChildren: []
+--- !u!114 &163159253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 163159250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c61fdd49dc6b441b2b52fc581571df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  window: {fileID: 22493682, guid: 718d25a39c5cfc645b8298fda23a89d1, type: 2}
+--- !u!114 &163159254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 163159250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a3a445b922a75f4dad28796cc9b5299, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &241823909
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 241823910}
+  - 114: {fileID: 241823913}
+  - 114: {fileID: 241823912}
+  m_Layer: 0
+  m_Name: Wood?
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &241823910
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 241823909}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 80625783}
+  - {fileID: 85368832}
+  m_Father: {fileID: 287981168}
+  m_RootOrder: 0
+--- !u!114 &241823912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 241823909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf6dfcd4d0dc56a40a5732f446c540e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Choice1
+  dialogue: []
+  skipButtons: 0
+  prompt: 
+  endFunct:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  extraChildren: []
+--- !u!114 &241823913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 241823909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c61fdd49dc6b441b2b52fc581571df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  window: {fileID: 22464180, guid: 2bef916241bc143458390d162165590a, type: 2}
 --- !u!1001 &252259226
 Prefab:
   m_ObjectHideFlags: 0
@@ -670,6 +1081,94 @@ Prefab:
     - {fileID: 11445376, guid: b2b3496db5ed138469918f6d0fcfc6b7, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: b2b3496db5ed138469918f6d0fcfc6b7, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &287981167
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 287981168}
+  - 114: {fileID: 287981170}
+  - 114: {fileID: 287981169}
+  - 114: {fileID: 287981171}
+  m_Layer: 0
+  m_Name: First Time
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &287981168
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 287981167}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 241823910}
+  m_Father: {fileID: 2055188827}
+  m_RootOrder: 0
+--- !u!114 &287981169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 287981167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf6dfcd4d0dc56a40a5732f446c540e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: First
+  dialogue:
+  - Why hello there [player]. Let me be the first to welcome you to my humble place
+    of business. Now what can I do for you.
+  skipButtons: 0
+  prompt: 
+  endFunct:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 287981171}
+        m_MethodName: Setstate
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: blank2
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  extraChildren: []
+--- !u!114 &287981170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 287981167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c61fdd49dc6b441b2b52fc581571df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  window: {fileID: 22493682, guid: 718d25a39c5cfc645b8298fda23a89d1, type: 2}
+--- !u!114 &287981171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 287981167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a3a445b922a75f4dad28796cc9b5299, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &316334586
 GameObject:
   m_ObjectHideFlags: 0
@@ -1353,11 +1852,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 460046, guid: c7d1a91debc092946a25e5ae198ea4ed, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -40.0099983
+      value: 40.1199989
       objectReference: {fileID: 0}
     - target: {fileID: 460046, guid: c7d1a91debc092946a25e5ae198ea4ed, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -6.25
+      value: 13.46
       objectReference: {fileID: 0}
     - target: {fileID: 460046, guid: c7d1a91debc092946a25e5ae198ea4ed, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1657,6 +2156,91 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: -2.70806599, y: .441923708, z: -3.99999954e-05}
   m_Center: {x: -.00135765073, y: .979039311, z: 0}
+--- !u!1 &872722581
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 872722582}
+  - 114: {fileID: 872722585}
+  - 114: {fileID: 872722584}
+  - 114: {fileID: 872722583}
+  m_Layer: 0
+  m_Name: Not First
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &872722582
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 872722581}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1317327316}
+  - {fileID: 937871781}
+  m_Father: {fileID: 2055188827}
+  m_RootOrder: 2
+--- !u!114 &872722583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 872722581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5df913b475927ef43ad2b75f44e1005d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Quests:
+  - states:
+    - Finished
+    - Return to Desislav
+    - blank2
+  questNames:
+  - A mystery of Wooden Proportions
+--- !u!114 &872722584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 872722581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf6dfcd4d0dc56a40a5732f446c540e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: 
+  dialogue: []
+  skipButtons: 0
+  prompt: 
+  endFunct:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  extraChildren:
+  - {fileID: 80625783}
+  - {fileID: 85368832}
+--- !u!114 &872722585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 872722581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c61fdd49dc6b441b2b52fc581571df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  window: {fileID: 22464180, guid: 2bef916241bc143458390d162165590a, type: 2}
 --- !u!1 &874679516
 GameObject:
   m_ObjectHideFlags: 0
@@ -2019,6 +2603,81 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.04285991, y: 1.12235582, z: .0572608486}
   m_Center: {x: .725766659, y: .0611796379, z: -.00573070068}
+--- !u!1 &937871780
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 937871781}
+  - 114: {fileID: 937871783}
+  - 114: {fileID: 937871782}
+  m_Layer: 0
+  m_Name: Beavers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &937871781
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 937871780}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 872722582}
+  m_RootOrder: 1
+--- !u!114 &937871782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 937871780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf6dfcd4d0dc56a40a5732f446c540e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: I found your problem
+  dialogue:
+  - you found out that someone's been stealing all of my precious, glorious wood?
+  - Tell me who the monster is so I can destroy them and take my wares back
+  - '[player]: It was a family of beavers that had lost their home in the previous
+    storm'
+  - oh
+  - well, I uh...
+  - Guess I better talk to the beavers
+  - Hello beavers! I am the man who you have been stealing from
+  - '*chitter chitter, squaltch squeal*'
+  - I understand your predicament and I feel as if I have been heartless to your family's
+    problems
+  - '*chitter, chitter*'
+  - I want you and your family to live inside of my home as I can be very lonely sometimes
+  skipButtons: 0
+  prompt: Beavers
+  endFunct:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  extraChildren: []
+--- !u!114 &937871783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 937871780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c61fdd49dc6b441b2b52fc581571df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  window: {fileID: 22493682, guid: 718d25a39c5cfc645b8298fda23a89d1, type: 2}
 --- !u!1 &1022084188
 GameObject:
   m_ObjectHideFlags: 0
@@ -2526,6 +3185,69 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.28116643, y: .956987679, z: .0898425505}
   m_Center: {x: -.0162756443, y: .0738090575, z: .00242360542}
+--- !u!1 &1317327315
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1317327316}
+  - 114: {fileID: 1317327318}
+  - 114: {fileID: 1317327317}
+  m_Layer: 0
+  m_Name: Shop
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1317327316
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1317327315}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 872722582}
+  m_RootOrder: 0
+--- !u!114 &1317327317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1317327315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf6dfcd4d0dc56a40a5732f446c540e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Shop
+  dialogue:
+  - Sorry, all out of stock
+  skipButtons: 0
+  prompt: 
+  endFunct:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  extraChildren: []
+--- !u!114 &1317327318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1317327315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c61fdd49dc6b441b2b52fc581571df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  window: {fileID: 22493682, guid: 718d25a39c5cfc645b8298fda23a89d1, type: 2}
 --- !u!1001 &1552440676
 Prefab:
   m_ObjectHideFlags: 0
@@ -2745,6 +3467,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 1753950310}
   - 212: {fileID: 1753950309}
+  - 114: {fileID: 1753950312}
+  - 65: {fileID: 1753950311}
   m_Layer: 0
   m_Name: Forrester
   m_TagString: Untagged
@@ -2792,6 +3516,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10
+--- !u!65 &1753950311
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1753950308}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .210221395, y: .160128698, z: .200000003}
+  m_Center: {x: -.00692791585, y: -.0799356997, z: 0}
+--- !u!114 &1753950312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1753950308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2e33e44a9298b04395c83aa961dfbfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1755436516 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 171834, guid: fdf1a71b0af70cc46a7431ab5f585fc1, type: 2}
@@ -2858,7 +3605,7 @@ GameObject:
   - 114: {fileID: 1916149963}
   - 114: {fileID: 1916149965}
   m_Layer: 0
-  m_Name: Carpenter_D^2
+  m_Name: Dmitri_D^2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3042,6 +3789,204 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.28116643, y: .956987679, z: .0898425505}
   m_Center: {x: -.0162756443, y: .0738090575, z: .00242360542}
+--- !u!1 &2026603773
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2026603774}
+  - 114: {fileID: 2026603776}
+  - 114: {fileID: 2026603775}
+  m_Layer: 0
+  m_Name: Buy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2026603774
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2026603773}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 71163252}
+  m_RootOrder: 1
+--- !u!114 &2026603775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2026603773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf6dfcd4d0dc56a40a5732f446c540e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Can I just buy something?
+  dialogue:
+  - "As I just said, I\u2019ve got no wood at the moment"
+  skipButtons: 0
+  prompt: 
+  endFunct:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  extraChildren: []
+--- !u!114 &2026603776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2026603773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c61fdd49dc6b441b2b52fc581571df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  window: {fileID: 22493682, guid: 718d25a39c5cfc645b8298fda23a89d1, type: 2}
+--- !u!1 &2055188826
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2055188827}
+  - 114: {fileID: 2055188832}
+  - 114: {fileID: 2055188831}
+  - 114: {fileID: 2055188830}
+  - 114: {fileID: 2055188829}
+  - 65: {fileID: 2055188828}
+  m_Layer: 0
+  m_Name: Desislav_D
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2055188827
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2055188826}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 51.4667091, y: 14.1354799, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 287981168}
+  - {fileID: 20963035}
+  - {fileID: 872722582}
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+--- !u!65 &2055188828
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2055188826}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8.48781204, y: 6.59806204, z: 1}
+  m_Center: {x: -.31073761, y: -.607028961, z: 0}
+--- !u!114 &2055188829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2055188826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2639bbeaba77114ba92edd383452cd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onInteract:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2055188831}
+        m_MethodName: OpenDialogue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  inArea: 0
+--- !u!114 &2055188830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2055188826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5df913b475927ef43ad2b75f44e1005d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Quests:
+  - states:
+    - blank
+    - '!Finished'
+  questNames:
+  - A mystery of Wooden Proportions
+--- !u!114 &2055188831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2055188826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf6dfcd4d0dc56a40a5732f446c540e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Open
+  dialogue: []
+  skipButtons: 1
+  prompt: 
+  endFunct:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  extraChildren: []
+--- !u!114 &2055188832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2055188826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c61fdd49dc6b441b2b52fc581571df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  window: {fileID: 22464180, guid: 2bef916241bc143458390d162165590a, type: 2}
 --- !u!224 &2127387310 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 22445642, guid: 885a4de5cdc891340a390ff156452647,

@@ -2,7 +2,11 @@
 using System.Collections;
 
 public class Beavers : MonoBehaviour, IQuest {
-	static string state = ""; 	
+	public static string state = "";
+
+	static Beavers() {    //Executes at the beginning of the game
+		InventoryData.OnChange += InvUpdate;    //start listening to inventory updates
+	}
 	public string StatusUpdate(){ 
 		if (state.Equals ("")) {
 			state = PlayerPrefs.GetString("Beavers", "blank");
@@ -10,8 +14,11 @@ public class Beavers : MonoBehaviour, IQuest {
 		PlayerPrefs.SetString ("Beavers", state); 
 		switch (state){ 
 		    case "blank": 
-			    InventoryData.OnChange += InvUpdate;
                 break;
+			case "blank2":
+				break;
+			case "bridge":
+				break;
             case "stoiyt":
                 NotificationManager.AddNotification("Quest Started", "A mystery with wooden proportions");
                 QuestDictionary.SetCurrent("Beavers");
@@ -22,13 +29,15 @@ public class Beavers : MonoBehaviour, IQuest {
 
 			    //stuff happens here... WIP
 
-		    case "Return to forester":
+		    case "Return to Desislav":
 			    break;
+			case "Finished":
+				break;
 		}
 		return state; 
 	}
 	
-	void InvUpdate(){ 
+	static void InvUpdate(){ 
 	
 	
 	}
