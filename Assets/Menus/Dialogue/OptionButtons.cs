@@ -5,12 +5,15 @@ using System.Collections.Generic;
 
 public class OptionButtons : MonoBehaviour {
 	public Button optionButton = null;
+	public Transform promptObj = null;
 	public string prompt = null;
 	public string[] optionNames = null;
 	public List<IDialogue> nextDialogue = new List<IDialogue> ();
 
 	public void Click(){
-        GetComponent<Text>().text = prompt;
+		Transform prmt = Instantiate(promptObj);
+		prmt.transform.SetParent(this.gameObject.transform, false);
+		prmt.GetComponent<Text>().text = prompt + "\n";
 		int i = 0;
 		foreach (string str in optionNames) {
 			Button btn = Instantiate(optionButton);

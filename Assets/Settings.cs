@@ -9,6 +9,6 @@ public class Settings : MonoBehaviour { 	//Still need to work on writing changes
 
 	public static bool debug = true;
 	public static bool noclip = false;
-
+	public static float textTypeSpeed = .012f;
 	public static int saveInterval = 5;
 }

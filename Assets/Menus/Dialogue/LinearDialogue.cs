@@ -9,11 +9,27 @@ public class LinearDialogue : MonoBehaviour {
     public UnityEvent endFunct;
     public IDialogue nextDialogue;
     Text txt;
+	bool toDisplay = false;
     MenuManager menu;
+	string setText = "";
     void Awake() {
         menu = GameObject.Find("Main Canvas").GetComponent<MenuManager>();
         txt = GetComponent<Text>();
+		InvokeRepeating("DisplayText", .15f, Settings.textTypeSpeed);
+		
     }
+
+	void DisplayText() {
+		if (toDisplay) {
+			if (txt != null) {
+				if (txt.text.Length < setText.Length) {
+					txt.text += setText.Substring(txt.text.Length, 1);
+				} else {
+					toDisplay = false;
+				}
+			}
+		}
+	}
 
     void Update()
     {
@@ -28,11 +44,14 @@ public class LinearDialogue : MonoBehaviour {
         {
             if (txt != null)
             {
-				txt.text = dialogue[dialogueNum].Replace("[player]", SaveData.playerName);
+				txt.text = "";
+				setText = dialogue[dialogueNum].Replace("[player]", SaveData.playerName);
                 dialogueNum++;
+				toDisplay = true;
             }
         }
         else {
+			CancelInvoke("DisplayText");
             menu.CloseWindow();
             if (endFunct != null)
             {

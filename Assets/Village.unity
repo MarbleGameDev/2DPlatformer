@@ -514,7 +514,7 @@ MonoBehaviour:
   Name: 
   dialogue: []
   skipButtons: 0
-  prompt: I just don't understand what's been happening to it
+  prompt: ' '
   endFunct:
     m_PersistentCalls:
       m_Calls: []
@@ -563,11 +563,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: I need wood
   dialogue:
-  - Well then my friend you have come to the right place. But alas you have come at  the
-    wrong time.
-  - For I have lost almost my entire supply as of the other nights storm night's storm
+  - Well then my friend you have come to the right place. But alas, you have come
+    at the wrong time.
+  - For I have lost almost my entire supply as of the other nights storm
   - Its very odd as my stock has also been disappearing regularly for the past few
     nights
+  - I just don't understand what's been happening to it
   skipButtons: 0
   prompt: 
   endFunct:
