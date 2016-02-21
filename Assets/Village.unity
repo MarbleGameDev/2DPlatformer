@@ -2134,6 +2134,10 @@ Prefab:
       propertyPath: m_Center.x
       value: -.0003666103
       objectReference: {fileID: 0}
+    - target: {fileID: 5467828, guid: c7d1a91debc092946a25e5ae198ea4ed, type: 2}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c7d1a91debc092946a25e5ae198ea4ed, type: 2}
   m_IsPrefabParent: 0
