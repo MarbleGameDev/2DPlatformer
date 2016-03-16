@@ -14,15 +14,15 @@ public class InputManager : MonoBehaviour {
 	}
 
 	public static void KeyReset(){
-		SaveData.Left = "a";
-		SaveData.Right = "d";
-		SaveData.Up = "w";
-		SaveData.Down = "s";
-		SaveData.Inventory = "tab";
-		SaveData.Interact = "e";
-		SaveData.Skip = "space";
-		SaveData.Minimap = "left shift";
-		SaveData.StoreData ();
+		JsonFile.save.Controls.Left = "a";
+		JsonFile.save.Controls.Right = "d";
+		JsonFile.save.Controls.Up = "w";
+		JsonFile.save.Controls.Down = "s";
+		JsonFile.save.Controls.Inventory = "tab";
+		JsonFile.save.Controls.Interact = "e";
+		JsonFile.save.Controls.Skip = "space";
+		JsonFile.save.Controls.Minimap = "left shift";
+		JsonFile.WriteData();
 	}
 
 	public void InspectorReset(){
@@ -33,73 +33,73 @@ public class InputManager : MonoBehaviour {
 		switch (name) {
 		case "Left":
 		case "left":
-			SaveData.Left = key;
+				JsonFile.save.Controls.Left = key;
 			break;
 		case "Right":
 		case "right":
-			SaveData.Right = key;
+				JsonFile.save.Controls.Right = key;
 			break;
 		case "Up":
 		case "up":
-			SaveData.Up = key;
+				JsonFile.save.Controls.Up = key;
 			break;
 		case "Down":
 		case "down":
-			SaveData.Down = key;
+				JsonFile.save.Controls.Down = key;
 			break;
 		case "Interact":
 		case "interact":
-			SaveData.Interact = key;
+				JsonFile.save.Controls.Interact = key;
 			break;
 		case "Inventory":
 		case "inventory":
-			SaveData.Inventory = key;
+				JsonFile.save.Controls.Inventory = key;
 			break;
 		case "Skip":
 		case "skip":
-			SaveData.Skip = key;
+				JsonFile.save.Controls.Skip = key;
 			break;
 		case "Minimap":
 		case "minimap":
-			SaveData.Minimap = key;
+				JsonFile.save.Controls.Minimap = key;
 			break;
 		}
-		SaveData.StoreData ();
+		SaveData.queueSave = true;
 	}
 	public static string GetKey(string name){
 		string key = "f12";
 		switch (name) {
 		case "Left":
 		case "left":
-			key = SaveData.Left;
+			key = JsonFile.save.Controls.Left;
 			break;
 		case "Right":
 		case "right":
-			key = SaveData.Right;
+			key = JsonFile.save.Controls.Right;
 			break;
 		case "Up":
 		case "up":
-			key = SaveData.Up;
+			key = JsonFile.save.Controls.Up;
 			break;
 		case "Down":
 		case "down":
-			key = SaveData.Down;
+			key = JsonFile.save.Controls.Down;
 			break;
 		case "Interact":
 		case "interact":
-			key = SaveData.Interact;
+			key = JsonFile.save.Controls.Interact;
 			break;
 		case "Inventory":
 		case "inventory":
-			key = SaveData.Inventory;
+			key = JsonFile.save.Controls.Inventory;
 			break;
 		case "Skip":
 		case "skip":
-			key = SaveData.Skip;
+			key = JsonFile.save.Controls.Skip;
 			break;
 		case "Minimap":
 		case "minimap":
-			key = SaveData.Minimap;
+			key = JsonFile.save.Controls.Minimap;
 			break;
 		}
 		if (key == null || key.Equals ("") || key.Equals(" ")) {

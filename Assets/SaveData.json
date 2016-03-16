@@ -1,0 +1,32 @@
+{
+  "Controls": {
+    "Left": "a",
+    "Right": "d",
+    "Up": "w",
+    "Down": "s",
+    "Interact": "e",
+    "Inventory": "tab",
+    "Skip": "space",
+    "Minimap": "left shift"
+  },
+  "GameData": {
+    "gameHours": 12,
+    "gameDays": 0
+  },
+  "PlayerData": {
+    "EquippedItem": 1,
+    "playerName": "Joshabar",
+    "currentQuest": "",
+    "inventoryItems": [
+      "AAEAAAD/////AQAAAAAAAAAMAgAAAA9Bc3NlbWJseS1DU2hhcnAFAQAAAAVEaWFyeQEAAAALZGVzY3JpcHRpb24BAgAAAAYDAAAAFUEgY29sbGVjaW9uIG9mIG5vdGVzLgs=",
+      "AAEAAAD/////AQAAAAAAAAAMAgAAAA9Bc3NlbWJseS1DU2hhcnAFAQAAAAVTd29yZAcAAAADaWRlC2luZm9ybWF0aW9uBG5hbWULZGVzY3JpcHRpb24Lc3dvcmREYW1hZ2UPc3dvcmRTd2luZ1NwZWVkCnN3b3JkUmFuZ2UBBgEBAAAACwsLAgAAAAYDAAAAIEVuZ2xpc2gtNTZFOTcxMTktMTA4OTg2MC04NzVBNThCCQQAAAAGBQAAAAVTd29yZAYGAAAADEl0J3MgcG9pbnR5LgAAgD8AACBBAADAPxEEAAAABAAAAA0ECw=="
+    ],
+    "inventoryCount": [
+      1,
+      1
+    ],
+    "inventoryLength": 2
+  },
+  "InventoryData": {},
+  "QuestData": {}
+}

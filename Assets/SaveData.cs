@@ -1,22 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 public class SaveData : MonoBehaviour {
+
+	public static MemoryStream memoryStream = new MemoryStream();
+	public static BinaryFormatter bf = new BinaryFormatter();
+
 	public delegate void resetData();
 	public static event resetData ResetInv = null;
+	public static bool queueSave;
 
-	public static int gameHours, gameDays;
-	
-	public static int EquippedItem = -1;
-
-	public static string currentQuest = "";
-
-	public static string playerName = "Joshabar";
-
-	public static string Left, Right, Up, Down, Interact, Inventory, Skip, Minimap;		//Key bindings
 	// Use this for initialization
 	void Awake () {
-		GetData ();
 		InventoryData.Awake();
 	}
 
@@ -24,53 +21,41 @@ public class SaveData : MonoBehaviour {
 		if (ResetInv != null) {
 			ResetInv ();
 		}
-		StoreData ();
+		JsonFile.WriteData();
 	}
 	public static void ResetQuestData(){
         QuestDictionary.Reset();
-		StoreData ();
+		JsonFile.WriteData();
 	}
     public static void ResetEverything() {
-        PlayerPrefs.DeleteAll();
-        PlayerPrefs.Save();
+		JsonFile.save = new Save();
+		JsonFile.WriteData();
     }
 
 	void Start(){
-		InvokeRepeating ("Store", 1f, (float)(Settings.saveInterval * 60));
+		InvokeRepeating ("Store", 10f, (float)(Settings.saveInterval * 60));
+		InvokeRepeating("Store1", 5f, 10f);
 	}
 
 	void Store(){
-		StoreData ();
+		JsonFile.WriteData();
+	}
+	void Store1() {
+		if (queueSave) {
+			JsonFile.WriteData();
+		}
 	}
 
-	public static void StoreData(){
-		PlayerPrefs.SetInt ("gameDays", gameDays);
-		PlayerPrefs.SetInt ("gameHours", gameHours);
-		PlayerPrefs.SetInt ("equippedItem", EquippedItem);
-		PlayerPrefs.SetString ("currentQuest", currentQuest);
-		PlayerPrefs.SetString ("Left", Left);
-		PlayerPrefs.SetString ("Right", Right);
-		PlayerPrefs.SetString ("Up", Up);
-		PlayerPrefs.SetString ("Down", Down);
-		PlayerPrefs.SetString ("Interact", Interact);
-		PlayerPrefs.SetString ("Inventory", Inventory);
-		PlayerPrefs.SetString ("Skip", Skip);
-		PlayerPrefs.SetString ("Minimap", Minimap);
-		PlayerPrefs.Save ();
+	public static string SerializeObject(object serializableObject) {
+		memoryStream = new MemoryStream();
+		bf.Serialize(memoryStream, serializableObject);
+		string tmp = System.Convert.ToBase64String(memoryStream.ToArray());
+		return tmp;
 	}
-
-	public static void GetData(){
-		gameHours = PlayerPrefs.GetInt ("gameHours", 8);
-		gameDays = PlayerPrefs.GetInt ("gameDays", 0);
-		EquippedItem = PlayerPrefs.GetInt ("equippedItem", -1);
-		currentQuest = PlayerPrefs.GetString ("currentQuest");
-		Left = PlayerPrefs.GetString ("Left", "a");
-		Right = PlayerPrefs.GetString ("Right", "d");
-		Up = PlayerPrefs.GetString ("Up", "w");
-		Down = PlayerPrefs.GetString ("Down", "s");
-		Interact = PlayerPrefs.GetString ("Interact", "e");
-		Inventory = PlayerPrefs.GetString ("Inventory", "tab");
-		Skip = PlayerPrefs.GetString ("Skip", "space");
-		Minimap = PlayerPrefs.GetString("Minimap", "left shift");
+	public static object DeSerializeObject(string key) {
+		if (key == string.Empty)
+			return null;
+		memoryStream = new MemoryStream(System.Convert.FromBase64String(key));
+		return bf.Deserialize(memoryStream);
 	}
 }

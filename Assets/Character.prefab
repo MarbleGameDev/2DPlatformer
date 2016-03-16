@@ -29,8 +29,9 @@ GameObject:
   - 114: {fileID: 11417640}
   - 65: {fileID: 6518694}
   - 54: {fileID: 5467828}
+  - 114: {fileID: 11406344}
   m_Layer: 10
-  m_Name: character without armor
+  m_Name: Character
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,7 +94,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 129158}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -40.1529999, y: 20.1100006, z: -.00100000005}
+  m_LocalPosition: {x: 37.4000015, y: 9.39999962, z: -.00100000005}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 463674}
@@ -120,7 +121,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 104808}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -.0869999975, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 460046}
@@ -205,7 +206,7 @@ Rigidbody:
   m_AngularDrag: 0
   m_UseGravity: 0
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 1
 --- !u!65 &6518694
@@ -218,8 +219,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: .143795773, y: .168108448, z: .200000003}
-  m_Center: {x: .00154762273, y: -.0709457397, z: 0}
+  m_Size: {x: .140129969, y: .161135867, z: .200000003}
+  m_Center: {x: -.0003666103, y: -.0801744983, z: 0}
 --- !u!81 &8169650
 AudioListener:
   m_ObjectHideFlags: 1
@@ -258,6 +259,38 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11406344
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 129158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 199
+    i1: 209
+    i2: 169
+    i3: 29
+    i4: 235
+    i5: 192
+    i6: 146
+    i7: 148
+    i8: 106
+    i9: 37
+    i10: 229
+    i11: 174
+    i12: 25
+    i13: 142
+    i14: 164
+    i15: 237
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 1
 --- !u!114 &11417640
 MonoBehaviour:
   m_ObjectHideFlags: 1

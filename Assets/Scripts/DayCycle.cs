@@ -11,8 +11,8 @@ public class DayCycle : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		InvokeRepeating ("TimeUpdate", 0f, 1f);
-		days = SaveData.gameDays;
-		hours = SaveData.gameHours;
+		days = JsonFile.save.GameData.gameDays;
+		hours = JsonFile.save.GameData.gameHours;
 	}
 
 	void TimeUpdate () { 	//Execute every second
@@ -20,14 +20,14 @@ public class DayCycle : MonoBehaviour {
 		if (minutes >= hourLength) {
 			hours++;
 			minutes = 0;
-			SaveData.gameHours = hours;
-			SaveData.StoreData();
+			JsonFile.save.GameData.gameHours = hours;
+			SaveData.queueSave = true;
 		}
 		if (hours >= dayLength) {
 			days++;
 			hours = 0;
-			SaveData.gameDays = days;
-			SaveData.StoreData();
+			JsonFile.save.GameData.gameDays = days;
+			SaveData.queueSave = true;
 		}
 	}
 }

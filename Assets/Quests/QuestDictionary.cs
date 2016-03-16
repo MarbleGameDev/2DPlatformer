@@ -15,8 +15,8 @@ public class QuestDictionary : MonoBehaviour {
 	}
 
 	public static void SetCurrent(string name){
-		SaveData.currentQuest = name;
-		SaveData.StoreData ();
+		JsonFile.save.PlayerData.currentQuest = name;
+		SaveData.queueSave = true;
 		GetUpdate (name);
 	}
 
@@ -25,7 +25,7 @@ public class QuestDictionary : MonoBehaviour {
 	}
 
 	public static void Reset(){
-		SaveData.currentQuest = "";
+		JsonFile.save.PlayerData.currentQuest = "";
         foreach (KeyValuePair<string, Func<IQuest>> quest in Quests) {
             (Quests[quest.Key])().Reset();
         }

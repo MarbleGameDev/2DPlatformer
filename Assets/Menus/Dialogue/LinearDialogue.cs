@@ -45,7 +45,7 @@ public class LinearDialogue : MonoBehaviour {
             if (txt != null)
             {
 				txt.text = "";
-				setText = dialogue[dialogueNum].Replace("[player]", SaveData.playerName);
+				setText = dialogue[dialogueNum].Replace("[player]", JsonFile.save.PlayerData.playerName);
                 dialogueNum++;
 				toDisplay = true;
             }

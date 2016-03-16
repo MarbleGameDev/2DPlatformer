@@ -61,8 +61,10 @@ public class MobAI : MonoBehaviour
   }
 
 	public void SetupPath(){
-		seeker.StartPath( transform.position, target.transform.position, OnPathComplete );
-        Debug.LogWarning("");   //The code doesn't work without this...
+		if (target != null) {
+			seeker.StartPath(transform.position, target.transform.position, OnPathComplete);
+			Debug.LogWarning("");   //The code doesn't work without this...
+		}
 	}
 	
 	public void FixedUpdate (){

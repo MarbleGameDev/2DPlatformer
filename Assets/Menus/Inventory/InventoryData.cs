@@ -19,15 +19,15 @@ public class InventoryData : MonoBehaviour {
                     if (e is IWeapon) {
                         if (((IWeapon)e).ID.Equals(((IWeapon)obj).ID)) {
                             equippedItem = items.IndexOf(e);
-                            SaveData.EquippedItem = equippedItem;
-                            SaveData.StoreData();
+                            JsonFile.save.PlayerData.EquippedItem = equippedItem;
+							SaveData.queueSave = true;
                         }
                     }
                 } else {
                     if (e.ToString().Equals(obj.ToString())) {
                         equippedItem = items.IndexOf(e);
-                        SaveData.EquippedItem = equippedItem;
-                        SaveData.StoreData();
+                        JsonFile.save.PlayerData.EquippedItem = equippedItem;
+						SaveData.queueSave = true;
                     }
                 }
             }
@@ -137,38 +137,43 @@ public class InventoryData : MonoBehaviour {
 		if (OnChange != null)
 			OnChange();
 		equippedItem = -1;
-		SaveData.EquippedItem = equippedItem;
-		SaveData.StoreData();
+		JsonFile.save.PlayerData.EquippedItem = equippedItem;
+		SaveData.queueSave = true;
 	}
 
 	public static void SaveInventory(){
 		if (items.Count > 0) {
 			int y = 0;
 			int[] count = new int[itemCount.Count];
+			JsonFile.save.PlayerData.inventoryItems.Clear();
 			foreach (object e in items) {
-				PlayerPrefsSerializer.Save("PlayerInventory" + y, e);
+				JsonFile.save.PlayerData.inventoryItems.Insert(y, SaveData.SerializeObject(e));
 				count[y] = itemCount[e];
 				y++;
 			}
-			PlayerPrefsX.SetIntArray("PlayerInventoryCount", count);
-			PlayerPrefs.SetInt("PlayerInventoryLength", items.Count);
-			PlayerPrefs.Save();
+			JsonFile.save.PlayerData.inventoryCount = count;
+			JsonFile.save.PlayerData.inventoryLength = items.Count;
+			JsonFile.save.PlayerData.EquippedItem = equippedItem;
+			JsonFile.WriteData();
 		} else {
-			PlayerPrefs.SetInt("PlayerInventoryLength", 0);
-			PlayerPrefs.Save();
+			JsonFile.save.PlayerData.inventoryLength = 0;
+			JsonFile.WriteData();
 		}
 	}
     public static void GetInventory() {
         items.Clear();
         itemCount.Clear();
-        int invLength = PlayerPrefs.GetInt("PlayerInventoryLength", 0);
-        var count = PlayerPrefsX.GetIntArray("PlayerInventoryCount", 0, 0);
+		equippedItem = JsonFile.save.PlayerData.EquippedItem;
+		int invLength = JsonFile.save.PlayerData.inventoryLength;
+		int[] count = JsonFile.save.PlayerData.inventoryCount;
         if (invLength > 0 && count.Length > 0) {
-            for (int i = 0; i < invLength; i++) {
-                AddObject(PlayerPrefsSerializer.Load("PlayerInventory" + i), count[i]);
+			int i = 0;
+			object[] invItems = JsonFile.save.PlayerData.inventoryItems.ToArray();
+            foreach (object itm in invItems) {
+                AddObject(SaveData.DeSerializeObject((string)itm), count[i]);
             }
         }
-        equippedItem = SaveData.EquippedItem;
+		
     }
 
     private static void AddObject(object obj, int number) {
@@ -212,7 +217,6 @@ public class InventoryData : MonoBehaviour {
 			if (OnChange != null)
 				OnChange ();
 		}
-		SaveInventory ();
 	}
 
 	public static bool RemoveItem (object name, int number){

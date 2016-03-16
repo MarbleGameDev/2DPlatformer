@@ -45,7 +45,7 @@ public class InventoryManager : MonoBehaviour {
                 newItem.name = entry.ToString() + "1";
                 newItem.GetComponent<ItemExecution>().item = entry;
             }
-        questStatus.text = SaveData.currentQuest + ((!SaveData.currentQuest.Equals("")) ? (": \n\n") : ("")) + QuestDictionary.GetUpdate(SaveData.currentQuest);
+        questStatus.text = JsonFile.save.PlayerData.currentQuest + ((!JsonFile.save.PlayerData.currentQuest.Equals("")) ? (": \n\n") : ("")) + QuestDictionary.GetUpdate(JsonFile.save.PlayerData.currentQuest);
         }
 	}
 }

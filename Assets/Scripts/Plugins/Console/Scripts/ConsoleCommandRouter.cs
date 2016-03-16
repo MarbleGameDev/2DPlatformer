@@ -50,8 +50,8 @@ public class ConsoleCommandRouter : MonoBehaviour {
 		}
 		DayCycle.minutes = double.Parse (minutes);
 		DayCycle.hours = int.Parse (hours);
-		SaveData.gameHours = int.Parse (hours);
-		SaveData.StoreData ();
+		JsonFile.save.GameData.gameHours = int.Parse (hours);
+		SaveData.queueSave = true;
 		return "Time Set";
 	}
 
@@ -72,7 +72,7 @@ public class ConsoleCommandRouter : MonoBehaviour {
 	}
 
 	public string savegame (params string[] args){
-		SaveData.StoreData ();
+		JsonFile.WriteData();
 		return "Game Saved";
 	}
 
