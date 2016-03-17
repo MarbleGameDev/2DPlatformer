@@ -28,6 +28,5 @@ public class JsonFile : MonoBehaviour {
 		string jsonString;
 		jsonString = File.ReadAllText(Application.dataPath + "/SaveData.json");
 		save = JsonConvert.DeserializeObject<Save>(jsonString);
-		Debug.Log(save.PlayerData.EquippedItem);
 	}
 }

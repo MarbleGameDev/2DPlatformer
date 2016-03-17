@@ -16,17 +16,18 @@ public class ConsoleCommandRouter : MonoBehaviour {
 		repo.RegisterCommand ("addItem", additem);
 		repo.RegisterCommand ("debug", DebugOn);
 		repo.RegisterCommand ("exit", Exit);
-		repo.RegisterCommand("help", Help);
-		repo.RegisterCommand("load", Load);
+		repo.RegisterCommand ("help", Help);
+		repo.RegisterCommand ("load", Load);
 		repo.RegisterCommand ("noclip", noClip);
 		repo.RegisterCommand ("notification", notification);
 		repo.RegisterCommand ("removeItem", removeitem);
+		repo.RegisterCommand ("removeItemName", removeItemName);
 		repo.RegisterCommand ("resetAll", resetAll);
+		repo.RegisterCommand ("resetEverything", resetEverything);
 		repo.RegisterCommand ("resetInvData", resetdata);
 		repo.RegisterCommand ("resetQuestData", resetQuestData);
 		repo.RegisterCommand ("saveGame", savegame);
 		repo.RegisterCommand ("setTime", setTime);
-        repo.RegisterCommand ("resetEverything", resetEverything);
 	}
 	
 	// Update is called once per frame
@@ -88,7 +89,7 @@ public class ConsoleCommandRouter : MonoBehaviour {
 	}
 
 	public string Load(params string[] args) {
-		String fileName;
+		string fileName;
 		try{
 			fileName = args[0];
 		} catch (Exception e){
@@ -99,7 +100,7 @@ public class ConsoleCommandRouter : MonoBehaviour {
 	}
 
 	public string noClip(params string[] args){
-		String fileName;
+		string fileName;
 		try{
 			fileName = args[0];
 		} catch (Exception e){
@@ -116,7 +117,7 @@ public class ConsoleCommandRouter : MonoBehaviour {
 	
 
 	public string DebugOn (params string[] args){
-		String fileName;
+		string fileName;
 		try{
 			fileName = args[0];
 		} catch (Exception e){
@@ -132,7 +133,7 @@ public class ConsoleCommandRouter : MonoBehaviour {
 	}
 
 	public string notification (params string[] args){
-		String title, content;
+		string title, content;
 		try{
 			title = args[0];
 		} catch (Exception e){
@@ -148,7 +149,7 @@ public class ConsoleCommandRouter : MonoBehaviour {
 	}
 
 	public string additem (params string[] args){
-		String name;
+		string name;
 		int num;
 		try{
 			name = args[0];
@@ -169,7 +170,7 @@ public class ConsoleCommandRouter : MonoBehaviour {
 	}
 		
 	public string removeitem (params string[] args){
-		String name;
+		string name;
 		int num;
 		try{
 			name = args[0];
@@ -182,6 +183,27 @@ public class ConsoleCommandRouter : MonoBehaviour {
 			return "Missing Quantity";
 		}
 		bool used = InventoryData.RemoveItem (name, num);
+		if (used) {
+			return "Item removed from inventory";
+		} else {
+			return "Item could not be removed";
+		}
+	}
+
+	public string removeItemName(params string[] args) {
+		string name;
+		int num;
+		try {
+			name = args[0].Replace("_", " ");
+		} catch (Exception e) {
+			return "Missing Item Name";
+		}
+		try {
+			num = int.Parse(args[1]);
+		} catch (Exception e) {
+			return "Missing Quantity";
+		}
+		bool used = InventoryData.RemoveItem(name, num);
 		if (used) {
 			return "Item removed from inventory";
 		} else {

@@ -20,46 +20,54 @@ public class GenericChest : MonoBehaviour {
 	void Awake (){
 		SaveData.ResetInv += ResetInv;
 	}
-    public void AddItem(object obj, int num) {
+    public void AddObject(object obj, int num) {
         items.Add(obj);
         itemCount[obj] = num;
     }
 
 	public void SaveInventory() {
+		if (JsonFile.save.Inventories.InventoryData.ContainsKey(inventoryIdentifier)) {
+			JsonFile.save.Inventories.InventoryData[inventoryIdentifier] = new Save.inventoryData();
+		} else {
+			JsonFile.save.Inventories.InventoryData.Add(inventoryIdentifier, new Save.inventoryData());
+		}
 		if (items.Count > 0) {
 			int y = 0;
 			int[] count = new int[itemCount.Count];
 			foreach (object e in items) {
-				PlayerPrefsSerializer.Save(inventoryIdentifier + y, e);
+				JsonFile.save.Inventories.InventoryData[inventoryIdentifier].inventoryItems.Insert(y, SaveData.SerializeObject(e));
 				count[y] = itemCount[e];
 				y++;
 			}
-			PlayerPrefsX.SetIntArray(inventoryIdentifier + "Count", count);
-			PlayerPrefs.SetInt(inventoryIdentifier + "Length", items.Count);
-			PlayerPrefs.Save();
+			JsonFile.save.Inventories.InventoryData[inventoryIdentifier].inventoryCount = count;
+			JsonFile.save.Inventories.InventoryData[inventoryIdentifier].inventoryLength = items.Count;
+			JsonFile.WriteData();
 		} else {
-			PlayerPrefs.SetInt(inventoryIdentifier + "Length", 0);
-			PlayerPrefs.Save();
+			JsonFile.save.Inventories.InventoryData[inventoryIdentifier].inventoryLength = 0;
+			JsonFile.WriteData();
 		}
 	}
 	public void GetInventory() {
 		items.Clear();
 		itemCount.Clear();
-		int invLength = PlayerPrefs.GetInt(inventoryIdentifier + "Length", 0);
-		var count = PlayerPrefsX.GetIntArray(inventoryIdentifier + "Count", 0, 0);
-		if (invLength > 0 && count.Length > 0) {
-			for (int i = 0; i < invLength; i++) {
-				AddItem(PlayerPrefsSerializer.Load(inventoryIdentifier + i), count[i]);
-			}
-			empty = false;
-		} else {
-			empty = true;
+		if (JsonFile.save.Inventories.InventoryData.ContainsKey(inventoryIdentifier)){
+			int invLength = JsonFile.save.Inventories.InventoryData[inventoryIdentifier].inventoryLength;
+				int[] count = JsonFile.save.Inventories.InventoryData[inventoryIdentifier].inventoryCount;
+				if (invLength > 0 && count.Length > 0) {
+					int i = 0;
+					object[] invItems = JsonFile.save.Inventories.InventoryData[inventoryIdentifier].inventoryItems.ToArray();
+					foreach (object itm in invItems) {
+						AddObject(SaveData.DeSerializeObject((string)itm), count[i]);
+					}
+				}
 		}
 	}
-
+	
 	void ResetInv(){
 		Enabled = true;
-		PlayerPrefsX.SetBool (inventoryIdentifier, Enabled);
+		try {
+			JsonFile.save.Inventories.inventoryEnabled[inventoryIdentifier] = true;
+		} catch (Exception) {}
 		items.Clear ();
 		itemCount.Clear();
 		Start ();
@@ -68,15 +76,18 @@ public class GenericChest : MonoBehaviour {
 	void Start () {
 		if (this != null) {
 			menu = GameObject.Find("Main Canvas").GetComponent<MenuManager>();
-			Enabled = PlayerPrefsX.GetBool(inventoryIdentifier, true);
+			if (JsonFile.save.Inventories.inventoryEnabled.ContainsKey(inventoryIdentifier)) {
+				Enabled = JsonFile.save.Inventories.inventoryEnabled[inventoryIdentifier];
+			} else {
+				JsonFile.save.Inventories.inventoryEnabled.Add(inventoryIdentifier, true);
+			}
 			if (Enabled) {
-				Debug.Log(inventoryIdentifier);
 				CreateItemObject itmobj = GetComponent<CreateItemObject>();
 				if (itmobj != null) {
 					itmobj.AddItems();
 					Enabled = false;
-					PlayerPrefsX.SetBool(inventoryIdentifier, Enabled);
-					PlayerPrefs.Save();
+					JsonFile.save.Inventories.inventoryEnabled[inventoryIdentifier] = Enabled;
+					SaveData.queueSave = true;
 				}
 				SaveInventory();
 			} else {
@@ -95,8 +106,7 @@ public class GenericChest : MonoBehaviour {
 		} else if (MenuManager.windowOpen && !empty){
 			object[] entries = items.ToArray();
 			foreach (object entry in entries) {
-				InventoryData.AddItem (entry, itemCount[entry]);
-				RemoveItem(entry);
+				TransferItem(entry);
 			}
 			items.Clear();
 			itemCount.Clear();

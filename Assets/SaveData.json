@@ -14,19 +14,43 @@
     "gameDays": 0
   },
   "PlayerData": {
-    "EquippedItem": 1,
+    "EquippedItem": -1,
     "playerName": "Joshabar",
-    "currentQuest": "",
+    "currentQuest": "Rebuild Town Bridge",
     "inventoryItems": [
-      "AAEAAAD/////AQAAAAAAAAAMAgAAAA9Bc3NlbWJseS1DU2hhcnAFAQAAAAVEaWFyeQEAAAALZGVzY3JpcHRpb24BAgAAAAYDAAAAFUEgY29sbGVjaW9uIG9mIG5vdGVzLgs=",
-      "AAEAAAD/////AQAAAAAAAAAMAgAAAA9Bc3NlbWJseS1DU2hhcnAFAQAAAAVTd29yZAcAAAADaWRlC2luZm9ybWF0aW9uBG5hbWULZGVzY3JpcHRpb24Lc3dvcmREYW1hZ2UPc3dvcmRTd2luZ1NwZWVkCnN3b3JkUmFuZ2UBBgEBAAAACwsLAgAAAAYDAAAAIEVuZ2xpc2gtNTZFOTcxMTktMTA4OTg2MC04NzVBNThCCQQAAAAGBQAAAAVTd29yZAYGAAAADEl0J3MgcG9pbnR5LgAAgD8AACBBAADAPxEEAAAABAAAAA0ECw=="
+      "AAEAAAD/////AQAAAAAAAAAMAgAAAA9Bc3NlbWJseS1DU2hhcnAFAQAAAAlCcmVhZExvYWYCAAAAC2Rlc2NyaXB0aW9uBmhlYWx0aAEACwIAAAAGAwAAABRNYWtlcyB5b3Ugbm90IGh1bmdyeQAAgD8L",
+      "AAEAAAD/////AQAAAAAAAAAMAgAAAA9Bc3NlbWJseS1DU2hhcnAFAQAAAAVTd29yZAcAAAADaWRlC2luZm9ybWF0aW9uBG5hbWULZGVzY3JpcHRpb24Lc3dvcmREYW1hZ2UPc3dvcmRTd2luZ1NwZWVkCnN3b3JkUmFuZ2UBBgEBAAAACwsLAgAAAAYDAAAAH0VuZ2xpc2gtNTZFQTlEMTAtMUQyRTk1OC1BNEM2QjIJBAAAAAYFAAAABVN3b3JkBgYAAAAMSXQncyBwb2ludHkuAACAPwAAIEEAAMA/EQQAAAAEAAAADQQL"
     ],
     "inventoryCount": [
-      1,
-      1
+      2,
+      2
     ],
     "inventoryLength": 2
   },
-  "InventoryData": {},
-  "QuestData": {}
+  "Inventories": {
+    "inventoryEnabled": {
+      "knightstand": false
+    },
+    "InventoryData": {
+      "knightstand": {
+        "inventoryItems": [
+          "AAEAAAD/////AQAAAAAAAAAMAgAAAA9Bc3NlbWJseS1DU2hhcnAFAQAAAAVTd29yZAcAAAADaWRlC2luZm9ybWF0aW9uBG5hbWULZGVzY3JpcHRpb24Lc3dvcmREYW1hZ2UPc3dvcmRTd2luZ1NwZWVkCnN3b3JkUmFuZ2UBBgEBAAAACwsLAgAAAAYDAAAAH0VuZ2xpc2gtNTZFQTlDRjUtM0I2RjZFLTI2QzE3MzgJBAAAAAYFAAAACkRhcmsgU3dvcmQGBgAAAA9CbGFjayB3aXRoIEVWSUwAAEBAAACgQQAAAEARBAAAAAQAAAANBAs="
+        ],
+        "inventoryCount": [
+          1
+        ],
+        "inventoryLength": 1
+      }
+    }
+  },
+  "Quests": {
+    "QuestData": {
+      "RebuildBridge": [
+        "Collected: \nWood: False\nTools: False\nCider: False",
+        false,
+        false,
+        false
+      ]
+    }
+  }
 }

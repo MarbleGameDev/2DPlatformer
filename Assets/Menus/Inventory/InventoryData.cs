@@ -133,12 +133,11 @@ public class InventoryData : MonoBehaviour {
 	public static void ResetInv(){
 		itemCount.Clear ();
         items.Clear();
-		SaveInventory ();
 		if (OnChange != null)
 			OnChange();
 		equippedItem = -1;
 		JsonFile.save.PlayerData.EquippedItem = equippedItem;
-		SaveData.queueSave = true;
+		SaveInventory();
 	}
 
 	public static void SaveInventory(){
@@ -156,6 +155,8 @@ public class InventoryData : MonoBehaviour {
 			JsonFile.save.PlayerData.EquippedItem = equippedItem;
 			JsonFile.WriteData();
 		} else {
+			JsonFile.save.PlayerData.inventoryItems.Clear();
+			JsonFile.save.PlayerData.inventoryCount = new int[0];
 			JsonFile.save.PlayerData.inventoryLength = 0;
 			JsonFile.WriteData();
 		}
@@ -236,6 +237,14 @@ public class InventoryData : MonoBehaviour {
 		} else {
 			return false;
 		}
+	}
+	public static bool RemoveItem(string name, int number) {
+		foreach (object e in items) {
+			if (e.ToString().Equals(name)) {
+				return RemoveItem(e, number);
+			}
+		}
+		return false;
 	}
 
 }

@@ -7,11 +7,17 @@ public class Beavers : MonoBehaviour, IQuest {
 	static Beavers() {    //Executes at the beginning of the game
 		InventoryData.OnChange += InvUpdate;    //start listening to inventory updates
 	}
+
+
 	public string StatusUpdate(){ 
 		if (state.Equals ("")) {
-			state = PlayerPrefs.GetString("Beavers", "blank");
+			if (JsonFile.save.Quests.QuestData.ContainsKey("Beavers")) {
+				state = (string)JsonFile.save.Quests.QuestData["Beavers"][0];
+			} else {
+				state = "blank";
+				JsonFile.save.Quests.QuestData.Add("Beavers", new object[] {state});
+			}
 		}
-		PlayerPrefs.SetString ("Beavers", state); 
 		switch (state){ 
 		    case "blank": 
                 break;
@@ -46,7 +52,11 @@ public class Beavers : MonoBehaviour, IQuest {
 
 		//Debug.Log("Reset");
 		state = "blank";
-		PlayerPrefs.SetString("Beavers", "blank");
+		if (JsonFile.save.Quests.QuestData.ContainsKey("Beavers")) {
+			JsonFile.save.Quests.QuestData["Beavers"][0] = state;
+		} else {
+			JsonFile.save.Quests.QuestData.Add("Beavers", new object[] {state});
+		}
 
 	}
 

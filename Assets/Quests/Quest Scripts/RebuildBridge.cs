@@ -11,12 +11,17 @@ public class RebuildBridge : MonoBehaviour, IQuest {
 
 	public string StatusUpdate(){   //Gets called any time the game wants to know what the status of the quest is, also when the quest is first started
 		if (state.Equals("")) {
-			state = PlayerPrefs.GetString("RebuildBridge", "blank");    //if the file is just initialized, read the data from disk, default to "blank" if it's the first time
-			items = PlayerPrefsX.GetBoolArray("RebuildBridgeItems", false, 3);
+			if (JsonFile.save.Quests.QuestData.ContainsKey("RebuildBridge")) {	//If the quest data entry exists in the data read from file
+				state = (string)JsonFile.save.Quests.QuestData["RebuildBridge"][0];
+				items[0] = (bool)JsonFile.save.Quests.QuestData["RebuildBridge"][1];	//Retrieve data from object array at the index of the quest string
+				items[1] = (bool)JsonFile.save.Quests.QuestData["RebuildBridge"][2];
+				items[2] = (bool)JsonFile.save.Quests.QuestData["RebuildBridge"][3];
+			} else {
+				state = "blank";
+				JsonFile.save.Quests.QuestData.Add("RebuildBridge", new object[] { state, false, false, false });     //New blanket array if one does not exist yet with default valuess
+				SaveData.queueSave = true;	//Force a data write
+			}
 		}
-		PlayerPrefs.SetString ("RebuildBridge", state);     //Store the data again in case it changes
-		PlayerPrefsX.SetBoolArray("RebuildBridgeItems", items);
-		PlayerPrefs.Save();
 		switch (state){ 	//switch between the set states
 		    case "blank":
 			    break;
@@ -36,13 +41,31 @@ public class RebuildBridge : MonoBehaviour, IQuest {
 			    break;
 		    case "quest finished":
 			    state = "Finished";
-			    NotificationManager.AddNotification("Quest Complete", "Rebuild Town Bridge"); 	//adding notification that the quest is finished
-			    PlayerPrefs.Save(); 	//Writes all data changes to disk just in case
+			    NotificationManager.AddNotification("Quest Complete", "Rebuild Town Bridge");   //adding notification that the quest is finished
 			    break;
 		}
 		if (state.Equals("Collected: ")) {	//Create dynamic list of items
 			state += ("\nWood: " + items[0] + "\nTools: " + items[1] + "\nCider: " + items[2]);
 		}
+		bool changed = false;
+		if (!state.Equals((string)JsonFile.save.Quests.QuestData["RebuildBridge"][0])) {
+			JsonFile.save.Quests.QuestData["RebuildBridge"][0] = state;
+			changed = true;
+		}
+		if (items[0] != ((bool)JsonFile.save.Quests.QuestData["RebuildBridge"][1])) {
+			JsonFile.save.Quests.QuestData["RebuildBridge"][1] = items[0];
+			changed = true;
+		}
+		if (items[1] != ((bool)JsonFile.save.Quests.QuestData["RebuildBridge"][2])) {
+			JsonFile.save.Quests.QuestData["RebuildBridge"][1] = items[1];
+			changed = true;
+		}
+		if (items[2] != ((bool)JsonFile.save.Quests.QuestData["RebuildBridge"][3])) {
+			JsonFile.save.Quests.QuestData["RebuildBridge"][1] = items[2];
+			changed = true;
+		}
+		if (changed)
+			SaveData.queueSave = true;  //Writes all data changes to disk just in case
 		return state; 	//Return a string stating the status of the quest
 	}
 	
@@ -58,6 +81,7 @@ public class RebuildBridge : MonoBehaviour, IQuest {
 			if (InventoryData.HasItem(ItemDictionary.itemDict.GetItem("Tools"))) {
 				items[2] = true;
 			}
+			QuestDictionary.GetUpdate("Rebuild Town Bridge");	//Update the status after new items
 		}
 
 	}
@@ -81,10 +105,15 @@ public class RebuildBridge : MonoBehaviour, IQuest {
 	
 	}
 
-	public void Reset(){
-		//Debug.Log("Reset");
+	public void Reset() {
 		state = "blank";
-		PlayerPrefs.SetString("RebuildBridge", "blank");
+		if (JsonFile.save.Quests.QuestData.ContainsKey("RebuildBridge")) {	//Similar code as above to reset to default values
+			JsonFile.save.Quests.QuestData["RebuildBridge"] = new object[] { state, false, false, false };
+		} else {
+			JsonFile.save.Quests.QuestData.Add("RebuildBridge", new object[] { state, false, false, false });
+		}
+		SaveData.queueSave = true;
+
 	}
 
 }

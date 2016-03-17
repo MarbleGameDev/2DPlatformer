@@ -34,7 +34,7 @@ public class SaveData : MonoBehaviour {
 
 	void Start(){
 		InvokeRepeating ("Store", 10f, (float)(Settings.saveInterval * 60));
-		InvokeRepeating("Store1", 5f, 10f);
+		InvokeRepeating("Store1", 4f, 4f);
 	}
 
 	void Store(){

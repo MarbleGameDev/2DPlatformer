@@ -33,9 +33,9 @@ public class CreateItemObject : MonoBehaviour {
 							objWeap.range = itm.range;
 						if (!itm.name.Equals(""))
 							objWeap.Name = itm.name;
-						chest.AddItem(objWeap, itm.itemAmount);
+						chest.AddObject(objWeap, itm.itemAmount);
 					} else {
-						chest.AddItem(objItem, itm.itemAmount);
+						chest.AddObject(objItem, itm.itemAmount);
 					}
 				}
             }
