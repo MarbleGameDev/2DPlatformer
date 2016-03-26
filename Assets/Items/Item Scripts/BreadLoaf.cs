@@ -5,6 +5,16 @@ using System.Collections;
 public class BreadLoaf : IFood {
 	string description = "Makes you not hungry";
 	float health = 1;
+	int cost = 0;
+	public int Cost {
+		get {
+			return cost;
+		}
+		set {
+			cost = value;
+		}
+	}
+
 	public string Description {
 		get {
 			return description;

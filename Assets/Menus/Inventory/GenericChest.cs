@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using System;
 
-public class GenericChest : MonoBehaviour {
+public class GenericChest : MonoBehaviour, Inventory {
 	MenuManager menu;
 	public Transform ChestWindow;
 	public Text item;

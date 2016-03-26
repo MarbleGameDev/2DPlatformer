@@ -5,8 +5,16 @@ using System;
 [Serializable]
 public class Diary : Iitem {
     string description = "A collecion of notes.";
-
-    public string Description {
+	int cost = 0;
+	public int Cost {
+		get {
+			return cost;
+		}
+		set {
+			cost = value;
+		}
+	}
+	public string Description {
         get {
             return description;
         }

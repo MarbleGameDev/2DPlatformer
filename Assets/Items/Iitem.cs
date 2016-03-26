@@ -2,6 +2,10 @@
 using System.Collections;
 
 public interface Iitem{
+	int Cost {
+		get;
+		set;
+	}
 	void Use();
 	void Drop();
     string Description {

@@ -14,7 +14,17 @@ public class SleepingBag : Iitem {
             description = value;
         }
     }
-    public void Use(){
+	int cost = 0;
+	public int Cost {
+		get {
+			return cost;
+		}
+		set {
+			cost = value;
+		}
+	}
+
+	public void Use(){
 		DayCycle.hours += 1;
 	}
 	public void Drop(){

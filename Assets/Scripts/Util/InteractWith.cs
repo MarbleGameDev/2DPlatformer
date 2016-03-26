@@ -19,7 +19,7 @@ public class InteractWith : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		string key = InputManager.GetKey (keyListener);
-		if (Input.GetKeyDown (key) && inArea && (!MenuManager.windowOpen || GetComponent<GenericChest>() != null)) { 	//GenericChest uses the interactwith to retrieve items
+		if (Input.GetKeyDown (key) && inArea && (!MenuManager.windowOpen || GetComponent<Inventory>() != null)) { 	//GenericChest uses the interactwith to retrieve items
 			//Debug.Log ("Interacts!");
 			onInteract.Invoke ();
 		}

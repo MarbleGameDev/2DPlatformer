@@ -9,7 +9,7 @@ public class InventoryData : MonoBehaviour {
     public static Dictionary<object, int> itemCount = new Dictionary<object, int>();
     public static List<object> items = new List<object>();
     public static int equippedItem;
-
+	public static int gold;
 	public delegate void InvChanged();
 	public static event InvChanged OnChange;
     public static void equipItem(object obj) {
@@ -19,14 +19,14 @@ public class InventoryData : MonoBehaviour {
                     if (e is IWeapon) {
                         if (((IWeapon)e).ID.Equals(((IWeapon)obj).ID)) {
                             equippedItem = items.IndexOf(e);
-                            JsonFile.save.PlayerData.EquippedItem = equippedItem;
+                            JsonFile.save.PlayerData.equippedItem = equippedItem;
 							SaveData.queueSave = true;
                         }
                     }
                 } else {
                     if (e.ToString().Equals(obj.ToString())) {
                         equippedItem = items.IndexOf(e);
-                        JsonFile.save.PlayerData.EquippedItem = equippedItem;
+                        JsonFile.save.PlayerData.equippedItem = equippedItem;
 						SaveData.queueSave = true;
                     }
                 }
@@ -136,7 +136,7 @@ public class InventoryData : MonoBehaviour {
 		if (OnChange != null)
 			OnChange();
 		equippedItem = -1;
-		JsonFile.save.PlayerData.EquippedItem = equippedItem;
+		JsonFile.save.PlayerData.equippedItem = equippedItem;
 		SaveInventory();
 	}
 
@@ -152,7 +152,8 @@ public class InventoryData : MonoBehaviour {
 			}
 			JsonFile.save.PlayerData.inventoryCount = count;
 			JsonFile.save.PlayerData.inventoryLength = items.Count;
-			JsonFile.save.PlayerData.EquippedItem = equippedItem;
+			JsonFile.save.PlayerData.equippedItem = equippedItem;
+			JsonFile.save.PlayerData.gold = gold;
 			JsonFile.WriteData();
 		} else {
 			JsonFile.save.PlayerData.inventoryItems.Clear();
@@ -164,7 +165,8 @@ public class InventoryData : MonoBehaviour {
     public static void GetInventory() {
         items.Clear();
         itemCount.Clear();
-		equippedItem = JsonFile.save.PlayerData.EquippedItem;
+		equippedItem = JsonFile.save.PlayerData.equippedItem;
+		gold = JsonFile.save.PlayerData.gold;
 		int invLength = JsonFile.save.PlayerData.inventoryLength;
 		int[] count = JsonFile.save.PlayerData.inventoryCount;
         if (invLength > 0 && count.Length > 0) {

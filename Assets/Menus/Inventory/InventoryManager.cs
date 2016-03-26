@@ -6,7 +6,6 @@ using System.Reflection;
 using System.Collections.Generic;
 
 public class InventoryManager : MonoBehaviour {
-	Transform content;
 	public Text item;
 	GameObject names;
 	public Text questStatus;

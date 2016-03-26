@@ -56,7 +56,17 @@ public class Sword : IWeapon {
             description = value;
         }
     }
-    public void Use(){
+	int cost = 0;
+	public int Cost {
+		get {
+			return cost;
+		}
+		set {
+			cost = value;
+		}
+	}
+
+	public void Use(){
 		Equip ();
 	}
 	public void Drop(){

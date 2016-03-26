@@ -14,18 +14,13 @@
     "gameDays": 0
   },
   "PlayerData": {
-    "EquippedItem": -1,
+    "gold": 10,
+    "equippedItem": -1,
     "playerName": "Joshabar",
     "currentQuest": "Rebuild Town Bridge",
-    "inventoryItems": [
-      "AAEAAAD/////AQAAAAAAAAAMAgAAAA9Bc3NlbWJseS1DU2hhcnAFAQAAAAlCcmVhZExvYWYCAAAAC2Rlc2NyaXB0aW9uBmhlYWx0aAEACwIAAAAGAwAAABRNYWtlcyB5b3Ugbm90IGh1bmdyeQAAgD8L",
-      "AAEAAAD/////AQAAAAAAAAAMAgAAAA9Bc3NlbWJseS1DU2hhcnAFAQAAAAVTd29yZAcAAAADaWRlC2luZm9ybWF0aW9uBG5hbWULZGVzY3JpcHRpb24Lc3dvcmREYW1hZ2UPc3dvcmRTd2luZ1NwZWVkCnN3b3JkUmFuZ2UBBgEBAAAACwsLAgAAAAYDAAAAH0VuZ2xpc2gtNTZFQTlEMTAtMUQyRTk1OC1BNEM2QjIJBAAAAAYFAAAABVN3b3JkBgYAAAAMSXQncyBwb2ludHkuAACAPwAAIEEAAMA/EQQAAAAEAAAADQQL"
-    ],
-    "inventoryCount": [
-      2,
-      2
-    ],
-    "inventoryLength": 2
+    "inventoryItems": [],
+    "inventoryCount": [],
+    "inventoryLength": 0
   },
   "Inventories": {
     "inventoryEnabled": {
@@ -34,7 +29,7 @@
     "InventoryData": {
       "knightstand": {
         "inventoryItems": [
-          "AAEAAAD/////AQAAAAAAAAAMAgAAAA9Bc3NlbWJseS1DU2hhcnAFAQAAAAVTd29yZAcAAAADaWRlC2luZm9ybWF0aW9uBG5hbWULZGVzY3JpcHRpb24Lc3dvcmREYW1hZ2UPc3dvcmRTd2luZ1NwZWVkCnN3b3JkUmFuZ2UBBgEBAAAACwsLAgAAAAYDAAAAH0VuZ2xpc2gtNTZFQTlDRjUtM0I2RjZFLTI2QzE3MzgJBAAAAAYFAAAACkRhcmsgU3dvcmQGBgAAAA9CbGFjayB3aXRoIEVWSUwAAEBAAACgQQAAAEARBAAAAAQAAAANBAs="
+          "AAEAAAD/////AQAAAAAAAAAMAgAAAA9Bc3NlbWJseS1DU2hhcnAFAQAAAAVTd29yZAgAAAADaWRlC2luZm9ybWF0aW9uBG5hbWULZGVzY3JpcHRpb24Lc3dvcmREYW1hZ2UPc3dvcmRTd2luZ1NwZWVkCnN3b3JkUmFuZ2UEY29zdAEGAQEAAAAACwsLCAIAAAAGAwAAACBFbmdsaXNoLTU2RjU2MTU1LUY1QTJEQi0yMDUzNTJGQwkEAAAABgUAAAAKRGFyayBTd29yZAYGAAAAD0JsYWNrIHdpdGggRVZJTAAAQEAAAKBBAAAAQAAAAAARBAAAAAQAAAANBAs="
         ],
         "inventoryCount": [
           1
@@ -51,6 +46,22 @@
         false,
         false
       ]
+    }
+  },
+  "Shops": {
+    "shopEnabled": {
+      "tayest": false
+    },
+    "ShopData": {
+      "tayest": {
+        "inventoryItems": [
+          "AAEAAAD/////AQAAAAAAAAAMAgAAAA9Bc3NlbWJseS1DU2hhcnAFAQAAAAVEaWFyeQIAAAALZGVzY3JpcHRpb24EY29zdAEACAIAAAAGAwAAACpEaWQgeW91IGp1c3Qgd2FzdGUgbW9uZXkgb24gYW4gZW1wdHkgYm9vaz8AAAAACw=="
+        ],
+        "inventoryCount": [
+          1
+        ],
+        "inventoryLength": 1
+      }
     }
   }
 }

@@ -8,6 +8,7 @@ public class Save {
 	public playerData PlayerData = new playerData();
 	public inventories Inventories = new inventories();
 	public questData Quests = new questData();
+	public shops Shops = new shops();
 
 	public class controls {
 		public string Left = "a", Right = "d", Up = "w", Down = "s", Interact = "e", Inventory = "tab", Skip = "space", Minimap = "left shift";     //Key bindings
@@ -16,7 +17,8 @@ public class Save {
 		public int gameHours = 12, gameDays;
 	}
 	public class playerData {
-		public int EquippedItem = -1;
+		public int gold = 0;
+		public int equippedItem = -1;
 		public string playerName = "Joshabar";
 		public string currentQuest = "";
 		public ArrayList inventoryItems = new ArrayList();
@@ -28,12 +30,22 @@ public class Save {
 		public int[] inventoryCount;
 		public int inventoryLength;
 	}
+	public class shopsData {
+		public ArrayList inventoryItems = new ArrayList();
+		public int[] inventoryCount;
+		public int inventoryLength;
+	}
+
 	public class inventories {
 		public Dictionary<string, bool> inventoryEnabled = new Dictionary<string, bool>();
 		public Dictionary<string, inventoryData> InventoryData = new Dictionary<string, inventoryData>();
 	}
 	public class questData {
 		public Dictionary<string, object[]> QuestData = new Dictionary<string, object[]>();
+	}
+	public class shops {
+		public Dictionary<string, bool> shopEnabled = new Dictionary<string, bool>();
+		public Dictionary<string, shopsData> ShopData = new Dictionary<string, shopsData>();
 	}
 
 }

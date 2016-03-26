@@ -9,6 +9,8 @@ public class LayoutList : MonoBehaviour {
 	void Start () {
 		rect = GetComponent<RectTransform> ();
         invNames = transform.FindChild("InvNames");
+		if (invNames == null)
+			invNames = transform.FindChild("ShopItems");
 	}
 	
 	// Update is called once per frame

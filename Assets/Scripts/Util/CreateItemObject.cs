@@ -12,11 +12,13 @@ public class CreateItemObject : MonoBehaviour {
         public float swingSpeed;
         public float range;
         public string name;
+		[Header("Cost used with Shop Inventories")]
+		public int cost;
     }
     public Items[] ItemObjects;
 
     public void AddItems() {
-        GenericChest chest = gameObject.GetComponent<GenericChest>();
+        Inventory chest = gameObject.GetComponent<Inventory>();
         if (chest != null) {
             foreach (Items itm in ItemObjects) {
                 Iitem objItem = (Iitem)ItemDictionary.itemDict.GetItem(itm.itemName);
@@ -36,6 +38,9 @@ public class CreateItemObject : MonoBehaviour {
 						chest.AddObject(objWeap, itm.itemAmount);
 					} else {
 						chest.AddObject(objItem, itm.itemAmount);
+					}
+					if (chest is GenericShop) {    //If the chest is a shop instance
+						((GenericShop)chest).itemCost.Add(objItem, itm.cost);
 					}
 				}
             }

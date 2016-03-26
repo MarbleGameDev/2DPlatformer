@@ -43,6 +43,7 @@ public class SaveData : MonoBehaviour {
 	void Store1() {
 		if (queueSave) {
 			JsonFile.WriteData();
+			queueSave = false;
 		}
 	}
 
