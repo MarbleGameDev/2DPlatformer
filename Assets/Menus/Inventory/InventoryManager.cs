@@ -8,11 +8,13 @@ using System.Collections.Generic;
 public class InventoryManager : MonoBehaviour {
 	public Text item;
 	GameObject names;
-	public Text questStatus;
+	Text questStatus;
+	Text gold;
 
 	// Use this for initialization
 	void Start () {
 		questStatus = GameObject.Find ("QuestStatus").GetComponent<Text>();
+		gold = GameObject.Find("Gold").GetComponent<Text>();
 		names = GameObject.Find("InvNames");
 		DrawInv ();
 		InventoryData.OnChange += UpdateInv;
@@ -43,8 +45,9 @@ public class InventoryManager : MonoBehaviour {
                 newItem.text = " " + ((InventoryData.itemCount[entry] > 1) ? ("" + InventoryData.itemCount[entry] + "x ") : ("")) + entry.ToString() + ((InventoryData.compareItems(InventoryData.getEquipped(), entry)) ? (" \u25cf") : (""));
                 newItem.name = entry.ToString() + "1";
                 newItem.GetComponent<ItemExecution>().item = entry;
-            }
+        }
         questStatus.text = JsonFile.save.PlayerData.currentQuest + ((!JsonFile.save.PlayerData.currentQuest.Equals("")) ? (": \n\n") : ("")) + QuestDictionary.GetUpdate(JsonFile.save.PlayerData.currentQuest);
+		gold.text = "Gold: " + InventoryData.gold;
         }
 	}
 }

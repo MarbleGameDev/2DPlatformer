@@ -16,7 +16,9 @@ public class CreateItemObject : MonoBehaviour {
 		public int cost;
     }
     public Items[] ItemObjects;
-
+	/// <summary>
+	/// Adds the Items specified in the Inspector-editable arrays and adds them to the inventory object on its gameobject
+	/// </summary>
     public void AddItems() {
         Inventory chest = gameObject.GetComponent<Inventory>();
         if (chest != null) {

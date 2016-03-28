@@ -36,6 +36,10 @@ public class InformationBox : MonoBehaviour {
 	void Update () {
 	
 	}
+	/// <summary>
+	/// Sets the information display to the correct text for the object passed
+	/// </summary>
+	/// <param name="obj"></param>
     public void DisplayObject(object obj) {
         string display = displayFormat;
         if (obj is IEquippable && !shopMode) {

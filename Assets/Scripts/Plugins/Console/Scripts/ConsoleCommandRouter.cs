@@ -27,6 +27,7 @@ public class ConsoleCommandRouter : MonoBehaviour {
 		repo.RegisterCommand ("resetInvData", resetdata);
 		repo.RegisterCommand ("resetQuestData", resetQuestData);
 		repo.RegisterCommand ("saveGame", savegame);
+		repo.RegisterCommand("setGold", setGold);
 		repo.RegisterCommand ("setTime", setTime);
 	}
 	
@@ -39,6 +40,18 @@ public class ConsoleCommandRouter : MonoBehaviour {
         SaveData.ResetEverything();
         return "The deed is done";
     }
+
+	public string setGold(params string[] args) {
+		int amount;
+		try {
+			amount = int.Parse(args[0]);
+		} catch (Exception e) {
+			return "Missing <amount>";
+		}
+		InventoryData.gold = amount;
+		InventoryData.UpdateInv();
+		return "Gold Set";
+	}
 
 	public string setTime(params string[] args){
 		string hours;

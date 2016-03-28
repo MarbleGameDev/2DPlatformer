@@ -81,9 +81,10 @@ public class GenericShop : MonoBehaviour, Inventory {
 
 	public void BuyItem(object obj) {
 		if (items.Contains(obj) && itemCount.ContainsKey(obj) && itemCount[obj] > 0) {
-			if (((Iitem)obj).Cost > InventoryData.gold)
+			if (!InventoryData.hasEnoughGold(((Iitem)obj).Cost))
 				return;
 			InventoryData.AddItem(obj, 1);
+			InventoryData.removeGold(((Iitem)obj).Cost);
 			SaveData.queueSave = true;
 			itemCount[obj]--;
 			if (itemCount[obj] == 0) {

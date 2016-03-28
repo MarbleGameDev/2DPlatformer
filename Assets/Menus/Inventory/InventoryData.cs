@@ -11,7 +11,14 @@ public class InventoryData : MonoBehaviour {
     public static int equippedItem;
 	public static int gold;
 	public delegate void InvChanged();
+	/// <summary>
+	/// Called whenever any data in the inventory class is changed
+	/// </summary>
 	public static event InvChanged OnChange;
+	/// <summary>
+	/// Equips the object passed if it exists in the inventory
+	/// </summary>
+	/// <param name="obj"></param>
     public static void equipItem(object obj) {
         if (HasItem(obj)) {
             foreach (object e in items) {
@@ -35,7 +42,10 @@ public class InventoryData : MonoBehaviour {
         if (OnChange != null)
             OnChange();
     }
-
+	/// <summary>
+	/// Returns the float attack value of the equipped item
+	/// </summary>
+	/// <returns></returns>
     public static float Attack() {
         if (equippedItem == -1) {
             return new Hands().Attack();
@@ -45,11 +55,19 @@ public class InventoryData : MonoBehaviour {
         return 0f;
         }
 	}
+	/// <summary>
+	/// Returns the cooldown/swingSpeed attribute of the equipped item
+	/// </summary>
+	/// <returns></returns>
     public static float Cooldown() {
         if (getEquipped() is IWeapon)
             return ((IWeapon)(items[equippedItem])).swingSpeed;
         return 0f;
     }
+	/// <summary>
+	/// Returns the range attribute of the equipped item
+	/// </summary>
+	/// <returns></returns>
     public static float Range() {
         if (getEquipped() is IWeapon) {
             if (getEquipped() is Hands) {
@@ -59,16 +77,28 @@ public class InventoryData : MonoBehaviour {
         }
         return 0f;
     }
+	/// <summary>
+	/// Executes the Use() method on the object passed if it exits in the inventory
+	/// </summary>
+	/// <param name="obj"></param>
     public static void UseItem(object obj) {
         if (HasItem(obj)) {
             ((Iitem)obj).Use();
         }
     }
+	/// <summary>
+	/// Executes the Drop() method on the object passed if it exists in the inventory
+	/// </summary>
+	/// <param name="obj"></param>
     public static void DropItem(object obj) {
         if (HasItem(obj)) {
             ((Iitem)obj).Drop();
         }
     }
+	/// <summary>
+	/// Returns the currently equipped item, defaulting to Hands
+	/// </summary>
+	/// <returns></returns>
     public static object getEquipped() {
         if (equippedItem == -1) {
             return new Hands();
@@ -77,7 +107,11 @@ public class InventoryData : MonoBehaviour {
             return items[equippedItem];
         return new Hands();
     }
-
+	/// <summary>
+	/// Returns the item object from the inventory matching the name passed, defaulting to null
+	/// </summary>
+	/// <param name="name"></param>
+	/// <returns></returns>
     public static object GetItem(string name) {
         foreach (object e in items) {
             if (e.ToString().Equals(name))
@@ -85,7 +119,11 @@ public class InventoryData : MonoBehaviour {
         }
         return null;
     }
-
+	/// <summary>
+	/// Returns boolean whether the object passed exists in the inventory
+	/// </summary>
+	/// <param name="obj"></param>
+	/// <returns></returns>
     public static bool HasItem(object obj){
 		if (obj != null) {
 			foreach (object e in items) {
@@ -128,19 +166,23 @@ public class InventoryData : MonoBehaviour {
 		SaveData.ResetInv += ResetInv;
 		GetInventory ();
 	}
-
-
+	/// <summary>
+	/// Clears all inventory data, then saves to disk
+	/// </summary>
 	public static void ResetInv(){
 		itemCount.Clear ();
         items.Clear();
 		if (OnChange != null)
 			OnChange();
 		equippedItem = -1;
+		gold = 0;
 		JsonFile.save.PlayerData.equippedItem = equippedItem;
 		SaveInventory();
 	}
-
-	public static void SaveInventory(){
+	/// <summary>
+	/// Saves data in the Json file save object, then writes the data to file
+	/// </summary>
+	private static void SaveInventory(){
 		if (items.Count > 0) {
 			int y = 0;
 			int[] count = new int[itemCount.Count];
@@ -162,7 +204,10 @@ public class InventoryData : MonoBehaviour {
 			JsonFile.WriteData();
 		}
 	}
-    public static void GetInventory() {
+	/// <summary>
+	/// Retrieves data from the stored data in the Json file
+	/// </summary>
+    private static void GetInventory() {
         items.Clear();
         itemCount.Clear();
 		equippedItem = JsonFile.save.PlayerData.equippedItem;
@@ -178,7 +223,11 @@ public class InventoryData : MonoBehaviour {
         }
 		
     }
-
+	/// <summary>
+	/// Used internally to deal with adding objects to the necessary lists and dictionaries
+	/// </summary>
+	/// <param name="obj"></param>
+	/// <param name="number"></param>
     private static void AddObject(object obj, int number) {
 		if (number > 0) {
 			if (HasItem(obj)) {
@@ -208,7 +257,11 @@ public class InventoryData : MonoBehaviour {
 			SaveInventory();
 		}
     }
-
+	/// <summary>
+	/// Used to add items to the inventory
+	/// </summary>
+	/// <param name="name"></param>
+	/// <param name="number"></param>
     public static void AddItem (object name, int number){
 		if (name is Iitem) {
             AddObject(name, number);
@@ -221,7 +274,12 @@ public class InventoryData : MonoBehaviour {
 				OnChange ();
 		}
 	}
-
+	/// <summary>
+	/// Used to remove items from the inventory, returning a boolean value of the successfulness
+	/// </summary>
+	/// <param name="name"></param>
+	/// <param name="number"></param>
+	/// <returns></returns>
 	public static bool RemoveItem (object name, int number){
 		if (HasItem (name) && (itemCount[name] - number >= 0)) {
 			itemCount [name] -= number;
@@ -245,6 +303,37 @@ public class InventoryData : MonoBehaviour {
 			if (e.ToString().Equals(name)) {
 				return RemoveItem(e, number);
 			}
+		}
+		return false;
+	}
+	/// <summary>
+	/// Returns whether the player has more than the amount specified of gold
+	/// </summary>
+	/// <param name="amount"></param>
+	/// <returns></returns>
+	public static bool hasEnoughGold(int amount) {
+		if (gold >= amount)
+			return true;
+		return false;
+	}
+	/// <summary>
+	/// Adds the integer amount to the player's gold quantity
+	/// </summary>
+	/// <param name="amount"></param>
+	public static void addGold(int amount) {
+		gold += amount;
+		UpdateInv();
+	}
+	/// <summary>
+	/// Removes the integer amount from the player's gold if possible, doing nothing if not, returning a boolean value of it's success
+	/// </summary>
+	/// <param name="amount"></param>
+	/// <returns></returns>
+	public static bool removeGold(int amount) {
+		if (hasEnoughGold(amount)) {
+			gold -= amount;
+			UpdateInv();
+			return true;
 		}
 		return false;
 	}
