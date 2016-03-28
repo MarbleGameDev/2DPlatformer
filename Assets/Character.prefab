@@ -27,9 +27,8 @@ GameObject:
   - 212: {fileID: 21212456}
   - 95: {fileID: 9520822}
   - 114: {fileID: 11417640}
-  - 65: {fileID: 6518694}
   - 54: {fileID: 5467828}
-  - 114: {fileID: 11406344}
+  - 135: {fileID: 13502048}
   m_Layer: 10
   m_Name: Character
   m_TagString: Player
@@ -94,7 +93,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 129158}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 37.4000015, y: 9.39999962, z: -.00100000005}
+  m_LocalPosition: {x: -39.9500008, y: 4.25, z: -.00100000005}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 463674}
@@ -201,7 +200,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 129158}
   serializedVersion: 2
-  m_Mass: 1000
+  m_Mass: 1.00000001e-07
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 0
@@ -209,18 +208,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 1
---- !u!65 &6518694
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 129158}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: .140129969, y: .161135867, z: .200000003}
-  m_Center: {x: -.0003666103, y: -.0801744983, z: 0}
 --- !u!81 &8169650
 AudioListener:
   m_ObjectHideFlags: 1
@@ -259,38 +246,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11406344
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 129158}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 199
-    i1: 209
-    i2: 169
-    i3: 29
-    i4: 235
-    i5: 192
-    i6: 146
-    i7: 148
-    i8: 106
-    i9: 37
-    i10: 229
-    i11: 174
-    i12: 25
-    i13: 142
-    i14: 164
-    i15: 237
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
 --- !u!114 &11417640
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -331,6 +286,18 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 196610}
   m_Enabled: 1
+--- !u!135 &13502048
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 129158}
+  m_Material: {fileID: 13400000, guid: a21a80177094dbe4d85b543358920c55, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: .0688745007
+  m_Center: {x: 0, y: -.100000001, z: 0}
 --- !u!212 &21212456
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -349,9 +316,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -377,9 +342,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}

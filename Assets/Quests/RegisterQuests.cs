@@ -14,3 +14,4 @@ public class RegisterQuests : MonoBehaviour {
 		}
 	}
 }
+//rekt
