@@ -21,17 +21,17 @@ public class Save {
 		public int equippedItem = -1;
 		public string playerName = "Joshabar";
 		public string currentQuest = "";
-		public ArrayList inventoryItems = new ArrayList();
+		public List<object> inventoryItems = new List<object>();
 		public int[] inventoryCount;
 		public int inventoryLength;
 	}
 	public class inventoryData {
-		public ArrayList inventoryItems = new ArrayList();
+		public List<object> inventoryItems = new List<object>();
 		public int[] inventoryCount;
 		public int inventoryLength;
 	}
 	public class shopsData {
-		public ArrayList inventoryItems = new ArrayList();
+		public List<object> inventoryItems = new List<object>();
 		public int[] inventoryCount;
 		public int inventoryLength;
 	}
